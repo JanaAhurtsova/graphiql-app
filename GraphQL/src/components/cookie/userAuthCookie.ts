@@ -1,6 +1,6 @@
 export function startSession(email: string, token: string, id: string) {
   const dateToday = new Date();
-  dateToday.setMinutes(dateToday.getDay() + 1);
+  dateToday.setMinutes(dateToday.getHours() + 24);
   document.cookie = `email=${email}; expires=${dateToday.toUTCString()};`;
   document.cookie = `token=${token}; expires=${dateToday.toUTCString()}; secure;`;
   document.cookie = `id=${id}; expires=${dateToday.toUTCString()};`;
