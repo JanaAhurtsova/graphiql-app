@@ -6,7 +6,7 @@ import MainPage from '../pages/mainPage/MainPage';
 import ErrorPage from '../pages/errorPage/ErrorPage';
 import GraphPage from '../pages/graphPage/GraphPage';
 
-import './App.css';
+import './App.scss';
 
 const router = createBrowserRouter([
   {
