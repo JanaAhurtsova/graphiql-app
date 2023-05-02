@@ -9,8 +9,8 @@ export const useSetUser = () => {
   const dispatch = useAppDispatch();
 
   return useCallback(
-    (card: TUserSlice) => {
-      dispatch(setUser(card));
+    (user: TUserSlice) => {
+      dispatch(setUser(user));
     },
     [dispatch]
   );
