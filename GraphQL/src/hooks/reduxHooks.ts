@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 
 import { AppDispatch, RootState } from '../store/store';
 import { removeUser, setUser } from '../store/slices/userSlice';
-import { TUserSlice } from 'store/slices/type';
+import { TUserSlice } from '../store/slices/type';
 
 export const useSetUser = () => {
   const dispatch = useAppDispatch();
