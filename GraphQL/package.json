@@ -14,10 +14,14 @@
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.4.6",
     "firebase": "^9.21.0",
+<<<<<<< HEAD
+=======
     "graphql": "^16.6.0",
     "graphql-request": "^6.0.0",
+>>>>>>> develop
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "redux-typescript": "^1.2.1"
   },

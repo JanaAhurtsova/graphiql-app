@@ -1,9 +1,39 @@
-import { RouterProvider } from 'react-router-dom';
-import { router } from '../../router';
-import './App.scss';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const App = () => {
-  return <RouterProvider router={router} />;
-};
+import LoginPage from '../pages/loginPage/LoginPage';
+import RegisterPage from '../pages/registerPage/RegisterPage';
+import MainPage from '../pages/mainPage/MainPage';
+import ErrorPage from '../pages/errorPage/ErrorPage';
+import GraphPage from '../pages/graphPage/GraphPage';
+
+import './App.css';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <MainPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
+  {
+    path: '/graph',
+    element: <GraphPage />,
+  },
+]);
+
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+}
 
 export default App;
