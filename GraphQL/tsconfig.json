@@ -14,14 +14,17 @@
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "resolveJsonModule": true,
-    "types": ["vite/client", "node"],
     "paths": {
-      "pages/*": ["pages/*"],
-      "components/*": ["components/*"]
+      "@/*": ["./src/*", "./dist/*", ""],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "managers/*": ["src/managers/*"],
+      "public/*": ["public/*"],
     }
   },
-  "include": ["src", "vite.config.ts", ".eslintrc.json"],
+  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
