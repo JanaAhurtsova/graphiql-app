@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { SyntheticEvent, useState } from 'react';
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../store/slices/userSlice';
-import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useSetUser } from '../../hooks/reduxHooks';
+import { startSession } from '../../components/cookie/userAuthCookie';
 
 export default function Register() {
-  const dispatch = useAppDispatch();
+  const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,14 +20,13 @@ export default function Register() {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        );
+        registerUserDispatch({
+          email: user.email,
+          id: user.uid,
+          token: user.refreshToken,
+        });
         navigate('/graph');
+        startSession(String(user.email), user.refreshToken, user.uid);
       })
       .catch(console.error);
   };

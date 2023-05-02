@@ -1,9 +1,9 @@
 export function startSession(email: string, token: string, id: string) {
   const dateToday = new Date();
-  dateToday.setMinutes(dateToday.getMinutes() + 5);
-  document.cookie = `email=${email};expires=${dateToday.toUTCString()};`;
-  document.cookie = `token=${token};expires=${dateToday.toUTCString()};secure;`;
-  document.cookie = `id=${id};;expires=${dateToday.toUTCString()};`;
+  dateToday.setMinutes(dateToday.getDay() + 1);
+  document.cookie = `email=${email}; expires=${dateToday.toUTCString()};`;
+  document.cookie = `token=${token}; expires=${dateToday.toUTCString()}; secure;`;
+  document.cookie = `id=${id}; expires=${dateToday.toUTCString()};`;
 }
 
 export function getSession() {
@@ -27,4 +27,5 @@ function getCookie(cookieName: string) {
 export function endSession() {
   document.cookie = `email=; expires=${new Date(0)};`;
   document.cookie = `token=; expires=${new Date(0)};`;
+  document.cookie = `id=; expires=${new Date(0)};`;
 }

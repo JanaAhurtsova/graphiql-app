@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../../../hooks/reduxHooks';
+import { useRemoveUser } from '../../../hooks/reduxHooks';
 import { useAuth } from '../../../hooks/useAuth';
-import { removeUser } from '../../../store/slices/userSlice';
 import { endSession } from '../../cookie/userAuthCookie';
 import { useEffect } from 'react';
 
 export default function GraphPage() {
-  const dispatch = useAppDispatch();
+  const removeUserDispatch = useRemoveUser();
   const navigate = useNavigate();
 
   const { isAuth } = useAuth();
@@ -19,7 +18,7 @@ export default function GraphPage() {
   });
 
   const exit = () => {
-    dispatch(removeUser());
+    removeUserDispatch();
     endSession();
     navigate('/');
   };
