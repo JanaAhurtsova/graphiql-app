@@ -1,7 +1,11 @@
 .icon {
-  height: 2rem;
+  height: 1.8rem;
   width: auto;
   cursor: pointer;
+
+  @media (max-width: 550px) {
+    height: 1.5rem;
+  }
 }
 
 .github {
@@ -11,15 +15,23 @@
 }
 
 .rs {
-  margin-left: 200px;
-  height: 2rem;
+  height: 1.8rem;
+
+  @media (max-width: 550px) {
+    height: 1.5rem;
+  }
 }
 
 .footer {
-  position: 'sticky';
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: '10vh';
-  text-align: 'center';
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 8px 0 5px;
+
+  @media (max-width: 550px) {
+    justify-content: flex-end;
+    padding-right: 1rem;
+    gap: .8rem;
+  }
 }

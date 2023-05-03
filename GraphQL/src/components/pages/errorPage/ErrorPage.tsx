@@ -5,7 +5,7 @@ export default function ErrorPage() {
   return (
     <section className="container">
       <p>
-        Sorry, an unexpected error has occurred. Go to <Link to="/">Main</Link>
+        Sorry, an unexpected error has occurred. Go to <Link to="/">Welcome</Link>
       </p>
       <p>{(isRouteErrorResponse(error) && error.statusText) || 'Unknown Error'}</p>
     </section>

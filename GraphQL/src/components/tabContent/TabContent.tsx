@@ -4,9 +4,10 @@ import {
   ReadOutlined,
   SketchOutlined,
   SettingFilled,
+  CaretRightFilled,
 } from '@ant-design/icons';
 import { Col, ConfigProvider, Drawer, Input, MenuProps, Modal, Row } from 'antd';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import React, { useState } from 'react';
 import styles from './TabContent.module.scss';
 const { Content, Sider } = Layout;
@@ -103,34 +104,42 @@ const TabContent: React.FC = () => {
         },
       }}
     >
-      <Layout className="layout" style={{ minHeight: '80vh' }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+      <Layout className="layout" style={{ minHeight: '85vh' }}>
+        <Sider
+          collapsible
+          collapsedWidth={50}
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
+        >
+          <Menu theme="dark" mode="inline" items={items} />
         </Sider>
-        <Layout className="layout">
-          <Content className={styles.content}>
-            <Row style={{ height: '70%' }}>
-              <Col span={12}>
-                <Input.TextArea
-                  className="layout-background"
-                  style={{ height: '100%', resize: 'none' }}
-                  placeholder="# Write your query or mutation here"
-                />
-              </Col>
-              <Col span={12}>
-                <div className="layout-background" style={{ height: '100%' }}>
-                  Hit the Play Button to get a response here
-                </div>
-              </Col>
-            </Row>
-            <Input.TextArea
-              className="layout-background"
-              style={{ height: '30%', resize: 'none' }}
-              placeholder="Second part"
-            />
-          </Content>
-        </Layout>
+        <Content className={styles.content}>
+          <Row style={{ height: '100%' }}>
+            <Col className={styles.editor} xs={24} sm={24} md={12}>
+              <Input.TextArea
+                className="layout-background"
+                style={{ height: '69%', resize: 'none', paddingRight: '2.3rem' }}
+                placeholder="# Write your query or mutation here"
+              />
+              <Input.TextArea
+                className="layout-background"
+                style={{ height: '30%', resize: 'none' }}
+                placeholder="Second part"
+              />
+              <Button
+                className={styles.play}
+                shape="circle"
+                icon={<CaretRightFilled />}
+                type="primary"
+              />
+            </Col>
+            <Col xs={24} sm={24} md={12}>
+              <div className="layout-background" style={{ height: '100%', padding: '4px 11px' }}>
+                Hit the Play Button to get a response here
+              </div>
+            </Col>
+          </Row>
+        </Content>
       </Layout>
 
       <Drawer
