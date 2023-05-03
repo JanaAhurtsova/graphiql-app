@@ -126,7 +126,7 @@ const TabContent: React.FC = () => {
             </Row>
             <Input.TextArea
               className="layout-background"
-              style={{ height: '30%' }}
+              style={{ height: '30%', resize: 'none' }}
               placeholder="Second part"
             />
           </Content>
