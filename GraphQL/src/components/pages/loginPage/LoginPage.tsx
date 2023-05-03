@@ -14,10 +14,10 @@ export default function LoginPage() {
     }
   });
   return (
-    <div>
+    <section className="container">
       <h3>Login</h3>
       <Login />
-      <NavLink to="/register">Register</NavLink>
-    </div>
+      <NavLink to="/signup">Sign up</NavLink>
+    </section>
   );
 }

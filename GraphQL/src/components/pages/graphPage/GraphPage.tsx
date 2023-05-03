@@ -1,32 +1,23 @@
-import { useNavigate } from 'react-router-dom';
-
-import { useRemoveUser } from '../../../hooks/reduxHooks';
-import { useAuth } from '../../../hooks/useAuth';
-import { endSession } from '../../cookie/userAuthCookie';
+import Sidebar from 'components/sidebar/Sidebar';
+import { useAuth } from 'hooks/useAuth';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Playground from 'components/playground/Playground';
 
 export default function GraphPage() {
-  const removeUserDispatch = useRemoveUser();
-  const navigate = useNavigate();
-
   const { isAuth } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isAuth) {
-      navigate('/');
+      navigate('/404');
     }
-  });
-
-  const exit = () => {
-    removeUserDispatch();
-    endSession();
-    navigate('/');
-  };
+  }, [isAuth, navigate]);
 
   return (
-    <div>
-      <h1>Welcome</h1>
-      <button onClick={exit}>Exit</button>
-    </div>
+    <section className="container">
+      <Sidebar />
+      <Playground />
+    </section>
   );
 }

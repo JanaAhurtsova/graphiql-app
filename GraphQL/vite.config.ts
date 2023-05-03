@@ -16,6 +16,7 @@ export default defineConfig({
       public: `${path.resolve(__dirname, 'public/')}`,
       assets: `${path.resolve(__dirname, 'src/assets')}`,
       managers: `${path.resolve(__dirname, 'src/managers')}`,
+      hooks: `${path.resolve(__dirname, 'src/hooks')}`,
     },
   },
 });

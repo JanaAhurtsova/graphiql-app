@@ -6,7 +6,7 @@ import { getSession } from './components/cookie/userAuthCookie';
 import App from './components/app/App';
 import { setupStore } from './store/store';
 import './firebase/firebase';
-import './index.css';
+import './index.scss';
 
 const sessionUser = getSession();
 
