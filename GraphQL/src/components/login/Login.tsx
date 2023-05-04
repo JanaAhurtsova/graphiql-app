@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useSetUser } from '../../hooks/reduxHooks';
-import { startSession } from '../cookie/userAuthCookie';
+import { startSession } from '../../cookie/userAuthCookie';
 import { SyntheticEvent, useState } from 'react';
 
 export default function Login() {

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useRemoveUser } from '../../../hooks/reduxHooks';
 import { useAuth } from '../../../hooks/useAuth';
-import { endSession } from '../../cookie/userAuthCookie';
+import { endSession } from '../../../cookie/userAuthCookie';
 import { useEffect } from 'react';
 
 export default function GraphPage() {

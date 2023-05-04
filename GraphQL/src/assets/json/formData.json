@@ -1,0 +1,38 @@
+{
+  "en": {
+    "email": {
+      "placeholder": "Enter e-mail",
+      "required": "Enter correct e-mail",
+      "pattern": "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[.][a-zA-Z0-9_-]+)"
+    },
+    "password": {
+      "placeholder": "Enter password",
+      "required": "Minimum 8 symbols, at least one letter, one digit, one special character",
+      "pattern": "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-z!@#$%^&*]{8,}"
+    },
+    "passwordRepeat": {
+      "placeholder": "Repeat password",
+      "required": "Passwords must match"
+    },
+    "buttonRegister": "Sign Up",
+    "serverErrorRegister": "Registration error"
+  },
+  "ru": {
+    "email": {
+      "placeholder": "Введите E-mail",
+      "required": "Введите корректный e-mail",
+      "pattern": "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[.][a-zA-Z0-9_-]+)"
+    },
+    "password": {
+      "placeholder": "Введите пароль",
+      "required": "Минимум 8 символов, одна буква, одна цифра, один специальный символ",
+      "pattern": "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-z!@#$%^&*]{8,}"
+    },
+    "passwordRepeat": {
+      "placeholder": "Повторите пароль",
+      "required": "Пароли должны совпадать"
+    },
+    "buttonSignUp": "Зарегистрироваться",
+    "serverErrorRegister": "Ошибка регистрации"
+  }
+}
