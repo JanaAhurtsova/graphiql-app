@@ -17,7 +17,16 @@ export default function AppHeader() {
   };
 
   return (
-    <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
+    <Header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 1,
+        width: '100%',
+        height: '50px',
+        lineHeight: '50px',
+      }}
+    >
       <nav className={styles.nav}>
         <NavLink to="/">Welcome</NavLink>
         {!isAuth ? (

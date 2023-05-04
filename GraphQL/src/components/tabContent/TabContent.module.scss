@@ -2,12 +2,6 @@
   margin: 0 5px;
 }
 
-.editor {
-  position: relative;
-}
-
-.play {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.layout {
+  min-height: calc(100vh - 162px);
 }

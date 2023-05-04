@@ -4,8 +4,7 @@ import { Tabs, Layout } from 'antd';
 import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-
-type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
+import { TargetKey } from './type';
 
 const initialItems = [
   { label: 'Tab 1', children: <TabContent />, key: '1', closable: false },
