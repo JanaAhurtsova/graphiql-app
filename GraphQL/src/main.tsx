@@ -8,12 +8,13 @@ import App from './components/app/App';
 import { setupStore } from './store/store';
 import './firebase/firebase';
 import './index.scss';
+import { ELocalization } from './store/type';
 
 const sessionUser = getSession();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={setupStore(sessionUser)}>
+    <Provider store={setupStore({ user: sessionUser.user, localization: ELocalization.ru })}>
       <ConfigProvider
         theme={{
           token: {

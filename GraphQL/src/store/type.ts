@@ -3,3 +3,8 @@ export type TUserSlice = {
   id: null | string;
   token: null | string;
 };
+
+export enum ELocalization {
+  en = 'en',
+  ru = 'ru',
+}

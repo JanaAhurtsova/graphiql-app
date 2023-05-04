@@ -15,6 +15,7 @@
       "required": "Passwords must match"
     },
     "buttonRegister": "Sign Up",
+    "buttonLogin": "Sign In",
     "serverErrorRegister": "Registration error"
   },
   "ru": {
@@ -32,7 +33,8 @@
       "placeholder": "Повторите пароль",
       "required": "Пароли должны совпадать"
     },
-    "buttonSignUp": "Зарегистрироваться",
+    "buttonRegister": "Зарегистрироваться",
+    "buttonLogin": "Войти",
     "serverErrorRegister": "Ошибка регистрации"
   }
 }

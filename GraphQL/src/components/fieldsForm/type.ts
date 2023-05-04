@@ -5,11 +5,16 @@ export type TNameFieldsForm = 'email' | 'passwordRepeat' | 'password';
 export type TFormRegistration = {
   email: string;
   password: string;
-  passwordRepeat: string;
+  passwordRepeat?: string;
+};
+
+export type TFormLogin = {
+  email: string;
+  password: string;
 };
 
 export type TPropsForm = {
-  control: Control<TFormRegistration>;
+  control: Control<TFormRegistration | TFormLogin>;
   name: TNameFieldsForm;
   error: FieldError | undefined;
 };

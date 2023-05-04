@@ -1,0 +1,16 @@
+{
+  "en": {
+    "titleWelcome": "Welcome",
+    "titleMain": "Graph",
+    "titleSignUp": "Sign On",
+    "titleSignIn": "Sign In",
+    "exit": "Exit"
+  },
+  "ru": {
+    "titleWelcome": "Добро пожаловать",
+    "titleMain": "Граф",
+    "titleSignUp": "Регистрация",
+    "titleSignIn": "Вход",
+    "exit": "Выход"
+  }
+}

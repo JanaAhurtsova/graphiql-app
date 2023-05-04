@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-
-import { useRemoveUser } from '../../../hooks/reduxHooks';
-import { useAuth } from '../../../hooks/useAuth';
-import { endSession } from '../../../cookie/userAuthCookie';
 import { useEffect } from 'react';
+
+import { useRemoveUser, useAppSelector } from '@/hooks/reduxHooks';
+import { useAuth } from '@/hooks/useAuth';
+import { endSession } from '@/cookie/userAuthCookie';
+import localizationJSON from '@/assets/json/localization.json';
 
 export default function GraphPage() {
   const removeUserDispatch = useRemoveUser();
   const navigate = useNavigate();
+  const lang = useAppSelector((state) => state.localization);
 
   const { isAuth } = useAuth();
 
@@ -25,8 +27,8 @@ export default function GraphPage() {
 
   return (
     <div>
-      <h1>Welcome</h1>
-      <button onClick={exit}>Exit</button>
+      <h1>{localizationJSON[lang].titleMain}</h1>
+      <button onClick={exit}>{localizationJSON[lang].exit}</button>
     </div>
   );
 }

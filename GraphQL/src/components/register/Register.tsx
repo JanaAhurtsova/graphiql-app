@@ -4,18 +4,19 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Button, Alert } from 'antd';
 
-import { useSetUser } from '../../hooks/reduxHooks';
+import { useAppSelector, useSetUser } from '../../hooks/reduxHooks';
 import { startSession } from '../../cookie/userAuthCookie';
 import { TFormRegistration } from '../fieldsForm/type';
-import formData from '../../assets/json/formData.json';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
+import formData from '../../assets/json/formData.json';
 import './Register.scss';
 
 export default function Register() {
   const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
   const [errorServer, setErrorServer] = useState('');
+  const lang = useAppSelector((state) => state.localization);
 
   const resolver: Resolver<TFormRegistration> = async (values) => {
     const checkForm = {
@@ -24,30 +25,30 @@ export default function Register() {
         email: !values.email
           ? {
               type: 'required',
-              message: formData.en.email.required,
+              message: formData[lang].email.required,
             }
-          : !RegExp(formData.en.email.pattern).test(values.email)
+          : !RegExp(formData[lang].email.pattern).test(values.email)
           ? {
               type: 'pattern',
-              message: formData.en.email.required,
+              message: formData[lang].email.required,
             }
           : null,
         password: !values.password
           ? {
               type: 'required',
-              message: formData.en.password.required,
+              message: formData[lang].password.required,
             }
-          : !RegExp(formData.en.password.pattern).test(values.password)
+          : !RegExp(formData[lang].password.pattern).test(values.password)
           ? {
               type: 'pattern',
-              message: formData.en.password.required,
+              message: formData[lang].password.required,
             }
           : null,
         passwordRepeat:
           !values.passwordRepeat || values.password !== values.passwordRepeat
             ? {
                 type: 'required',
-                message: formData.en.passwordRepeat.required,
+                message: formData[lang].passwordRepeat.required,
               }
             : null,
       },
@@ -85,24 +86,20 @@ export default function Register() {
         setErrorServer('');
       })
       .catch(() => {
-        setErrorServer(formData.en.serverErrorRegister);
+        setErrorServer(formData[lang].serverErrorRegister);
       });
   });
 
   return (
-    <>
-      <form onSubmit={handleRegister} className="form-register">
-        {errorServer && (
-          <Alert message={errorServer} type="error" className="error-register"></Alert>
-        )}
-        <TextInput control={control} name="email" error={errors.email} />
-        <PasswordInput control={control} name="password" error={errors.password} />
-        <PasswordInput control={control} name="passwordRepeat" error={errors.passwordRepeat} />
-        <Button onClick={handleRegister} onSubmit={handleRegister} type="default">
-          {formData.en.buttonRegister}
-        </Button>
-        <button className="btn-hide"></button>
-      </form>
-    </>
+    <form onSubmit={handleRegister} className="form-register">
+      {errorServer && <Alert message={errorServer} type="error" className="error-register"></Alert>}
+      <TextInput control={control} name="email" error={errors.email} />
+      <PasswordInput control={control} name="password" error={errors.password} />
+      <PasswordInput control={control} name="passwordRepeat" error={errors.passwordRepeat} />
+      <Button onClick={handleRegister} onSubmit={handleRegister} type="default">
+        {formData[lang].buttonRegister}
+      </Button>
+      <button className="btn-hide"></button>
+    </form>
   );
 }
