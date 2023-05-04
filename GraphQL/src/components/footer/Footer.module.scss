@@ -1,5 +1,5 @@
 .icon {
-  height: 1.8rem;
+  height: 1.7rem;
   width: auto;
   cursor: pointer;
 
@@ -15,7 +15,7 @@
 }
 
 .rs {
-  height: 1.8rem;
+  height: 1.7rem;
 
   @media (max-width: 550px) {
     height: 1.5rem;
@@ -28,6 +28,7 @@
   gap: 1rem;
   text-align: center;
   padding: 8px 0 5px;
+  align-items: center;
 
   @media (max-width: 768px) {
     justify-content: flex-end;

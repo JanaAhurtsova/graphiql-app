@@ -6,14 +6,14 @@ const items: TabsProps['items'] = [
   {
     label: 'Variables',
     children: (
-      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="Second part" />
+      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter variables" />
     ),
     key: '1',
   },
   {
     label: 'Headers',
     children: (
-      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="Second part" />
+      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter headers" />
     ),
     key: '2',
   },
@@ -28,7 +28,6 @@ export const HeadersVariables = () => {
 
   return (
     <Tabs
-      // className={styles.tabs}
       defaultActiveKey="1"
       style={{ height: '30%' }}
       activeKey={activeKey}
