@@ -1,21 +1,22 @@
 import { Input, Tabs } from 'antd';
 import { useState } from 'react';
 import type { TabsProps } from 'antd';
+import { Names } from 'managers/headerVariables/enum';
 
 const items: TabsProps['items'] = [
   {
-    label: 'Variables',
+    label: Names.VARIABLES,
     children: (
       <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter variables" />
     ),
-    key: '1',
+    key: Names.VARIABLES,
   },
   {
-    label: 'Headers',
+    label: Names.HEADERS,
     children: (
       <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter headers" />
     ),
-    key: '2',
+    key: Names.HEADERS,
   },
 ];
 

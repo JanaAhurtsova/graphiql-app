@@ -8,6 +8,7 @@ import {
 import { Drawer, Layout, Menu, Modal } from 'antd';
 import { useState } from 'react';
 import { MenuItem } from './type';
+import { Options } from 'managers/sidebar/Sidebar';
 
 const { Sider } = Layout;
 
@@ -68,18 +69,18 @@ export const Sidebar = () => {
       label,
       onClick: () => {
         switch (key) {
-          case '1':
+          case Options.DOCUMENTATION:
             showDocumentation();
             break;
-          case '2':
+          case Options.HISTORY:
             showHistory();
             break;
-          case '3':
+          case Options.REFRESH:
             break;
-          case '4':
+          case Options.SHORT:
             showKeys();
             break;
-          case '5':
+          case Options.SETTINGS:
             showSettings();
             break;
         }
@@ -88,11 +89,11 @@ export const Sidebar = () => {
   }
 
   const items: MenuItem[] = [
-    getItem('Documentation', '1', <ReadOutlined />),
-    getItem('History', '2', <ClockCircleOutlined />),
-    getItem('Re-fetch', '3', <SyncOutlined />),
-    getItem('Short keys', '4', <SketchOutlined />),
-    getItem('Settings', '5', <SettingFilled />),
+    getItem(Options.DOCUMENTATION, Options.DOCUMENTATION, <ReadOutlined />),
+    getItem(Options.HISTORY, Options.HISTORY, <ClockCircleOutlined />),
+    getItem(Options.REFRESH, Options.REFRESH, <SyncOutlined />),
+    getItem(Options.SHORT, Options.SHORT, <SketchOutlined />),
+    getItem(Options.SETTINGS, Options.SETTINGS, <SettingFilled />),
   ];
 
   return (
@@ -106,7 +107,7 @@ export const Sidebar = () => {
         <Menu theme="dark" mode="inline" items={items} />
       </Sider>
       <Drawer
-        title="Documentation"
+        title={Options.DOCUMENTATION}
         placement="right"
         closable={false}
         onClose={onClose}
@@ -114,20 +115,21 @@ export const Sidebar = () => {
       >
         <p>Content Documentation</p>
       </Drawer>
-      <Drawer title="History" placement="right" closable={false} onClose={onClose} open={history}>
+      <Drawer
+        title={Options.HISTORY}
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        open={history}
+      >
         <p>Content History</p>
       </Drawer>
-      <Modal
-        title="short-key modal"
-        open={modalKeys}
-        onOk={handleOkKeys}
-        onCancel={handleCancelKeys}
-      >
+      <Modal title={Options.SHORT} open={modalKeys} onOk={handleOkKeys} onCancel={handleCancelKeys}>
         <p>Short key 1...</p>
         <p>Short key 2...</p>
       </Modal>
       <Modal
-        title="settings modal"
+        title={Options.SETTINGS}
         open={modalSettings}
         onOk={handleOkSettings}
         onCancel={handleCancelSettings}
