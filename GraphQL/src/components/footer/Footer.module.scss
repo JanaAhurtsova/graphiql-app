@@ -1,11 +1,38 @@
 .icon {
-  height: 2rem;
+  height: 1.7rem;
   width: auto;
   cursor: pointer;
+
+  @media (max-width: 550px) {
+    height: 1.5rem;
+  }
 }
 
 .github {
   display: flex;
   justify-content: center;
-  gap: .3rem;
+  gap: 0.3rem;
+}
+
+.rs {
+  height: 1.7rem;
+
+  @media (max-width: 550px) {
+    height: 1.5rem;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 8px 0 5px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+    padding-right: 1rem;
+    gap: .8rem;
+  }
 }
