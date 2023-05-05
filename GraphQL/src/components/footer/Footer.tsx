@@ -10,7 +10,7 @@ export const AppFooter: FC = () => {
       <Row align="middle">
         <Col flex={1} span={8}>
           <a href="https://rs.school/react/">
-            <img className={styles.icon} src={RssLogo} alt="RSS Logo" />
+            <img className={(styles.icon, styles.rs)} src={RssLogo} alt="RSS Logo" />
           </a>
         </Col>
         <Col flex={3} span={8}>
