@@ -23,6 +23,7 @@
       "assets/*": ["src/assets/*"],
       "managers/*": ["src/managers/*"],
       "public/*": ["public/*"],
+      "hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["src/**/*", "vite.config.ts", ".eslintrc.json"],

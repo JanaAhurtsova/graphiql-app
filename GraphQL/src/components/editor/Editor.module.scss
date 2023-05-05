@@ -1,0 +1,16 @@
+.editor {
+  position: relative;
+  min-height: calc(100vh - 162px);
+}
+
+.play {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.response {
+  height: 100%;
+  min-height: 30vh;
+  padding: 4px 11px;
+}

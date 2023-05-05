@@ -6,14 +6,17 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint",
-    "lint-fix": "npx eslint --ext js,jsx,ts,tsx --fix",
+    "lint": "eslint .",
+    "lint-fix": "npx eslint --ext js,jsx,ts,tsx . --fix",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.4.6",
     "firebase": "^9.21.0",
+    "graphql": "^16.6.0",
+    "graphql-request": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",

@@ -14,10 +14,10 @@ export default function RegisterPage() {
     }
   });
   return (
-    <div>
+    <section className="container">
       <h3>Register</h3>
       <Register />
-      <NavLink to="/login">Login</NavLink>
-    </div>
+      <NavLink to="/signin">Sign in</NavLink>
+    </section>
   );
 }
