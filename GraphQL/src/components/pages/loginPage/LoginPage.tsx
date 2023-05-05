@@ -9,7 +9,7 @@ import localizationJSON from '@/assets/json/localization.json';
 export default function LoginPage() {
   const navigate = useNavigate();
   const { isAuth } = useAuth();
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
 
   useEffect(() => {
     if (isAuth) {

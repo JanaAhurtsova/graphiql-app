@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ELocalization } from '../type';
+import { ELocalization, TLanguageSlice } from '../type';
 
 const localizationSlice = createSlice({
   name: 'localization',
-  initialState: ELocalization.en,
+  initialState: { lang: ELocalization.en },
   reducers: {
-    changeLocalization(state: ELocalization, action: PayloadAction<ELocalization>) {
-      state = action.payload;
+    changeLocalization(state: TLanguageSlice, action: PayloadAction<ELocalization>) {
+      state.lang = action.payload;
     },
   },
 });

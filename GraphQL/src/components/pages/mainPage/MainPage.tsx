@@ -1,16 +1,19 @@
 import { NavLink } from 'react-router-dom';
 
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { useAppSelector } from '@/hooks/reduxHooks';
 import localizationJSON from '@/assets/json/localization.json';
+import SwitchLanguage from '@/components/switchLanguage/SwitchLanguage';
 
 export default function MainPage() {
   const { isAuth } = useAuth();
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
 
   return (
     <>
       <h1>{localizationJSON[lang].titleWelcome}</h1>
+      <SwitchLanguage />
+      <br />
       {!isAuth ? (
         <>
           <NavLink to="/register">{localizationJSON[lang].titleSignUp}</NavLink>

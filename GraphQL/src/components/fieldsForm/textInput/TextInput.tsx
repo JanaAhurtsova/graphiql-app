@@ -8,7 +8,7 @@ import './TextInput.scss';
 import { Form } from 'antd';
 
 export function TextInput({ control, name, error }: TPropsForm) {
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
   return (
     <Form.Item validateStatus={error ? 'error' : 'success'} help={error?.message}>
       <Controller

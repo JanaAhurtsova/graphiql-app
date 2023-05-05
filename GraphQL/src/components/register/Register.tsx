@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { Button, Alert } from 'antd';
 
 import { useAppSelector, useSetUser } from '../../hooks/reduxHooks';
-import { startSession } from '../../cookie/userAuthCookie';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
@@ -16,7 +15,7 @@ export default function Register() {
   const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
   const [errorServer, setErrorServer] = useState('');
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
 
   const resolver: Resolver<TFormRegistration> = async (values) => {
     const checkForm = {
@@ -81,7 +80,6 @@ export default function Register() {
           id: user.uid,
           token: user.refreshToken,
         });
-        startSession(String(user.email), user.refreshToken, user.uid);
         navigate('/graph');
         setErrorServer('');
       })

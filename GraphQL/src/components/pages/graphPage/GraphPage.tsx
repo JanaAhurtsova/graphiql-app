@@ -3,13 +3,12 @@ import { useEffect } from 'react';
 
 import { useRemoveUser, useAppSelector } from '@/hooks/reduxHooks';
 import { useAuth } from '@/hooks/useAuth';
-import { endSession } from '@/cookie/userAuthCookie';
 import localizationJSON from '@/assets/json/localization.json';
 
 export default function GraphPage() {
   const removeUserDispatch = useRemoveUser();
   const navigate = useNavigate();
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
 
   const { isAuth } = useAuth();
 
@@ -21,7 +20,6 @@ export default function GraphPage() {
 
   const exit = () => {
     removeUserDispatch();
-    endSession();
     navigate('/');
   };
 

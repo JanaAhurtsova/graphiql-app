@@ -5,16 +5,16 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Button, Alert } from 'antd';
 
 import { useAppSelector, useSetUser } from '../../hooks/reduxHooks';
-import { startSession } from '../../cookie/userAuthCookie';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
 import formData from '../../assets/json/formData.json';
+import './Login.scss';
 
 export default function Login() {
   const setUserDispatch = useSetUser();
   const navigate = useNavigate();
-  const lang = useAppSelector((state) => state.localization);
+  const { lang } = useAppSelector((state) => state.localization);
   const [errorServer, setErrorServer] = useState('');
 
   const resolver: Resolver<TFormLogin> = async (values) => {
@@ -68,8 +68,8 @@ export default function Login() {
           id: user.uid,
           token: user.refreshToken,
         });
-        startSession(String(user.email), user.refreshToken, user.uid);
         navigate('/graph');
+        setErrorServer('');
       })
       .catch(() => {
         setErrorServer(formData[lang].serverErrorRegister);
@@ -77,7 +77,7 @@ export default function Login() {
   });
 
   return (
-    <form onSubmit={handleLogin} className="form-register">
+    <form onSubmit={handleLogin} className="form-login">
       {errorServer && <Alert message={errorServer} type="error" className="error-login"></Alert>}
       <TextInput control={control} name="email" error={errors.email} />
       <PasswordInput control={control} name="password" error={errors.password} />
