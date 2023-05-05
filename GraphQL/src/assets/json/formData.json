@@ -2,13 +2,11 @@
   "en": {
     "email": {
       "placeholder": "Enter e-mail",
-      "required": "Enter correct e-mail",
-      "pattern": "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[.][a-zA-Z0-9_-]+)"
+      "required": "Enter correct e-mail"
     },
     "password": {
       "placeholder": "Enter password",
-      "required": "Minimum 8 symbols, at least one letter, one digit, one special character",
-      "pattern": "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-z!@#$%^&*]{8,}"
+      "required": "Minimum 8 symbols, at least one letter, one digit, one special character"
     },
     "passwordRepeat": {
       "placeholder": "Repeat password",
@@ -16,18 +14,17 @@
     },
     "buttonRegister": "Sign Up",
     "buttonLogin": "Sign In",
-    "serverErrorRegister": "Registration error"
+    "serverErrorRegister": "Registration error",
+    "serverErrorLogin": "Email or password is not correct"
   },
   "ru": {
     "email": {
       "placeholder": "Введите E-mail",
-      "required": "Введите корректный e-mail",
-      "pattern": "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[.][a-zA-Z0-9_-]+)"
+      "required": "Введите корректный e-mail"
     },
     "password": {
       "placeholder": "Введите пароль",
-      "required": "Минимум 8 символов, одна буква, одна цифра, один специальный символ",
-      "pattern": "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-z!@#$%^&*]{8,}"
+      "required": "Минимум 8 символов, одна буква, одна цифра, один специальный символ"
     },
     "passwordRepeat": {
       "placeholder": "Повторите пароль",
@@ -35,6 +32,11 @@
     },
     "buttonRegister": "Зарегистрироваться",
     "buttonLogin": "Войти",
-    "serverErrorRegister": "Ошибка регистрации"
+    "serverErrorRegister": "Ошибка регистрации",
+    "serverErrorLogin": "Почта или пароль введены не верно"
+  },
+  "pattern": {
+    "password": "(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-z!@#$%^&*]{8,}",
+    "email": "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[.][a-zA-Z0-9_-]+)"
   }
 }

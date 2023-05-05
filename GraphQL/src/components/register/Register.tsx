@@ -26,7 +26,7 @@ export default function Register() {
               type: 'required',
               message: formData[lang].email.required,
             }
-          : !RegExp(formData[lang].email.pattern).test(values.email)
+          : !RegExp(formData.pattern.email).test(values.email)
           ? {
               type: 'pattern',
               message: formData[lang].email.required,
@@ -37,7 +37,7 @@ export default function Register() {
               type: 'required',
               message: formData[lang].password.required,
             }
-          : !RegExp(formData[lang].password.pattern).test(values.password)
+          : !RegExp(formData.pattern.password).test(values.password)
           ? {
               type: 'pattern',
               message: formData[lang].password.required,
@@ -90,7 +90,11 @@ export default function Register() {
 
   return (
     <form onSubmit={handleRegister} className="form-register">
-      {errorServer && <Alert message={errorServer} type="error" className="error-register"></Alert>}
+      {errorServer ? (
+        <Alert message={errorServer} type="error" className="error-register"></Alert>
+      ) : (
+        <br />
+      )}
       <TextInput control={control} name="email" error={errors.email} />
       <PasswordInput control={control} name="password" error={errors.password} />
       <PasswordInput control={control} name="passwordRepeat" error={errors.passwordRepeat} />

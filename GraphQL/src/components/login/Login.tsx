@@ -26,7 +26,7 @@ export default function Login() {
               type: 'required',
               message: formData[lang].email.required,
             }
-          : !RegExp(formData[lang].email.pattern).test(values.email)
+          : !RegExp(formData.pattern.email).test(values.email)
           ? {
               type: 'pattern',
               message: formData[lang].email.required,
@@ -72,13 +72,17 @@ export default function Login() {
         setErrorServer('');
       })
       .catch(() => {
-        setErrorServer(formData[lang].serverErrorRegister);
+        setErrorServer(formData[lang].serverErrorLogin);
       });
   });
 
   return (
     <form onSubmit={handleLogin} className="form-login">
-      {errorServer && <Alert message={errorServer} type="error" className="error-login"></Alert>}
+      {errorServer ? (
+        <Alert message={errorServer} type="error" className="error-login"></Alert>
+      ) : (
+        <br />
+      )}
       <TextInput control={control} name="email" error={errors.email} />
       <PasswordInput control={control} name="password" error={errors.password} />
       <Button onClick={handleLogin} onSubmit={handleLogin} type="default">

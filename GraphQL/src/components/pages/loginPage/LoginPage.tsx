@@ -1,10 +1,13 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Tabs } from 'antd';
 
 import Login from '../../login/Login';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { useAppSelector } from '@/hooks/reduxHooks';
-import localizationJSON from '@/assets/json/localization.json';
+import Register from 'components/register/Register';
+import localizationJSON from 'assets/json/localization.json';
+import './LoginPage.scss';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -17,10 +20,24 @@ export default function LoginPage() {
     }
   });
   return (
-    <div>
-      <h3>{localizationJSON[lang].titleSignIn}</h3>
-      <Login />
-      <NavLink to="/register">{localizationJSON[lang].titleSignUp}</NavLink>
+    <div className="login-tabs">
+      <Tabs
+        defaultActiveKey="1"
+        type="card"
+        size="middle"
+        items={[
+          {
+            label: localizationJSON[lang].titleSignIn,
+            key: localizationJSON[lang].titleSignIn,
+            children: <Login />,
+          },
+          {
+            label: localizationJSON[lang].titleSignUp,
+            key: localizationJSON[lang].titleSignUp,
+            children: <Register />,
+          },
+        ]}
+      />
     </div>
   );
 }
