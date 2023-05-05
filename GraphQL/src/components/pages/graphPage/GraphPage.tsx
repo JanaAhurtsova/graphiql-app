@@ -5,11 +5,11 @@ import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { TargetKey } from './type';
+import { LABELS, KEY1, KEY2 } from 'managers/graphPage/enum';
 
 const initialItems = [
-  { label: 'Tab 1', children: <TabContent />, key: '1', closable: false },
-  { label: 'Tab 2', children: <TabContent />, key: '2' },
-  { label: 'Tab 3', children: <TabContent />, key: '3' },
+  { label: LABELS.TAB1, children: <TabContent />, key: KEY1, closable: false },
+  { label: LABELS.TAB1, children: <TabContent />, key: KEY2 },
 ];
 
 const GraphPage: React.FC = () => {
@@ -19,11 +19,11 @@ const GraphPage: React.FC = () => {
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(0);
 
-  // useEffect(() => {
-  //   if (!isAuth) {
-  //     navigate('/404');
-  //   }
-  // }, [isAuth, navigate]);
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/404');
+    }
+  }, [isAuth, navigate]);
 
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
@@ -32,7 +32,7 @@ const GraphPage: React.FC = () => {
   const add = () => {
     const newActiveKey = `newTab${newTabIndex.current++}`;
     const newPanes = [...items];
-    newPanes.push({ label: 'New Tab', children: <TabContent />, key: newActiveKey });
+    newPanes.push({ label: LABELS.NEWTAB, children: <TabContent />, key: newActiveKey });
     setItems(newPanes);
     setActiveKey(newActiveKey);
   };
