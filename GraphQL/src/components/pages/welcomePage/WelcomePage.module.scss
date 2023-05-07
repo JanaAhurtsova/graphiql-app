@@ -1,0 +1,106 @@
+:root {
+  --index: calc(1vw + 1vh);
+  --color-header: #e535ab;
+  --color-h: #00b96b;
+  --color-text: #f5f0f0;
+  --gallery-gap: calc(var(--index) * 10);
+}
+@font-face {
+  font-family: 'raleway-c';
+  src: url('../../../assets/fonts/raleway-regular.woff2');
+}
+@font-face {
+  font-family: 'outfit-c';
+  src: url('../../../assets//fonts//outfit-regular.woff2');
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'outfit-c';
+}
+.content,
+.hero,
+.main_header,
+.gallery > * {
+  will-change: transform;
+}
+.hero {
+  width: calc(var(--index) * 15);
+  position: absolute;
+  left: 50vw;
+  top: 25vh;
+  z-index: -1;
+}
+.main_header {
+  height: 100vh;
+}
+.container {
+  padding: 0 7vw;
+}
+.main_title {
+  font-size: calc(var(--index) * 5);
+  position: absolute;
+  width: min-content;
+  bottom: 17vh;
+  line-height: 0.9;
+  color: var(--color-header);
+}
+.gallery {
+  display: flex;
+}
+.gallery > * {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.gallery__item {
+  max-width: calc(var(--index) * 21);
+  margin-bottom: var(--gallery-gap);
+  max-height: 180vh;
+  border-radius: 8px;
+  opacity: 0;
+}
+
+.gallery__right .gallery__item {
+  margin: 0;
+  margin-top: calc(var(--gallery-gap) * 0.5);
+  transform: translateY(100px);
+}
+.gallery__right .gallery__item:first-child {
+  margin-bottom: calc(var(--gallery-gap) * 0.8);
+}
+
+.gallery__left .gallery__item {
+  transform: translateY(-100px);
+}
+.gallery__left .gallery__item:first-child {
+  margin-top: calc(var(--gallery-gap) * 0.7);
+}
+.text_block {
+  color: var(--color-text);
+  position: relative;
+}
+.text_block__h {
+  font-size: 3rem;
+  line-height: 2.4rem;
+  color: var(--color-h);
+  margin-bottom: 1.5rem;
+}
+.text_block__p {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.team__h {
+  font-family: 'raleway-c';
+  font-size: 4rem;
+  line-height: 2.4rem;
+  color: var(--color-h);
+  margin-bottom: 1.5rem;
+}
