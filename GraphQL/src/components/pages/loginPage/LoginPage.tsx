@@ -1,13 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Tabs } from 'antd';
 
 import Login from '../../login/Login';
 import { useAuth } from '@/hooks/useAuth';
 import { useAppSelector } from '@/hooks/reduxHooks';
-import Register from 'components/register/Register';
 import localizationJSON from 'assets/json/localization.json';
-import './LoginPage.scss';
+import styles from './LoginPage.module.scss';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -20,24 +18,9 @@ export default function LoginPage() {
     }
   });
   return (
-    <div className="login-tabs">
-      <Tabs
-        defaultActiveKey="1"
-        type="card"
-        size="middle"
-        items={[
-          {
-            label: localizationJSON[lang].titleSignIn,
-            key: localizationJSON[lang].titleSignIn,
-            children: <Login />,
-          },
-          {
-            label: localizationJSON[lang].titleSignUp,
-            key: localizationJSON[lang].titleSignUp,
-            children: <Register />,
-          },
-        ]}
-      />
-    </div>
+    <section className={styles.login_tabs}>
+      <h3>{localizationJSON[lang].titleSignIn}</h3>
+      <Login />
+    </section>
   );
 }

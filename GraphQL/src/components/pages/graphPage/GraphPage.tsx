@@ -6,7 +6,6 @@ import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
 import { TargetKey } from './type';
 import { LABELS, KEY1, KEY2 } from 'managers/graphPage/enum';
-import { useAppSelector } from 'hooks/reduxHooks';
 
 const initialItems = [
   { label: LABELS.TAB1, children: <TabContent />, key: KEY1, closable: false },
@@ -16,7 +15,6 @@ const initialItems = [
 const GraphPage: React.FC = () => {
   const { isAuth } = useAuth();
   const navigate = useNavigate();
-  const { lang } = useAppSelector((state) => state.localization);
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(0);
