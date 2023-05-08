@@ -18,6 +18,7 @@ export const useSetUser = () => {
 
 export const useRemoveUser = () => {
   const dispatch = useAppDispatch();
+
   return useCallback(() => dispatch(removeUser()), [dispatch]);
 };
 
