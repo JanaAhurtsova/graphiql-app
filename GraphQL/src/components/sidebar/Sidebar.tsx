@@ -5,10 +5,13 @@ import {
   SketchOutlined,
   SettingFilled,
 } from '@ant-design/icons';
-import { Drawer, Layout, Menu, Modal } from 'antd';
+import { Button, Drawer, Layout, Menu, Modal } from 'antd';
 import { useState } from 'react';
+
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
+import { useAppSelector } from '@/hooks/reduxHooks';
+import langJSON from 'assets/json/localization.json';
 
 const { Sider } = Layout;
 
@@ -19,28 +22,13 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
-  const showDocumentation = () => {
-    setDocumentation(true);
-  };
+  const { lang } = useAppSelector((state) => state.localization);
 
-  const showHistory = () => {
-    setHistory(true);
-  };
-
-  const showSettings = () => {
-    setModalSettings(true);
-  };
-
-  const showKeys = () => {
-    setModalKeys(true);
-  };
-
-  const handleOkKeys = () => {
-    setModalKeys(false);
-  };
-
-  const handleCancelKeys = () => {
-    setModalKeys(false);
+  const setShowModal = (
+    setFunc: React.Dispatch<React.SetStateAction<boolean>>,
+    isShow: boolean
+  ) => {
+    setFunc(isShow);
   };
 
   const handleOkSettings = () => {
@@ -70,18 +58,18 @@ export const Sidebar = () => {
       onClick: () => {
         switch (key) {
           case Options.DOCUMENTATION:
-            showDocumentation();
+            setShowModal(setDocumentation, true);
             break;
           case Options.HISTORY:
-            showHistory();
+            setShowModal(setHistory, true);
             break;
           case Options.REFRESH:
             break;
           case Options.SHORT:
-            showKeys();
+            setShowModal(setModalKeys, true);
             break;
           case Options.SETTINGS:
-            showSettings();
+            setShowModal(setModalSettings, true);
             break;
         }
       },
@@ -89,11 +77,11 @@ export const Sidebar = () => {
   }
 
   const items: MenuItem[] = [
-    getItem(Options.DOCUMENTATION, Options.DOCUMENTATION, <ReadOutlined />),
-    getItem(Options.HISTORY, Options.HISTORY, <ClockCircleOutlined />),
-    getItem(Options.REFRESH, Options.REFRESH, <SyncOutlined />),
-    getItem(Options.SHORT, Options.SHORT, <SketchOutlined />),
-    getItem(Options.SETTINGS, Options.SETTINGS, <SettingFilled />),
+    getItem(langJSON[lang].documentation, Options.DOCUMENTATION, <ReadOutlined />),
+    getItem(langJSON[lang].history, Options.HISTORY, <ClockCircleOutlined />),
+    getItem(langJSON[lang].reFresh, Options.REFRESH, <SyncOutlined />),
+    getItem(langJSON[lang].shortKeys, Options.SHORT, <SketchOutlined />),
+    getItem(langJSON[lang].settings, Options.SETTINGS, <SettingFilled />),
   ];
 
   return (
@@ -107,7 +95,7 @@ export const Sidebar = () => {
         <Menu theme="dark" mode="inline" items={items} />
       </Sider>
       <Drawer
-        title={Options.DOCUMENTATION}
+        title={langJSON[lang].documentation}
         placement="right"
         closable={false}
         onClose={onClose}
@@ -116,7 +104,7 @@ export const Sidebar = () => {
         <p>Content Documentation</p>
       </Drawer>
       <Drawer
-        title={Options.HISTORY}
+        title={langJSON[lang].history}
         placement="right"
         closable={false}
         onClose={onClose}
@@ -124,15 +112,36 @@ export const Sidebar = () => {
       >
         <p>Content History</p>
       </Drawer>
-      <Modal title={Options.SHORT} open={modalKeys} onOk={handleOkKeys} onCancel={handleCancelKeys}>
+      <Modal
+        title={langJSON[lang].shortKeys}
+        open={modalKeys}
+        onOk={() => setShowModal(setModalKeys, false)}
+        onCancel={() => setShowModal(setModalKeys, false)}
+        footer={[
+          <Button key="back" onClick={() => setShowModal(setModalKeys, false)}>
+            {langJSON[lang].buttonCancel}
+          </Button>,
+          <Button key="ok" type="primary" onClick={() => setShowModal(setModalKeys, false)}>
+            {langJSON[lang].buttonOk}
+          </Button>,
+        ]}
+      >
         <p>Short key 1...</p>
         <p>Short key 2...</p>
       </Modal>
       <Modal
-        title={Options.SETTINGS}
+        title={langJSON[lang].settings}
         open={modalSettings}
         onOk={handleOkSettings}
         onCancel={handleCancelSettings}
+        footer={[
+          <Button key="back" onClick={handleCancelSettings}>
+            {langJSON[lang].buttonCancel}
+          </Button>,
+          <Button key="ok" type="primary" onClick={handleOkSettings}>
+            {langJSON[lang].buttonOk}
+          </Button>,
+        ]}
       >
         <p>Settings...</p>
       </Modal>

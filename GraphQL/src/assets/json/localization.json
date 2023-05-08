@@ -4,13 +4,41 @@
     "titleMain": "Graph",
     "titleSignUp": "Sign On",
     "titleSignIn": "Sign In",
-    "exit": "Exit"
+    "exit": "Exit",
+    "documentation": "Documentation",
+    "history": "History",
+    "reFresh": "re-fresh",
+    "shortKeys": "Short heys",
+    "settings": "Settings",
+    "tab": "Tab",
+    "variables": "Variables",
+    "headers": "Headers",
+    "placeholderQuery": "# Write your query or mutation here",
+    "placeholderVariables": "# Enter variables",
+    "placeholderHeaders": "# Enter headers",
+    "placeholderResponse": "Hit the Play Button to get a response here",
+    "buttonOk": "Ok",
+    "buttonCancel": "Cancel"
   },
   "ru": {
     "titleWelcome": "О нас",
     "titleMain": "Граф",
     "titleSignUp": "Регистрация",
     "titleSignIn": "Вход",
-    "exit": "Выход"
+    "exit": "Выход",
+    "documentation": "Документация",
+    "history": "История",
+    "reFresh": "Сбросить",
+    "shortKeys": "Горячие клавиши",
+    "settings": "Настройки",
+    "tab": "Вкладка",
+    "variables": "Переменные",
+    "headers": "Заголовок",
+    "placeholderQuery": "# Напишите здесь свой запрос или мутацию",
+    "placeholderVariables": "Введите переменные",
+    "placeholderHeaders": "Введите заголовок",
+    "placeholderResponse": "Нажмите кнопку воспроизведения, чтобы получить ответ",
+    "buttonOk": "Ok",
+    "buttonCancel": "Отмена"
   }
 }
