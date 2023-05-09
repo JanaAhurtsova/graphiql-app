@@ -30,7 +30,6 @@ export default function WelcomePage() {
   const textVladimirRef = useRef(null);
 
   useEffect(() => {
-    console.log(ScrollTrigger);
     if (ScrollTrigger.isTouch !== 1) {
       gsap.fromTo(
         heroRef.current,

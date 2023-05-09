@@ -66,7 +66,7 @@ export default function AppHeader() {
         ) : (
           <>
             <NavLink to="/graph">Graph</NavLink>
-            <NavLink to="/" onClick={exit}>
+            <NavLink to="/signout" onClick={exit}>
               Sign out
             </NavLink>
           </>
