@@ -10,21 +10,20 @@ export const Editor = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
-  const [value, setValue] = useState({ arg: '', variables: '', headers: '' });
+  const [value, setValue] = useState({ arg: '', variables: {}, headers: '' });
   const { data } = useGetSchemaQuery(value);
 
   const showResult = () => {
-    setValue({ arg: query, variables: variables, headers: headers });
-    console.log(typeof data);
+    setValue({ arg: query, variables: JSON.parse(variables), headers: headers });
   };
 
   return (
     <Row style={{ height: '100%' }}>
       <Col className={styles.editor} xs={24} sm={24} md={12}>
         <Input.TextArea
+          className={styles.request}
           defaultValue={'query { \n }'}
           onChange={(e) => setQuery(e.target.value)}
-          style={{ height: 'calc(79.5vh - 224px)', resize: 'none', paddingRight: '2.3rem' }}
           placeholder="# Write your query or mutation here"
         />
         <HeadersVariables setVariables={setVariables} setHeaders={setHeaders} />

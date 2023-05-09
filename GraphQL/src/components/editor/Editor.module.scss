@@ -30,9 +30,22 @@
 }
 
 .request {
-  height: calc(79.5vh - 224px);
+  height: calc(79.5vh - 224px) !important;
   resize: none;
   padding-right: 2.3rem;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: #00b96b;
+    border-radius: 5px;
+  }
 }
 
 .result {
