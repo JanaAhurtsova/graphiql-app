@@ -1,27 +1,10 @@
 import { Input, Tabs } from 'antd';
 import { useState } from 'react';
-import type { TabsProps } from 'antd';
-import { Names } from 'managers/headerVariables/enum';
+import { VARIABLES, HEADERS } from 'managers/headerVariables/Names';
+import { ISetState } from './type';
 
-const items: TabsProps['items'] = [
-  {
-    label: Names.VARIABLES,
-    children: (
-      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter variables" />
-    ),
-    key: Names.VARIABLES,
-  },
-  {
-    label: Names.HEADERS,
-    children: (
-      <Input.TextArea style={{ height: '20vh', resize: 'none' }} placeholder="# Enter headers" />
-    ),
-    key: Names.HEADERS,
-  },
-];
-
-export const HeadersVariables = () => {
-  const [activeKey, setActiveKey] = useState(items[0].key);
+export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
+  const [activeKey, setActiveKey] = useState(VARIABLES);
 
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
@@ -32,7 +15,30 @@ export const HeadersVariables = () => {
       defaultActiveKey="1"
       style={{ height: '30%' }}
       activeKey={activeKey}
-      items={items}
+      items={[
+        {
+          label: VARIABLES,
+          children: (
+            <Input.TextArea
+              onChange={(e) => setVariables(e.target.value)}
+              style={{ height: '20vh', resize: 'none' }}
+              placeholder="# Enter variables"
+            />
+          ),
+          key: VARIABLES,
+        },
+        {
+          label: HEADERS,
+          children: (
+            <Input.TextArea
+              onChange={(e) => setHeaders(e.target.value)}
+              style={{ height: '20vh', resize: 'none' }}
+              placeholder="# Enter headers"
+            />
+          ),
+          key: HEADERS,
+        },
+      ]}
       onChange={onChange}
     />
   );

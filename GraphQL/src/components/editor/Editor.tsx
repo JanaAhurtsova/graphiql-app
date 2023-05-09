@@ -8,11 +8,14 @@ import { useState } from 'react';
 
 export const Editor = () => {
   const [query, setQuery] = useState('');
-  const [value, setValue] = useState('');
+  const [variables, setVariables] = useState('');
+  const [headers, setHeaders] = useState('');
+  const [value, setValue] = useState({ arg: '', variables: '', headers: '' });
   const { data } = useGetSchemaQuery(value);
 
   const showResult = () => {
-    setValue(query);
+    setValue({ arg: query, variables: variables, headers: headers });
+    console.log(typeof data);
   };
 
   return (
@@ -24,7 +27,7 @@ export const Editor = () => {
           style={{ height: 'calc(79.5vh - 224px)', resize: 'none', paddingRight: '2.3rem' }}
           placeholder="# Write your query or mutation here"
         />
-        <HeadersVariables />
+        <HeadersVariables setVariables={setVariables} setHeaders={setHeaders} />
         <Button
           onClick={showResult}
           className={styles.play}
@@ -33,9 +36,9 @@ export const Editor = () => {
           type="primary"
         />
       </Col>
-      <Col xs={24} sm={24} md={12}>
+      <Col className={styles.response} xs={24} sm={24} md={12}>
         {data ? (
-          <div className={styles.response}>{JSON.stringify(data, null, '\n')}</div>
+          <pre className={styles.result}>{JSON.stringify(data, null, `\t`)}</pre>
         ) : (
           <div className={styles.response}>Hit the Play Button to get a response here</div>
         )}

@@ -10,13 +10,34 @@
 }
 
 .response {
-  height: 100%;
+  max-height: calc(100vh - 162px);
   min-height: 30vh;
-  padding: 4px 11px;
+  padding: 4px 7px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: #00b96b;
+    border-radius: 5px;
+  }
 }
 
 .request {
   height: calc(79.5vh - 224px);
   resize: none;
   padding-right: 2.3rem;
+}
+
+.result {
+  text-align: left;
+  tab-size: 2;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont ,'Segoe UI', Roboto ,'Helvetica Neue', Arial , 'Noto Sans', sans-serif;
 }
