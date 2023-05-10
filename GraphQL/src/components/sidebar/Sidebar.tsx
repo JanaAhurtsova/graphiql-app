@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 
 const { Sider } = Layout;
@@ -22,7 +22,7 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   const setShowModal = (
     setFunc: React.Dispatch<React.SetStateAction<boolean>>,

@@ -4,7 +4,7 @@ import { useForm, Resolver } from 'react-hook-form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Button, Alert } from 'antd';
 
-import { useAppSelector, useSetUser } from '../../hooks/reduxHooks';
+import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
@@ -14,7 +14,7 @@ import './Login.scss';
 export default function Login() {
   const setUserDispatch = useSetUser();
   const navigate = useNavigate();
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
   const [errorServer, setErrorServer] = useState('');
 
   const resolver: Resolver<TFormLogin> = async (values) => {

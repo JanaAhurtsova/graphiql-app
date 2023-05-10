@@ -4,10 +4,10 @@ import type { TabsProps } from 'antd';
 import { Names } from 'managers/headerVariables/enum';
 
 import langJSON from 'assets/json/localization.json';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 
 export const HeadersVariables = () => {
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   const items: TabsProps['items'] = [
     {

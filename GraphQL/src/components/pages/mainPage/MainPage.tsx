@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
 import { useAuth } from '@/hooks/useAuth';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import localizationJSON from '@/assets/json/localization.json';
 
 export default function MainPage() {
   const { isAuth } = useAuth();
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   return (
     <>

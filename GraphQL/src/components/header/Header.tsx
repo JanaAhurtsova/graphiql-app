@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import { useAuth } from 'hooks/useAuth';
-import { useAppSelector, useRemoveUser } from '../../hooks/reduxHooks';
+import { useGetLocalization, useRemoveUser } from '../../hooks/reduxHooks';
 import { endSession } from '@/localStore/userAuthCookie';
 import SwitchLanguage from '../switchLanguage/SwitchLanguage';
 import langJSON from 'assets/json/localization.json';
@@ -13,7 +13,7 @@ const { Header } = Layout;
 export default function AppHeader() {
   const { isAuth } = useAuth();
   const removeUserDispatch = useRemoveUser();
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   const exit = () => {
     removeUserDispatch();

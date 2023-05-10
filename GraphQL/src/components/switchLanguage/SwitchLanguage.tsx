@@ -1,4 +1,4 @@
-import { useAppSelector, useChangeLocalization } from '@/hooks/reduxHooks';
+import { useChangeLocalization, useGetLocalization } from '@/hooks/reduxHooks';
 import { ELocalization } from '@/store/type';
 import { Switch } from 'antd';
 
@@ -6,7 +6,7 @@ import './SwitcherLanguage.scss';
 
 export default function SwitchLanguage() {
   const changeLanguageDispatch = useChangeLocalization();
-  const { lang } = useAppSelector((store) => store.localization);
+  const { lang } = useGetLocalization();
 
   const onChange = (checked: boolean) => {
     changeLanguageDispatch(checked ? ELocalization.ru : ELocalization.en);

@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 
 import Register from '../../register/Register';
 import { useAuth } from '@/hooks/useAuth';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import localizationJSON from '@/assets/json/localization.json';
 import styles from './registerPage.module.scss';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { isAuth } = useAuth();
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   useEffect(() => {
     if (isAuth) {

@@ -6,7 +6,7 @@ import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
 import { TargetKey } from './type';
 import { KEY1, KEY2 } from 'managers/graphPage/enum';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { ELocalization } from '@/store/type';
 
@@ -28,7 +28,7 @@ const GraphPage: React.FC = () => {
     }
   }, [isAuth, navigate]);
 
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
   const oldLang = ELocalization.en === lang ? ELocalization.ru : ELocalization.en;
   items.forEach((item) => {
     item.label = item.label.replace(langJSON[oldLang].tab, langJSON[lang].tab);

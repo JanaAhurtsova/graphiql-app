@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Button, Alert } from 'antd';
 
-import { useAppSelector, useSetUser } from '../../hooks/reduxHooks';
+import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
@@ -15,7 +15,7 @@ export default function Register() {
   const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
   const [errorServer, setErrorServer] = useState('');
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   const resolver: Resolver<TFormRegistration> = async (values) => {
     const checkForm = {

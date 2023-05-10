@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 
 import Login from '../../login/Login';
 import { useAuth } from '@/hooks/useAuth';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import localizationJSON from 'assets/json/localization.json';
 import styles from './LoginPage.module.scss';
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const { isAuth } = useAuth();
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   useEffect(() => {
     if (isAuth) {

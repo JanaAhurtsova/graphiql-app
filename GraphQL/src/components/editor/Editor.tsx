@@ -2,12 +2,12 @@ import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Button } from 'antd';
 
 import { HeadersVariables } from './headerVariables/HeadersVariables';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import styles from './Editor.module.scss';
 
 export const Editor = () => {
-  const { lang } = useAppSelector((state) => state.localization);
+  const { lang } = useGetLocalization();
 
   return (
     <Row style={{ height: '100%' }}>
