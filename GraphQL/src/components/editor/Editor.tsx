@@ -17,11 +17,11 @@ export const Editor = () => {
 
   const showResult = () => {
     if (variables && headers) {
-      setValue({ arg: query, variables: JSON.parse(variables), headers: JSON.parse(headers) });
+      setValue({ arg: query, variables: JSON.parse(variables), headers: headers });
     } else if (variables && !headers) {
       setValue({ arg: query, variables: variables });
     } else if (!variables && headers) {
-      setValue({ arg: query, variables: {}, headers: JSON.parse(headers) });
+      setValue({ arg: query, variables: {}, headers: headers });
     } else {
       setValue({ arg: query, variables: {} });
     }
