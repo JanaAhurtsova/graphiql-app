@@ -8,6 +8,7 @@ import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
+import ResolverRegistration from './ResolverRegistration';
 import formData from '../../assets/json/formData.json';
 import './Register.scss';
 
@@ -17,49 +18,7 @@ export default function Register() {
   const [errorServer, setErrorServer] = useState('');
   const { lang } = useGetLocalization();
 
-  const resolver: Resolver<TFormRegistration> = async (values) => {
-    const checkForm = {
-      values: values,
-      errors: {
-        email: !values.email
-          ? {
-              type: 'required',
-              message: formData[lang].email.required,
-            }
-          : !RegExp(formData.pattern.email).test(values.email)
-          ? {
-              type: 'pattern',
-              message: formData[lang].email.required,
-            }
-          : null,
-        password: !values.password
-          ? {
-              type: 'required',
-              message: formData[lang].password.required,
-            }
-          : !RegExp(formData.pattern.password).test(values.password)
-          ? {
-              type: 'pattern',
-              message: formData[lang].password.required,
-            }
-          : null,
-        passwordRepeat:
-          !values.passwordRepeat || values.password !== values.passwordRepeat
-            ? {
-                type: 'required',
-                message: formData[lang].passwordRepeat.required,
-              }
-            : null,
-      },
-    };
-    if (!checkForm.errors.email && !checkForm.errors.password && !checkForm.errors.passwordRepeat) {
-      return {
-        values: values,
-        errors: {},
-      };
-    }
-    return checkForm;
-  };
+  const resolver: Resolver<TFormRegistration> = ResolverRegistration();
 
   const {
     control,

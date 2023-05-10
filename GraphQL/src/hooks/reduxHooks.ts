@@ -9,7 +9,7 @@ import { endSession, startSession } from '@/localStore/userAuthCookie';
 import { setLocalization } from '@/localStore/localStorage';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
-const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useSetUser = () => {
   const dispatch = useAppDispatch();

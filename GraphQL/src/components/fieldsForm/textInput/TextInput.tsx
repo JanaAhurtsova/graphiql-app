@@ -1,16 +1,18 @@
-import Input from 'antd/es/input/Input';
+import { Input, Form } from 'antd';
 import { Controller } from 'react-hook-form';
 
 import { TPropsForm } from '../type';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import formData from '../../../assets/json/formData.json';
 import './TextInput.scss';
-import { Form } from 'antd';
 
 export function TextInput({ control, name, error }: TPropsForm) {
   const { lang } = useGetLocalization();
   return (
-    <Form.Item validateStatus={error ? 'error' : 'success'} help={error?.message}>
+    <Form.Item
+      validateStatus={error ? 'error' : 'success'}
+      help={error?.message ? error?.message[lang] : ''}
+    >
       <Controller
         control={control}
         name={name}

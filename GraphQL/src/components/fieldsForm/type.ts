@@ -1,4 +1,4 @@
-import { FieldError, Control } from 'react-hook-form';
+import { Control } from 'react-hook-form';
 
 export type TNameFieldsForm = 'email' | 'passwordRepeat' | 'password';
 
@@ -16,5 +16,8 @@ export type TFormLogin = {
 export type TPropsForm = {
   control: Control<TFormRegistration | TFormLogin>;
   name: TNameFieldsForm;
-  error: FieldError | undefined;
+  error: {
+    type: string;
+    message: { en: string; ru: string };
+  };
 };

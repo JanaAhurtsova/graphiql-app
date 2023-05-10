@@ -10,6 +10,7 @@ import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
 import formData from '../../assets/json/formData.json';
 import './Login.scss';
+import ResolverLogin from './ResolverLogin';
 
 export default function Login() {
   const setUserDispatch = useSetUser();
@@ -17,37 +18,7 @@ export default function Login() {
   const { lang } = useGetLocalization();
   const [errorServer, setErrorServer] = useState('');
 
-  const resolver: Resolver<TFormLogin> = async (values) => {
-    const checkForm = {
-      values: values,
-      errors: {
-        email: !values.email
-          ? {
-              type: 'required',
-              message: formData[lang].email.required,
-            }
-          : !RegExp(formData.pattern.email).test(values.email)
-          ? {
-              type: 'pattern',
-              message: formData[lang].email.required,
-            }
-          : null,
-        password: !values.password
-          ? {
-              type: 'required',
-              message: formData[lang].password.placeholder,
-            }
-          : null,
-      },
-    };
-    if (!checkForm.errors.email && !checkForm.errors.password) {
-      return {
-        values: values,
-        errors: {},
-      };
-    }
-    return checkForm;
-  };
+  const resolver: Resolver<TFormLogin> = ResolverLogin();
 
   const {
     control,
