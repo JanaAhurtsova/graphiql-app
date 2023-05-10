@@ -17,11 +17,19 @@ export const Editor = () => {
 
   const showResult = () => {
     if (variables && headers) {
-      setValue({ arg: query, variables: JSON.parse(variables), headers: headers });
+      setValue({
+        arg: query,
+        variables: JSON.parse(variables),
+        headers: headers,
+      });
     } else if (variables && !headers) {
       setValue({ arg: query, variables: variables });
     } else if (!variables && headers) {
-      setValue({ arg: query, variables: {}, headers: headers });
+      setValue({
+        arg: query,
+        variables: {},
+        headers: headers,
+      });
     } else {
       setValue({ arg: query, variables: {} });
     }
@@ -46,7 +54,6 @@ export const Editor = () => {
       </Col>
       <Col className={styles.response} xs={24} sm={24} md={12}>
         {isFetching && <Loader />}
-        {/* {response && <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>} */}
         {error ? (
           <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>
         ) : (
