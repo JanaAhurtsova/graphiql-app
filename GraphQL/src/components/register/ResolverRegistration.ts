@@ -4,7 +4,7 @@ import { TFormRegistration } from '../fieldsForm/type';
 import { ELocalization } from '@/store/type';
 import formData from '../../assets/json/formData.json';
 
-export default function ResolverRegistration(): Resolver<TFormRegistration> {
+export default function resolverRegistration(): Resolver<TFormRegistration> {
   return async (values) => {
     const checkForm = {
       values: values,

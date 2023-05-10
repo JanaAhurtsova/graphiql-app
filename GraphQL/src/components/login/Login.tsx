@@ -8,9 +8,9 @@ import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
+import resolverLogin from './resolverLogin';
 import formData from '../../assets/json/formData.json';
 import './Login.scss';
-import ResolverLogin from './ResolverLogin';
 
 export default function Login() {
   const setUserDispatch = useSetUser();
@@ -18,7 +18,7 @@ export default function Login() {
   const { lang } = useGetLocalization();
   const [errorServer, setErrorServer] = useState('');
 
-  const resolver: Resolver<TFormLogin> = ResolverLogin();
+  const resolver: Resolver<TFormLogin> = resolverLogin();
 
   const {
     control,

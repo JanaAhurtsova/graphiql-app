@@ -8,7 +8,7 @@ import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
-import ResolverRegistration from './ResolverRegistration';
+import resolverRegistration from './resolverRegistration';
 import formData from '../../assets/json/formData.json';
 import './Register.scss';
 
@@ -18,7 +18,7 @@ export default function Register() {
   const [errorServer, setErrorServer] = useState('');
   const { lang } = useGetLocalization();
 
-  const resolver: Resolver<TFormRegistration> = ResolverRegistration();
+  const resolver: Resolver<TFormRegistration> = resolverRegistration();
 
   const {
     control,
