@@ -8,7 +8,7 @@ import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
-import resolverLogin from './resolverLogin';
+import resolverLogin from './ResolverLogin';
 import formData from '../../assets/json/formData.json';
 import './Login.scss';
 

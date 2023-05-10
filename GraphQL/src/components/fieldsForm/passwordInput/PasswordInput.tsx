@@ -8,12 +8,9 @@ import './PasswordInput.scss';
 
 export function PasswordInput({ control, name, error }: TPropsForm) {
   const { lang } = useGetLocalization();
-
+  const errorMessage = error?.message && (error?.message as unknown as TErrorResolver)[lang];
   return (
-    <Form.Item
-      validateStatus={error ? 'error' : 'success'}
-      help={(error?.message as unknown as TErrorResolver)[lang]}
-    >
+    <Form.Item validateStatus={error ? 'error' : 'success'} help={errorMessage}>
       <Controller
         control={control}
         name={name}

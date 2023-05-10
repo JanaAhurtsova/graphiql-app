@@ -4,7 +4,7 @@ import { TFormLogin } from '../fieldsForm/type';
 import { ELocalization } from '@/store/type';
 import formData from '../../assets/json/formData.json';
 
-export default function ResolverLogin(): Resolver<TFormLogin> {
+export default function resolverLogin(): Resolver<TFormLogin> {
   return async (values) => {
     const checkForm = {
       values: values,
