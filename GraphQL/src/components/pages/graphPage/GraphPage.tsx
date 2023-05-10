@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Tabs, Layout } from 'antd';
 
 import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
 import { TargetKey } from './type';
-import { LABELS, KEY1, KEY2 } from 'managers/graphPage/enum';
+import { KEY1, KEY2 } from 'managers/graphPage/enum';
+import { useGetLocalization } from '@/hooks/reduxHooks';
+import langJSON from 'assets/json/localization.json';
+import { ELocalization } from '@/store/type';
 
 const initialItems = [
-  { label: LABELS.TAB1, children: <TabContent />, key: KEY1, closable: false },
-  { label: LABELS.TAB1, children: <TabContent />, key: KEY2 },
+  { label: `${langJSON.en.tab} 1`, children: <TabContent />, key: KEY1, closable: false },
+  { label: `${langJSON.en.tab} 2`, children: <TabContent />, key: KEY2 },
 ];
 
 const GraphPage: React.FC = () => {
@@ -17,7 +20,7 @@ const GraphPage: React.FC = () => {
   const navigate = useNavigate();
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
   const [items, setItems] = useState(initialItems);
-  const newTabIndex = useRef(0);
+  const newTabIndex = useRef(3);
 
   useEffect(() => {
     if (!isAuth) {
@@ -25,14 +28,25 @@ const GraphPage: React.FC = () => {
     }
   }, [isAuth, navigate]);
 
+  const { lang } = useGetLocalization();
+  const oldLang = ELocalization.en === lang ? ELocalization.ru : ELocalization.en;
+  items.forEach((item) => {
+    item.label = item.label.replace(langJSON[oldLang].tab, langJSON[lang].tab);
+  });
+
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
   };
 
   const add = () => {
-    const newActiveKey = `newTab${newTabIndex.current++}`;
+    const newIndex = newTabIndex.current++;
+    const newActiveKey = `newTab${newIndex}`;
     const newPanes = [...items];
-    newPanes.push({ label: LABELS.NEWTAB, children: <TabContent />, key: newActiveKey });
+    newPanes.push({
+      label: `${langJSON[lang].tab} ${newIndex}`,
+      children: <TabContent />,
+      key: newActiveKey,
+    });
     setItems(newPanes);
     setActiveKey(newActiveKey);
   };

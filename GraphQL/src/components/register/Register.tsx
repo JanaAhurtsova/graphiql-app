@@ -1,24 +1,38 @@
 import { useNavigate } from 'react-router-dom';
-import { SyntheticEvent, useState } from 'react';
-
+import { useForm, Resolver } from 'react-hook-form';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useSetUser } from '../../hooks/reduxHooks';
-import { startSession } from '../../components/cookie/userAuthCookie';
+import { useState } from 'react';
+import { Button, Alert } from 'antd';
+
+import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
+import { TFormRegistration } from '../fieldsForm/type';
+import { TextInput } from '../fieldsForm/textInput/TextInput';
+import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
+import resolverRegistration from './ResolverRegistration';
+import formData from '../../assets/json/formData.json';
+import './Register.scss';
 
 export default function Register() {
   const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [errorServer, setErrorServer] = useState('');
+  const { lang } = useGetLocalization();
 
-  const handleRegister = (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (passwordRepeat !== password) {
-      return;
-    }
+  const resolver: Resolver<TFormRegistration> = resolverRegistration();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TFormRegistration>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+    resolver,
+  });
+
+  const handleRegister = handleSubmit((userForm) => {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, userForm.email, userForm.password)
       .then(({ user }) => {
         registerUserDispatch({
           email: user.email,
@@ -26,35 +40,27 @@ export default function Register() {
           token: user.refreshToken,
         });
         navigate('/graph');
-        startSession(String(user.email), user.refreshToken, user.uid);
+        setErrorServer('');
       })
-      .catch(console.error);
-  };
+      .catch(() => {
+        setErrorServer(formData[lang].serverErrorRegister);
+      });
+  });
 
   return (
-    <form>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="email"
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
-      />
-      <br />
-      <input
-        type="password"
-        value={passwordRepeat}
-        onChange={(e) => setPasswordRepeat(e.target.value)}
-        placeholder="password"
-      />
-      <br />
-      <button onClick={handleRegister}>Registration</button>
+    <form onSubmit={handleRegister} className="form-register">
+      {errorServer ? (
+        <Alert message={errorServer} type="error" className="error-register"></Alert>
+      ) : (
+        <br />
+      )}
+      <TextInput control={control} name="email" error={errors.email} />
+      <PasswordInput control={control} name="password" error={errors.password} />
+      <PasswordInput control={control} name="passwordRepeat" error={errors.passwordRepeat} />
+      <Button onClick={handleRegister} onSubmit={handleRegister} type="default">
+        {formData[lang].buttonRegister}
+      </Button>
+      <button className="btn-hide"></button>
     </form>
   );
 }

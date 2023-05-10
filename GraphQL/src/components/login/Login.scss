@@ -1,0 +1,9 @@
+.form-login {
+  &>.btn-hide {
+    display: none;
+  }
+  &>.error-login {
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+}

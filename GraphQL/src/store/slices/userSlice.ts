@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TUserSlice } from './type';
+import { TUserSlice } from '../type';
 
 const initialState: TUserSlice = {
   email: null,

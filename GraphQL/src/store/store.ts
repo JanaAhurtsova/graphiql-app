@@ -1,8 +1,10 @@
 import { configureStore, PreloadedState, combineReducers } from '@reduxjs/toolkit';
 import userReducer from './slices/userSlice';
+import localization from './slices/localizationSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
+  localization: localization,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

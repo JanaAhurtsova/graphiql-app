@@ -1,12 +1,16 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import Register from '../../register/Register';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
+import { useGetLocalization } from '@/hooks/reduxHooks';
+import localizationJSON from '@/assets/json/localization.json';
+import styles from './registerPage.module.scss';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { isAuth } = useAuth();
+  const { lang } = useGetLocalization();
 
   useEffect(() => {
     if (isAuth) {
@@ -14,10 +18,9 @@ export default function RegisterPage() {
     }
   });
   return (
-    <section className="container">
-      <h3>Register</h3>
+    <section className={styles.register_tabs}>
+      <h3>{localizationJSON[lang].titleSignUp}</h3>
       <Register />
-      <NavLink to="/signin">Sign in</NavLink>
     </section>
   );
 }
