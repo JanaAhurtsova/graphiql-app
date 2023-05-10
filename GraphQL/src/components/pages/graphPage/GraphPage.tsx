@@ -6,6 +6,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { TargetKey } from './type';
 import { LABELS, KEY1, KEY2 } from 'managers/graphPage/enum';
+import { Sidebar } from 'components/sidebar/Sidebar';
 
 const initialItems = [
   { label: LABELS.TAB1, children: <TabContent />, key: KEY1, closable: false },
@@ -70,12 +71,14 @@ const GraphPage: React.FC = () => {
 
   return (
     <Layout className="container">
+      <Sidebar />
       <Tabs
         type="editable-card"
         onChange={onChange}
         activeKey={activeKey}
         onEdit={onEdit}
         items={items}
+        style={{ flex: 'auto' }}
       />
     </Layout>
   );

@@ -13,7 +13,7 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
 
   return (
     <Tabs
-      defaultActiveKey="1"
+      defaultActiveKey={VARIABLES}
       className={styles.tab}
       activeKey={activeKey}
       items={[

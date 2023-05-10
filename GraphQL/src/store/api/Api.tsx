@@ -7,7 +7,7 @@ export const RickApi = createApi({
   tagTypes: [Api.SCHEMA],
   baseQuery: fetchBaseQuery({ baseUrl: GRAPH_API }),
   endpoints: (build) => ({
-    getSchema: build.query({
+    getResponse: build.query({
       query: ({ arg, variables, headers }: IQuery) => ({
         url: '',
         method: Api.POST,
@@ -21,4 +21,4 @@ export const RickApi = createApi({
   }),
 });
 
-export const { useGetSchemaQuery } = RickApi;
+export const { useGetResponseQuery } = RickApi;

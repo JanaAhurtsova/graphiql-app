@@ -31,7 +31,7 @@
 
 .request {
   height: calc(79.5vh - 224px) !important;
-  resize: none;
+  resize: none !important;
   padding-right: 2.3rem;
 
   &::-webkit-scrollbar {
@@ -51,6 +51,7 @@
 .result {
   text-align: left;
   tab-size: 4;
+  white-space: pre-wrap;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont ,'Segoe UI', Roboto ,'Helvetica Neue', Arial , 'Noto Sans', sans-serif;
 }

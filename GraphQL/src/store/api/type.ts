@@ -1,5 +1,5 @@
 export interface IQuery {
   arg: string;
-  variables?: object;
+  variables: unknown;
   headers?: string;
 }

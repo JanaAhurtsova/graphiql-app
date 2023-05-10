@@ -3,7 +3,7 @@ import { Col, Input, Row } from 'antd';
 import { Button } from 'antd';
 import styles from './Editor.module.scss';
 import { HeadersVariables } from './headerVariables/HeadersVariables';
-import { useGetSchemaQuery } from 'store/api/Api';
+import { useGetResponseQuery } from 'store/api/Api';
 import { useState } from 'react';
 import { Loader } from 'components/loader/Loader';
 import { IQuery } from 'store/api/type';
@@ -12,14 +12,18 @@ export const Editor = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
-  const [value, setValue] = useState<IQuery>({ arg: '' });
-  const { data, error, isLoading } = useGetSchemaQuery(value);
+  const [value, setValue] = useState<IQuery>({ arg: query, variables: {} });
+  const { data: response, error, isFetching } = useGetResponseQuery(value);
 
   const showResult = () => {
-    if (variables) {
-      setValue({ arg: query, variables: JSON.parse(variables), headers: headers });
+    if (variables && headers) {
+      setValue({ arg: query, variables: JSON.parse(variables), headers: JSON.parse(headers) });
+    } else if (variables && !headers) {
+      setValue({ arg: query, variables: variables });
+    } else if (!variables && headers) {
+      setValue({ arg: query, variables: {}, headers: JSON.parse(headers) });
     } else {
-      setValue({ arg: query, headers: headers });
+      setValue({ arg: query, variables: {} });
     }
   };
 
@@ -41,12 +45,12 @@ export const Editor = () => {
         />
       </Col>
       <Col className={styles.response} xs={24} sm={24} md={12}>
-        {isLoading && <Loader />}
-        {data && <pre className={styles.result}>{JSON.stringify(data, null, `\t`)}</pre>}
-        {error && (
-          <div className={styles.response}>
-            Write your query or mutation and hit the Play Button to get a response here
-          </div>
+        {isFetching && <Loader />}
+        {/* {response && <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>} */}
+        {error ? (
+          <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>
+        ) : (
+          <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>
         )}
       </Col>
     </Row>
