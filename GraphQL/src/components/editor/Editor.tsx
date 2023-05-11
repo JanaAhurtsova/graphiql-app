@@ -1,6 +1,5 @@
 import { CaretRightFilled } from '@ant-design/icons';
-import { Col, Input, Row, Modal } from 'antd';
-import { Button } from 'antd';
+import { Col, Input, Row, Modal, Button } from 'antd';
 import styles from './Editor.module.scss';
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { useLazyGetResponseQuery } from 'store/api/Api';
