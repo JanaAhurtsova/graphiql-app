@@ -71,7 +71,7 @@ h6 {
   transform: translateY(100px);
 }
 .gallery__right .gallery__item:first-child {
-  margin-bottom: calc(var(--gallery-gap) * 0.8);
+  margin-bottom: calc(var(--gallery-gap) * 0.5);
 }
 
 .gallery__left .gallery__item {
@@ -103,4 +103,69 @@ h6 {
   line-height: 2.4rem;
   color: var(--color-h);
   margin-bottom: 1.5rem;
+}
+
+/* For screens smaller than 600px */
+@media (min-width: 320px) and (max-width: 600px) {
+  :root {
+    --gallery-gap: calc(var(--gallery-gap) * 0.4);
+  }
+  .hero {
+    left: 11vw;
+    top: 11vh;
+  }
+  .gallery__item {
+    max-width: calc(var(--index) * 10);
+    // margin-bottom: 100px;
+  }
+  .text_block__p {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .gallery__right .gallery__item:first-child {
+    margin-top: none;
+    // margin-bottom: calc(var(--gallery-gap) * 0.1);
+    // margin-bottom:  none;
+  }
+
+  .gallery__left .gallery__item {
+    margin-top: none;
+    margin-bottom: calc(var(--gallery-gap) * 2);
+    // margin-top: none;
+  }
+  .team__h {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    margin-top: 1rem;
+  }
+  .text_block__h {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .container {
+    padding: 10vh 1vw;
+  }
+
+  .gallery__right .gallery__item {
+    // margin: 0;
+    margin-top: none;
+    // transform: translateY(50px);
+  }
+  .team__h {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+  }
+  .main_title {
+    font-size: calc(var(--index) * 4);
+  }
+}
+
+/* For screens between 600px and 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+}
+
+/* For screens larger than 900px */
+@media (min-width: 900px) {
 }

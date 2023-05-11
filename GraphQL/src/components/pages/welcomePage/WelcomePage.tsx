@@ -30,7 +30,6 @@ export default function WelcomePage() {
   const textVladimirRef = useRef(null);
 
   useEffect(() => {
-    console.log(ScrollTrigger);
     if (ScrollTrigger.isTouch !== 1) {
       gsap.fromTo(
         heroRef.current,
@@ -116,14 +115,14 @@ export default function WelcomePage() {
           <div className={styles.content}>
             <header className={styles.hero_section}>
               <img data-speed=".9" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
-              <div className="container">
+              <div className={styles.container}>
                 <div data-speed=".5" className={styles.main_header} ref={welcomeRef}>
                   <h1 className={styles.main_title}>Welcome to GraphQL</h1>
                 </div>
               </div>
             </header>
             <div className={styles.portfolio}>
-              <div className="container">
+              <div className={styles.container}>
                 <main className={styles.gallery}>
                   <div data-speed="0.9" className={styles.gallery__left}>
                     <img
