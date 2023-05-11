@@ -8,10 +8,12 @@
 @font-face {
   font-family: 'raleway-c';
   src: url('../../../assets/fonts/raleway-regular.woff2');
+  font-display: fallback;
 }
 @font-face {
   font-family: 'outfit-c';
   src: url('../../../assets//fonts//outfit-regular.woff2');
+  font-display: fallback;
 }
 h1,
 h2,

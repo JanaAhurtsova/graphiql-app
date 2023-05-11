@@ -19,7 +19,7 @@ export default function RegisterPage() {
   });
   return (
     <section className={styles.register_tabs}>
-      <h3>{localizationJSON[lang].titleSignUp}</h3>
+      <h3 className={styles.h}>{localizationJSON[lang].titleSignUp}</h3>
       <Register />
     </section>
   );
