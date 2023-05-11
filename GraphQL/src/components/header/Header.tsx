@@ -44,18 +44,7 @@ export default function AppHeader() {
   }, []);
 
   return (
-    <Header
-      className="app-header"
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1,
-        width: '100%',
-        height: '50px',
-        lineHeight: '50px',
-        backgroundColor: '#001529',
-      }}
-    >
+    <Header className={styles.header}>
       <nav className={styles.nav}>
         <NavLink to="/">Welcome</NavLink>
         {!isAuth ? (
