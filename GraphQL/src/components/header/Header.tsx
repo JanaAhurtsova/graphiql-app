@@ -1,17 +1,21 @@
-import styles from 'components/header/Header.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Layout } from 'antd';
-import { useAuth } from 'hooks/useAuth';
-import { useRemoveUser } from '../../hooks/reduxHooks';
-import { endSession } from '../cookie/userAuthCookie';
 import { gsap } from 'gsap';
 import { useEffect } from 'react';
+import { Layout } from 'antd';
+
+import { useAuth } from 'hooks/useAuth';
+import { useGetLocalization, useRemoveUser } from '../../hooks/reduxHooks';
+import { endSession } from '@/localStore/userAuthCookie';
+import SwitchLanguage from '../switchLanguage/SwitchLanguage';
+import langJSON from 'assets/json/localization.json';
+import styles from 'components/header/Header.module.scss';
 
 const { Header } = Layout;
 
 export default function AppHeader() {
   const { isAuth } = useAuth();
   const removeUserDispatch = useRemoveUser();
+  const { lang } = useGetLocalization();
 
   const exit = () => {
     removeUserDispatch();
@@ -46,21 +50,22 @@ export default function AppHeader() {
   return (
     <Header className={styles.header}>
       <nav className={styles.nav}>
-        <NavLink to="/">Welcome</NavLink>
+        <NavLink to="/">{langJSON[lang].titleWelcome}</NavLink>
         {!isAuth ? (
           <>
-            <NavLink to="/signin">Sign In</NavLink>
-            <NavLink to="/signup">Sign Up</NavLink>
+            <NavLink to="/signin">{langJSON[lang].titleSignIn}</NavLink>
+            <NavLink to="/signup">{langJSON[lang].titleSignUp}</NavLink>
           </>
         ) : (
           <>
-            <NavLink to="/graph">Graph</NavLink>
-            <NavLink to="/signout" onClick={exit}>
-              Sign out
+            <NavLink to="/graph">{langJSON[lang].titleMain}</NavLink>
+            <NavLink to="/" onClick={exit}>
+              {langJSON[lang].exit}
             </NavLink>
           </>
         )}
       </nav>
+      <SwitchLanguage />
     </Header>
   );
 }

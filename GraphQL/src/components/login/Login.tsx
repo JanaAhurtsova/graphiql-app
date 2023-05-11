@@ -1,49 +1,65 @@
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
+import { useForm, Resolver } from 'react-hook-form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useSetUser } from '../../hooks/reduxHooks';
-import { startSession } from '../cookie/userAuthCookie';
-import { SyntheticEvent, useState } from 'react';
+import { Button, Alert } from 'antd';
+
+import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
+import { TextInput } from '../fieldsForm/textInput/TextInput';
+import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
+import { TFormLogin } from '../fieldsForm/type';
+import resolverLogin from './ResolverLogin';
+import formData from '../../assets/json/formData.json';
+import './Login.scss';
 
 export default function Login() {
   const setUserDispatch = useSetUser();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { lang } = useGetLocalization();
+  const [errorServer, setErrorServer] = useState('');
 
-  const handleLogin = (e: SyntheticEvent) => {
-    e.preventDefault();
+  const resolver: Resolver<TFormLogin> = resolverLogin();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TFormLogin>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+    resolver,
+  });
+
+  const handleLogin = handleSubmit((userForm) => {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, userForm.email, userForm.password)
       .then(({ user }) => {
         setUserDispatch({
           email: user.email,
           id: user.uid,
           token: user.refreshToken,
         });
-        startSession(String(user.email), user.refreshToken, user.uid);
         navigate('/graph');
+        setErrorServer('');
       })
-      .catch(console.error);
-  };
+      .catch(() => {
+        setErrorServer(formData[lang].serverErrorLogin);
+      });
+  });
 
   return (
-    <form>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="email"
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
-      />
-      <br />
-      <button onClick={handleLogin}>Login</button>
+    <form onSubmit={handleLogin} className="form-login">
+      {errorServer ? (
+        <Alert message={errorServer} type="error" className="error-login"></Alert>
+      ) : (
+        <br />
+      )}
+      <TextInput control={control} name="email" error={errors.email} />
+      <PasswordInput control={control} name="password" error={errors.password} />
+      <Button onClick={handleLogin} onSubmit={handleLogin} type="default">
+        {formData[lang].buttonLogin}
+      </Button>
+      <button className="btn-hide"></button>
     </form>
   );
 }
