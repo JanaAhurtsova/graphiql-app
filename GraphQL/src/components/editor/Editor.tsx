@@ -36,6 +36,10 @@ export const Editor = () => {
         Modal.error({
           content: e.message,
         });
+      } else {
+        Modal.error({
+          content: 'Unknown Error',
+        });
       }
     }
   };

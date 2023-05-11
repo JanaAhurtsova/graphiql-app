@@ -203,7 +203,7 @@ export default function WelcomePage() {
 
                   <div data-speed="1.1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textYanaRef}>
-                      <h2 className={styles.text_block__h}>YANA</h2>
+                      <h2 className={styles.text_block__h}>JANA</h2>
                       <p className={styles.text_block__p}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolores
                         suscipit quam nostrum qui ut repellat vel ducimus cum enim.
