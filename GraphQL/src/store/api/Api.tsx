@@ -13,7 +13,7 @@ export const RickApi = createApi({
         method: Api.POST,
         headers: {
           'Content-type': 'application/json',
-          headers,
+          ...headers,
         },
         body: JSON.stringify({ query: arg, variables: variables }),
       }),
@@ -21,4 +21,4 @@ export const RickApi = createApi({
   }),
 });
 
-export const { useGetResponseQuery } = RickApi;
+export const { useLazyGetResponseQuery } = RickApi;

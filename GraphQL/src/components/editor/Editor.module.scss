@@ -6,7 +6,7 @@
 .play {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 7px;
 }
 
 .response {
@@ -35,8 +35,8 @@
   padding-right: 2.3rem;
 
   &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     background-color: #dcdcdc;
     border-radius: 3px;
   }

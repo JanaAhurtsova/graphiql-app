@@ -1,5 +1,5 @@
-export interface IQuery {
+export interface IQuery extends Omit<RequestInit, 'headers'> {
   arg: string;
-  variables: unknown;
-  headers?: string;
+  variables: object;
+  headers?: HeadersInit | (() => HeadersInit);
 }
