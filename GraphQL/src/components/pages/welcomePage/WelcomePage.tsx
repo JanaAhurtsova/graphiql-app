@@ -67,11 +67,11 @@ export default function WelcomePage() {
           { opacity: 0, x: -100 },
           {
             opacity: 1,
-            x: 0,
+            x: -5,
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '300',
+              end: '-200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -94,11 +94,11 @@ export default function WelcomePage() {
           { opacity: 0, x: 100 },
           {
             opacity: 1,
-            x: 0,
+            x: 5,
             scrollTrigger: {
               trigger: work.current,
-              start: '-650',
-              end: '100',
+              start: '-800',
+              end: '-200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -110,12 +110,12 @@ export default function WelcomePage() {
 
   return (
     <>
-      <section className={styles.container}>
+      <section>
         <div className="wrapper">
           <div className={styles.content}>
             <header className={styles.hero_section}>
-              <img data-speed=".9" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
-              <div className={styles.container}>
+              <img data-speed="0.9" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
+              <div>
                 <div data-speed=".5" className={styles.main_header} ref={welcomeRef}>
                   <h1 className={styles.main_title}>Welcome to GraphQL</h1>
                 </div>
@@ -149,7 +149,7 @@ export default function WelcomePage() {
                     />
                   </div>
 
-                  <div data-speed="1.1" className={styles.gallery__right}>
+                  <div data-speed="1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textGqRef}>
                       <h2 className={styles.text_block__h}>GraphQL</h2>
                       <p className={styles.text_block__p}>
@@ -201,9 +201,9 @@ export default function WelcomePage() {
                     />
                   </div>
 
-                  <div data-speed="1.1" className={styles.gallery__right}>
+                  <div data-speed="1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textYanaRef}>
-                      <h2 className={styles.text_block__h}>YANA</h2>
+                      <h2 className={styles.text_block__h}>JANA</h2>
                       <p className={styles.text_block__p}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolores
                         suscipit quam nostrum qui ut repellat vel ducimus cum enim.

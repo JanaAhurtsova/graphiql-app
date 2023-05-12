@@ -33,6 +33,10 @@
   @media (max-width: 768px) {
     justify-content: flex-end;
     padding-right: 1rem;
-    gap: .8rem;
+    gap: 0.8rem;
   }
+}
+
+.h {
+  color: rgba(255, 255, 255, 0.65);
 }
