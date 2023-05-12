@@ -13,7 +13,6 @@ export const Editor = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
-  const [err, setError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
 
@@ -38,11 +37,6 @@ export const Editor = () => {
       }
     } catch (e) {
       setIsOpen(true);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError(langJSON[lang].unknownError);
-      }
     }
   };
 
@@ -83,7 +77,7 @@ export const Editor = () => {
         onCancel={() => setIsOpen(false)}
         title={langJSON[lang].error}
       >
-        {err}
+        {langJSON[lang].errorMessage}
       </Modal>
     </Row>
   );

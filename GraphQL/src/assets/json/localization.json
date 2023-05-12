@@ -20,7 +20,8 @@
     "buttonOk": "Ok",
     "buttonCancel": "Cancel",
     "unknownError": "Unknown Error",
-    "error": "Error"
+    "error": "Error",
+    "errorMessage": "Check the correctness of the entered request for variables or headers"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -43,6 +44,7 @@
     "buttonOk": "Ok",
     "buttonCancel": "Отмена",
     "unknownError": "Неизвестная ошибка",
-    "error": "Ошибка"
+    "error": "Ошибка",
+    "errorMessage": "Проверьте правильность введенного запроса для переменных или заголовков"
   }
 }
