@@ -3,8 +3,9 @@
   gap: 1rem;
   justify-content: flex-end;
 }
+
 .header {
-  position: 'sticky';
+  position: sticky;
   top: 0;
   z-index: 1;
   width: 100%;
@@ -13,6 +14,7 @@
   display: flex;
   justify-content: end;
   background-color: '#001529';
+
   @media (max-width: 550px) {
     padding-inline: 20px;
   }

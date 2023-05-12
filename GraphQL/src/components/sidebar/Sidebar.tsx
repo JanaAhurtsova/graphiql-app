@@ -16,7 +16,7 @@ import langJSON from 'assets/json/localization.json';
 const { Sider } = Layout;
 
 export const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [documentation, setDocumentation] = useState(false);
   const [history, setHistory] = useState(false);
   const [modalKeys, setModalKeys] = useState(false);

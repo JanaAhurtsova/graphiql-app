@@ -6,6 +6,7 @@ import TabContent from 'components/tabContent/TabContent';
 import { useAuth } from 'hooks/useAuth';
 import { TargetKey } from './type';
 import { KEY1, KEY2 } from 'managers/graphPage/enum';
+import { Sidebar } from 'components/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { ELocalization } from '@/store/type';
@@ -84,12 +85,14 @@ const GraphPage: React.FC = () => {
 
   return (
     <Layout className="container">
+      <Sidebar />
       <Tabs
         type="editable-card"
         onChange={onChange}
         activeKey={activeKey}
         onEdit={onEdit}
         items={items}
+        style={{ flex: 'auto' }}
       />
     </Layout>
   );

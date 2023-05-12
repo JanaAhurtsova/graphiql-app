@@ -1,13 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { GRAPH_API } from '../../managers/API/Api';
+import { GRAPH_API, Api } from 'managers/API/Api';
+import { IQuery } from './type';
 
 export const RickApi = createApi({
-  reducerPath: 'RickApi',
-  tagTypes: ['schema'],
+  reducerPath: Api.RICK_API,
+  tagTypes: [Api.SCHEMA],
   baseQuery: fetchBaseQuery({ baseUrl: GRAPH_API }),
   endpoints: (build) => ({
-    getSchema: build.query({
-      query: () => '',
+    getResponse: build.query({
+      query: ({ query, variables, headers }: IQuery) => ({
+        url: '',
+        method: Api.POST,
+        headers: {
+          'Content-type': 'application/json',
+          ...headers,
+        },
+        body: JSON.stringify({ query: query, variables: variables }),
+      }),
     }),
   }),
 });
+
+export const { useLazyGetResponseQuery } = RickApi;

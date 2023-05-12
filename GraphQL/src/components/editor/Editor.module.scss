@@ -1,4 +1,6 @@
 .editor {
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-height: calc(100vh - 162px);
 }
@@ -6,11 +8,55 @@
 .play {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 7px;
 }
 
 .response {
-  height: 100%;
+  max-height: calc(100vh - 162px);
   min-height: 30vh;
-  padding: 4px 11px;
+  padding: 4px 7px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: #00b96b;
+    border-radius: 5px;
+  }
+}
+
+.request {
+  padding-right: 2.3rem;
+  flex: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: #00b96b;
+    border-radius: 5px;
+  }
+}
+
+.result {
+  text-align: left;
+  tab-size: 4;
+  white-space: pre-wrap;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont ,'Segoe UI', Roboto ,'Helvetica Neue', Arial , 'Noto Sans', sans-serif;
+}
+
+.row {
+  height: 100%;
 }

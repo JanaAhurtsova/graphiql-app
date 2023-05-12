@@ -1,38 +1,14 @@
 import { Input, Tabs } from 'antd';
 import { useState } from 'react';
-import type { TabsProps } from 'antd';
-import { Names } from 'managers/headerVariables/enum';
-
+import { VARIABLES, HEADERS } from 'managers/headerVariables/Names';
+import { ISetState } from './type';
+import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
-import { useGetLocalization } from '@/hooks/reduxHooks';
+import { useGetLocalization } from 'hooks/reduxHooks';
 
-export const HeadersVariables = () => {
+export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
+  const [activeKey, setActiveKey] = useState(VARIABLES);
   const { lang } = useGetLocalization();
-
-  const items: TabsProps['items'] = [
-    {
-      label: langJSON[lang].variables,
-      children: (
-        <Input.TextArea
-          style={{ height: '20vh', resize: 'none' }}
-          placeholder={langJSON[lang].placeholderVariables}
-        />
-      ),
-      key: Names.VARIABLES,
-    },
-    {
-      label: langJSON[lang].headers,
-      children: (
-        <Input.TextArea
-          style={{ height: '20vh', resize: 'none' }}
-          placeholder={langJSON[lang].placeholderHeaders}
-        />
-      ),
-      key: Names.HEADERS,
-    },
-  ];
-
-  const [activeKey, setActiveKey] = useState(items[0].key);
 
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
@@ -40,10 +16,32 @@ export const HeadersVariables = () => {
 
   return (
     <Tabs
-      defaultActiveKey="1"
-      style={{ height: '30%' }}
+      defaultActiveKey={VARIABLES}
       activeKey={activeKey}
-      items={items}
+      items={[
+        {
+          label: langJSON[lang].variables,
+          children: (
+            <Input.TextArea
+              className={styles.option}
+              onChange={(e) => setVariables(e.target.value)}
+              placeholder={langJSON[lang].placeholderVariables}
+            />
+          ),
+          key: VARIABLES,
+        },
+        {
+          label: langJSON[lang].headers,
+          children: (
+            <Input.TextArea
+              className={styles.option}
+              onChange={(e) => setHeaders(e.target.value)}
+              placeholder={langJSON[lang].placeholderHeaders}
+            />
+          ),
+          key: HEADERS,
+        },
+      ]}
       onChange={onChange}
     />
   );

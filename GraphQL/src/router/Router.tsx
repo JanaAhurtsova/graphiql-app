@@ -15,6 +15,7 @@ export const router = createBrowserRouter(
       <Route path="graph" element={<GraphPage />} />
       <Route path="404" element={<ErrorPage />} />
       <Route path="*" element={<Navigate to="404" replace />} />
+      <Route path="signout" element={<Navigate to="/" replace />} />
     </Route>
   )
 );
