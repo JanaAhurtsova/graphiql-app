@@ -21,20 +21,20 @@ export const Editor = () => {
     try {
       if (variables && headers) {
         sendRequest({
-          arg: query,
+          query: query,
           variables: JSON.parse(variables),
           headers: JSON.parse(headers),
         });
       } else if (variables && !headers) {
-        sendRequest({ arg: query, variables: JSON.parse(variables) });
+        sendRequest({ query: query, variables: JSON.parse(variables) });
       } else if (!variables && headers) {
         sendRequest({
-          arg: query,
+          query: query,
           variables: {},
           headers: JSON.parse(headers),
         });
       } else {
-        sendRequest({ arg: query, variables: {} });
+        sendRequest({ query: query, variables: {} });
       }
     } catch (e) {
       setIsOpen(true);
