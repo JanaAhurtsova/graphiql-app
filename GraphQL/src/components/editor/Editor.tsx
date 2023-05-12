@@ -5,11 +5,16 @@ import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { useLazyGetResponseQuery } from 'store/api/Api';
 import { useState } from 'react';
 import { Loader } from 'components/loader/Loader';
+import { useGetLocalization } from 'hooks/reduxHooks';
+import langJSON from 'assets/json/localization.json';
 
 export const Editor = () => {
+  const { lang } = useGetLocalization();
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
+  const [err, setError] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
 
   const showResult = () => {
@@ -32,14 +37,11 @@ export const Editor = () => {
         sendRequest({ arg: query, variables: {} });
       }
     } catch (e) {
+      setIsOpen(true);
       if (e instanceof Error) {
-        Modal.error({
-          content: e.message,
-        });
+        setError(e.message);
       } else {
-        Modal.error({
-          content: 'Unknown Error',
-        });
+        setError(langJSON[lang].unknownError);
       }
     }
   };
@@ -50,7 +52,7 @@ export const Editor = () => {
         <Input.TextArea
           className={styles.request}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="# Write your query or mutation here"
+          placeholder={langJSON[lang].placeholderQuery}
         />
         <HeadersVariables setVariables={setVariables} setHeaders={setHeaders} />
         <Button
@@ -68,9 +70,21 @@ export const Editor = () => {
           <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>
         )}
         {!isFetching && !response && !error && (
-          <div className={styles.response}>Click the button to get a response</div>
+          <div className={styles.response}>{langJSON[lang].placeholderResponse}</div>
         )}
       </Col>
+      <Modal
+        open={isOpen}
+        footer={
+          <Button key="ok" type="primary" onClick={() => setIsOpen(false)}>
+            OK
+          </Button>
+        }
+        onCancel={() => setIsOpen(false)}
+        title={langJSON[lang].error}
+      >
+        {err}
+      </Modal>
     </Row>
   );
 };

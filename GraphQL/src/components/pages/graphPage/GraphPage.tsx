@@ -23,17 +23,11 @@ const GraphPage: React.FC = () => {
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(3);
 
-  // useEffect(() => {
-  //   if (!isAuth) {
-  //     navigate('/404');
-  //   }
-  // }, [isAuth, navigate]);
-
-  const { lang } = useGetLocalization();
-  const oldLang = ELocalization.en === lang ? ELocalization.ru : ELocalization.en;
-  items.forEach((item) => {
-    item.label = item.label.replace(langJSON[oldLang].tab, langJSON[lang].tab);
-  });
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/404');
+    }
+  }, [isAuth, navigate]);
 
   const { lang } = useGetLocalization();
   const oldLang = ELocalization.en === lang ? ELocalization.ru : ELocalization.en;

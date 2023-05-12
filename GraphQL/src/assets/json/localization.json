@@ -16,9 +16,11 @@
     "placeholderQuery": "# Write your query or mutation here",
     "placeholderVariables": "# Enter variables",
     "placeholderHeaders": "# Enter headers",
-    "placeholderResponse": "Hit the Play Button to get a response here",
+    "placeholderResponse": "Click the button to get a response",
     "buttonOk": "Ok",
-    "buttonCancel": "Cancel"
+    "buttonCancel": "Cancel",
+    "unknownError": "Unknown Error",
+    "error": "Error"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -35,10 +37,12 @@
     "variables": "Переменные",
     "headers": "Заголовки",
     "placeholderQuery": "# Напишите здесь свой запрос или мутацию",
-    "placeholderVariables": "Введите переменные",
-    "placeholderHeaders": "Введите заголовок",
+    "placeholderVariables": "# Введите переменные",
+    "placeholderHeaders": "# Введите заголовки",
     "placeholderResponse": "Нажмите на кнопку для выполнения запроса",
     "buttonOk": "Ok",
-    "buttonCancel": "Отмена"
+    "buttonCancel": "Отмена",
+    "unknownError": "Неизвестная ошибка",
+    "error": "Ошибка"
   }
 }

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Layout } from 'antd';
 
 import { useAuth } from 'hooks/useAuth';
-import { useGetLocalization, useRemoveUser } from '../../hooks/reduxHooks';
+import { useGetLocalization, useRemoveUser } from 'hooks/reduxHooks';
 import { endSession } from '@/localStore/userAuthCookie';
 import SwitchLanguage from '../switchLanguage/SwitchLanguage';
 import langJSON from 'assets/json/localization.json';
