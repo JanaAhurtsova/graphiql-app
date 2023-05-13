@@ -21,7 +21,8 @@
     "buttonCancel": "Cancel",
     "unknownError": "Unknown Error",
     "error": "Error",
-    "errorMessage": "Check the correctness of the entered request for variables or headers"
+    "errorMessage": "Check the correctness of the entered request for variables or headers",
+    "errorBoundary": "Something went wrong..."
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -45,6 +46,7 @@
     "buttonCancel": "Отмена",
     "unknownError": "Неизвестная ошибка",
     "error": "Ошибка",
-    "errorMessage": "Проверьте правильность введенного запроса для переменных или заголовков"
+    "errorMessage": "Проверьте правильность введенного запроса для переменных или заголовков",
+    "errorBoundary": "Что-то пошло не так..."
   }
 }

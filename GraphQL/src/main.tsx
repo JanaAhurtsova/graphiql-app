@@ -9,19 +9,22 @@ import { setupStore } from './store/store';
 import { getLocalization } from './localStore/localStorage';
 import './firebase/firebase';
 import './index.scss';
+import ErrorBoundaryComponent from './components/errorBoundary/ErrorBoundary';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={setupStore({ user: getSession(), localization: getLocalization() })}>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: '#00b96b',
-          },
-        }}
-      >
-        <App />
-      </ConfigProvider>
+      <ErrorBoundaryComponent>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#00b96b',
+            },
+          }}
+        >
+          <App />
+        </ConfigProvider>
+      </ErrorBoundaryComponent>
     </Provider>
   </React.StrictMode>
 );
