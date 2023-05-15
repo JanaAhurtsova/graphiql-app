@@ -7,8 +7,12 @@ import {
 } from '@ant-design/icons';
 import { Drawer, Layout, Menu, Modal } from 'antd';
 import { useState } from 'react';
+
+import { useGetSchemaQuery } from 'store/api/Api';
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
+import DocumentationGraph from '../documentationGraph/DocumentationGraph';
+import { TSchemaTypesServer } from '../documentationGraph/type';
 
 const { Sider } = Layout;
 
@@ -18,6 +22,22 @@ export const Sidebar = () => {
   const [history, setHistory] = useState(false);
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
+
+  const { data: schemaResponse } = useGetSchemaQuery({});
+
+  const getType = (type: string) => {
+    return schemaResponse.data.__schema.types.find(
+      (value: TSchemaTypesServer) => value.name === type
+    );
+  };
+
+  const showSchema = () => {
+    const schemaData = getType(schemaResponse.data.__schema.queryType.name);
+    if (schemaData) {
+      return <DocumentationGraph schema={schemaResponse.data.__schema} />;
+    }
+    return <></>;
+  };
 
   const showDocumentation = () => {
     setDocumentation(true);
@@ -113,7 +133,7 @@ export const Sidebar = () => {
         onClose={onClose}
         open={documentation}
       >
-        <p>Content Documentation</p>
+        <div>{schemaResponse ? showSchema() : ''}</div>
       </Drawer>
       <Drawer
         title={Options.HISTORY}

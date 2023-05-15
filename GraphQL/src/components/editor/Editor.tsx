@@ -1,12 +1,12 @@
 import { CaretRightFilled } from '@ant-design/icons';
-import { Col, Input, Row } from 'antd';
-import { Button } from 'antd';
-import styles from './Editor.module.scss';
+import { Col, Input, Row, Button } from 'antd';
+import { useState } from 'react';
+
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { useGetResponseQuery } from 'store/api/Api';
-import { useState } from 'react';
 import { Loader } from 'components/loader/Loader';
 import { IQuery } from 'store/api/type';
+import styles from './Editor.module.scss';
 
 export const Editor = () => {
   const [query, setQuery] = useState('');
