@@ -35,10 +35,6 @@ export type TSchemaFields = {
   args: TSchemaFields[] | null;
 };
 
-export type TSCEMA_GRAPH = TSchemaFields & {
-  kind: string;
-};
-
 export type TReturnedArgsProps = {
   args: TSchemaFields[] | null;
   setQueryType: (value: string) => void;
