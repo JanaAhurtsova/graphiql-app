@@ -16,6 +16,17 @@
   }
 }
 
-.tab {
-  width: 100%;
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: .8rem 0.5rem .8rem 0;
+}
+
+.buttons {
+  display: flex;
+  gap: .8rem;
+}
+
+.icon {
+  cursor: pointer;
 }
