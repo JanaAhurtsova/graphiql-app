@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getIntrospectionQuery } from 'graphql';
+
 import { GRAPH_API, Api } from 'managers/API/Api';
 import { IQuery } from './type';
-import { getIntrospectionQuery } from 'graphql';
 
 export const RickApi = createApi({
   reducerPath: Api.RICK_API,
@@ -35,4 +36,4 @@ export const RickApi = createApi({
   }),
 });
 
-export const { useLazyGetResponseQuery, useGetSchemaQuery } = RickApi;
+export const { useLazyGetResponseQuery, useLazyGetSchemaQuery } = RickApi;
