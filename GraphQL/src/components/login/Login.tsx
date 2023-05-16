@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useForm, Resolver } from 'react-hook-form';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Button, Alert } from 'antd';
 
-import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
+import { logInWithEmailAndPassword } from '@/firebase/firebase';
+import { useGetLocalization } from '../../hooks/reduxHooks';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
@@ -13,7 +13,6 @@ import formData from '../../assets/json/formData.json';
 import './Login.scss';
 
 export default function Login() {
-  const setUserDispatch = useSetUser();
   const navigate = useNavigate();
   const { lang } = useGetLocalization();
   const [errorServer, setErrorServer] = useState('');
@@ -31,18 +30,13 @@ export default function Login() {
   });
 
   const handleLogin = handleSubmit((userForm) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, userForm.email, userForm.password)
-      .then(({ user }) => {
-        setUserDispatch({
-          email: user.email,
-          id: user.uid,
-          token: user.refreshToken,
-        });
+    logInWithEmailAndPassword(userForm.email, userForm.password)
+      .then(() => {
         navigate('/graph');
         setErrorServer('');
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setErrorServer(formData[lang].serverErrorLogin);
       });
   });
