@@ -8,10 +8,12 @@
 @font-face {
   font-family: 'raleway-c';
   src: url('../../../assets/fonts/raleway-regular.woff2');
+  font-display: fallback;
 }
 @font-face {
   font-family: 'outfit-c';
   src: url('../../../assets//fonts//outfit-regular.woff2');
+  font-display: fallback;
 }
 h1,
 h2,
@@ -30,7 +32,7 @@ h6 {
 .hero {
   width: calc(var(--index) * 15);
   position: absolute;
-  left: 50vw;
+  left: 60vw;
   top: 25vh;
   z-index: -1;
 }
@@ -38,13 +40,14 @@ h6 {
   height: 100vh;
 }
 .container {
-  padding: 0 7vw;
+  padding: 0 1vw;
 }
 .main_title {
   font-size: calc(var(--index) * 5);
   position: absolute;
   width: min-content;
   bottom: 17vh;
+  left: 5vw;
   line-height: 0.9;
   color: var(--color-header);
 }
@@ -66,20 +69,14 @@ h6 {
 }
 
 .gallery__right .gallery__item {
-  margin: 0;
-  margin-top: calc(var(--gallery-gap) * 0.5);
+  margin-top: calc(var(--gallery-gap) * 1.2);
   transform: translateY(100px);
 }
-.gallery__right .gallery__item:first-child {
-  margin-bottom: calc(var(--gallery-gap) * 0.8);
-}
-
 .gallery__left .gallery__item {
   transform: translateY(-100px);
+  margin-top: calc(var(--gallery-gap) * 1.2);
 }
-.gallery__left .gallery__item:first-child {
-  margin-top: calc(var(--gallery-gap) * 0.7);
-}
+
 .text_block {
   color: var(--color-text);
   position: relative;
@@ -103,4 +100,75 @@ h6 {
   line-height: 2.4rem;
   color: var(--color-h);
   margin-bottom: 1.5rem;
+}
+
+/* For screens smaller than 600px */
+@media (min-width: 320px) and (max-width: 600px) {
+  :root {
+    --gallery-gap: calc(var(--gallery-gap) * 2);
+  }
+  .hero {
+    left: 26vw;
+    top: 11vh;
+  }
+  .gallery__item {
+    max-width: calc(var(--index) * 10);
+  }
+  .text_block__p {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .main_title {
+    left: 20vw;
+  }
+  .team__h {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    margin-top: 1rem;
+  }
+  .text_block__h {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .container {
+    padding-bottom: 60vh;
+  }
+
+  .team__h {
+    margin-top: 20vh;
+    margin-bottom: 35vh;
+  }
+  .main_title {
+    font-size: calc(var(--index) * 4);
+  }
+}
+
+/* For screens between 600px and 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+  .hero {
+    left: 30vw;
+    top: 11vh;
+  }
+  .main_title {
+    left: 22vw;
+  }
+  .gallery__item {
+    max-width: calc(var(--index) * 18);
+  }
+  .text_block__h {
+    font-size: 2rem;
+  }
+  .text_block__p {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .container {
+    padding-bottom: 20vh;
+  }
+}
+
+/* For screens larger than 900px */
+@media (min-width: 900px) {
 }
