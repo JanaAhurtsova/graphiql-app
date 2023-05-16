@@ -5,13 +5,15 @@ import {
   SketchOutlined,
   SettingFilled,
 } from '@ant-design/icons';
-import { Button, Drawer, Layout, Menu, Modal } from 'antd';
+import { Button, Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
 
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import { useAppDispatch } from '@/hooks/reduxHooks';
+import { setFontSize } from '@/store/slices/fontSlice';
 
 const { Sider } = Layout;
 
@@ -21,8 +23,12 @@ export const Sidebar = () => {
   const [history, setHistory] = useState(false);
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
-
   const { lang } = useGetLocalization();
+  const dispatch = useAppDispatch();
+
+  const handleSliderChange = (value: number) => {
+    dispatch(setFontSize(value));
+  };
 
   const setShowModal = (
     setFunc: React.Dispatch<React.SetStateAction<boolean>>,
@@ -134,16 +140,10 @@ export const Sidebar = () => {
         open={modalSettings}
         onOk={handleOkSettings}
         onCancel={handleCancelSettings}
-        footer={[
-          <Button key="back" onClick={handleCancelSettings}>
-            {langJSON[lang].buttonCancel}
-          </Button>,
-          <Button key="ok" type="primary" onClick={handleOkSettings}>
-            {langJSON[lang].buttonOk}
-          </Button>,
-        ]}
+        footer={[]}
       >
-        <p>Settings...</p>
+        <p>{langJSON[lang].fontSize}</p>
+        <Slider min={14} max={24} defaultValue={14} onChange={handleSliderChange} />
       </Modal>
     </>
   );

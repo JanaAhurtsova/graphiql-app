@@ -8,7 +8,7 @@ import { changeLocalization } from '@/store/slices/localizationSlice';
 import { endSession, startSession } from '@/localStore/userAuthCookie';
 import { setLocalization } from '@/localStore/localStorage';
 
-const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useSetUser = () => {
