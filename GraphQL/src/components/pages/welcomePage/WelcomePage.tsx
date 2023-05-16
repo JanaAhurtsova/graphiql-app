@@ -33,82 +33,82 @@ export default function WelcomePage() {
   const textVladimirRef = useRef(null);
 
   useEffect(() => {
-    if (ScrollTrigger.isTouch !== 1) {
+    // if (ScrollTrigger.isTouch !== 1) {
+    gsap.fromTo(
+      heroRef.current,
+      { rotate: 0 },
+      {
+        rotate: 360,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: '-200',
+          end: '1500',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      welcomeRef.current,
+      { opacity: 1 },
+      {
+        opacity: 0.2,
+        scrollTrigger: {
+          trigger: welcomeRef.current,
+          start: 'top',
+          end: '1500',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    const itemsL = [graphqlRef, textRsRef, rsreactRef, yanaRef, textSvetlanaRef, vladimirRef];
+
+    itemsL.forEach((work) => {
       gsap.fromTo(
-        heroRef.current,
-        { rotate: 0 },
+        work.current,
+        { opacity: 0, x: -100 },
         {
-          rotate: 360,
+          opacity: 1,
+          x: -5,
           scrollTrigger: {
-            trigger: heroRef.current,
-            start: '-200',
-            end: '1500',
+            trigger: work.current,
+            start: '-800',
+            end: '-200',
             scrub: true,
             invalidateOnRefresh: true,
           },
         }
       );
+    });
+
+    const itemsR = [
+      textGqRef,
+      rsschoolRef,
+      textReactRef,
+      textYanaRef,
+      svetlanaRef,
+      textVladimirRef,
+    ];
+
+    itemsR.forEach((work) => {
       gsap.fromTo(
-        welcomeRef.current,
-        { opacity: 1 },
+        work.current,
+        { opacity: 0, x: 100 },
         {
-          opacity: 0.2,
+          opacity: 1,
+          x: 5,
           scrollTrigger: {
-            trigger: welcomeRef.current,
-            start: 'top',
-            end: '1500',
+            trigger: work.current,
+            start: '-800',
+            end: '-200',
             scrub: true,
             invalidateOnRefresh: true,
           },
         }
       );
-      const itemsL = [graphqlRef, textRsRef, rsreactRef, yanaRef, textSvetlanaRef, vladimirRef];
-
-      itemsL.forEach((work) => {
-        gsap.fromTo(
-          work.current,
-          { opacity: 0, x: -100 },
-          {
-            opacity: 1,
-            x: -5,
-            scrollTrigger: {
-              trigger: work.current,
-              start: '-800',
-              end: '-200',
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      });
-
-      const itemsR = [
-        textGqRef,
-        rsschoolRef,
-        textReactRef,
-        textYanaRef,
-        svetlanaRef,
-        textVladimirRef,
-      ];
-
-      itemsR.forEach((work) => {
-        gsap.fromTo(
-          work.current,
-          { opacity: 0, x: 100 },
-          {
-            opacity: 1,
-            x: 5,
-            scrollTrigger: {
-              trigger: work.current,
-              start: '-800',
-              end: '-200',
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      });
-    }
+    });
+    // }
   }, []);
 
   return (
