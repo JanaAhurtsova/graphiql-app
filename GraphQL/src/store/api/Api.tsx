@@ -9,14 +9,14 @@ export const RickApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: GRAPH_API }),
   endpoints: (build) => ({
     getResponse: build.query({
-      query: ({ arg, variables, headers }: IQuery) => ({
+      query: ({ query, variables, headers }: IQuery) => ({
         url: '',
         method: Api.POST,
         headers: {
           'Content-type': 'application/json',
-          headers,
+          ...headers,
         },
-        body: JSON.stringify({ query: arg, variables: variables }),
+        body: JSON.stringify({ query: query, variables: variables }),
       }),
     }),
     getSchema: build.query({
@@ -35,4 +35,4 @@ export const RickApi = createApi({
   }),
 });
 
-export const { useGetResponseQuery, useGetSchemaQuery } = RickApi;
+export const { useLazyGetResponseQuery, useGetSchemaQuery } = RickApi;

@@ -1,37 +1,43 @@
 import { CaretRightFilled } from '@ant-design/icons';
-import { Col, Input, Row, Button } from 'antd';
+import { Col, Input, Row, Modal, Button } from 'antd';
 import { useState } from 'react';
 
 import { HeadersVariables } from './headerVariables/HeadersVariables';
-import { useGetResponseQuery } from 'store/api/Api';
 import { Loader } from 'components/loader/Loader';
-import { IQuery } from 'store/api/type';
+import { useLazyGetResponseQuery } from 'store/api/Api';
+import { useGetLocalization } from 'hooks/reduxHooks';
+import langJSON from 'assets/json/localization.json';
 import styles from './Editor.module.scss';
 
 export const Editor = () => {
+  const { lang } = useGetLocalization();
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
-  const [value, setValue] = useState<IQuery>({ arg: query, variables: {} });
-  const { data: response, error, isFetching } = useGetResponseQuery(value);
+  const [isOpen, setIsOpen] = useState(false);
+  const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
 
   const showResult = () => {
-    if (variables && headers) {
-      setValue({
-        arg: query,
-        variables: JSON.parse(variables),
-        headers: headers,
-      });
-    } else if (variables && !headers) {
-      setValue({ arg: query, variables: variables });
-    } else if (!variables && headers) {
-      setValue({
-        arg: query,
-        variables: {},
-        headers: headers,
-      });
-    } else {
-      setValue({ arg: query, variables: {} });
+    try {
+      if (variables && headers) {
+        sendRequest({
+          query: query,
+          variables: JSON.parse(variables),
+          headers: JSON.parse(headers),
+        });
+      } else if (variables && !headers) {
+        sendRequest({ query: query, variables: JSON.parse(variables) });
+      } else if (!variables && headers) {
+        sendRequest({
+          query: query,
+          variables: {},
+          headers: JSON.parse(headers),
+        });
+      } else {
+        sendRequest({ query: query, variables: {} });
+      }
+    } catch (e) {
+      setIsOpen(true);
     }
   };
 
@@ -41,7 +47,7 @@ export const Editor = () => {
         <Input.TextArea
           className={styles.request}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="# Write your query or mutation here"
+          placeholder={langJSON[lang].placeholderQuery}
         />
         <HeadersVariables setVariables={setVariables} setHeaders={setHeaders} />
         <Button
@@ -54,12 +60,26 @@ export const Editor = () => {
       </Col>
       <Col className={styles.response} xs={24} sm={24} md={12}>
         {isFetching && <Loader />}
-        {error ? (
-          <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>
-        ) : (
+        {error && <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>}
+        {response && !error && (
           <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>
         )}
+        {!isFetching && !response && !error && (
+          <div className={styles.response}>{langJSON[lang].placeholderResponse}</div>
+        )}
       </Col>
+      <Modal
+        open={isOpen}
+        footer={
+          <Button key="ok" type="primary" onClick={() => setIsOpen(false)}>
+            OK
+          </Button>
+        }
+        onCancel={() => setIsOpen(false)}
+        title={langJSON[lang].error}
+      >
+        {langJSON[lang].errorMessage}
+      </Modal>
     </Row>
   );
 };

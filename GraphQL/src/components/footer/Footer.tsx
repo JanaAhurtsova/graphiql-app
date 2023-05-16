@@ -9,7 +9,7 @@ export const AppFooter: FC = () => {
       <a href="https://rs.school/react/">
         <img className={(styles.icon, styles.rs)} src={RssLogo} alt="RSS Logo" />
       </a>
-      <h3>©2023</h3>
+      <h3 className={styles.h}>©2023</h3>
       <div className={styles.github}>
         <a href="https://github.com/JanaAhurtsova">
           <img title="Jana" className={styles.icon} src={GitHubLogo} alt="GitHub Logo" />

@@ -1,6 +1,6 @@
 export function startSession(email: string, token: string, id: string) {
   const dateToday = new Date();
-  dateToday.setMinutes(dateToday.getHours() + 24);
+  dateToday.setHours(dateToday.getHours() + 24);
   document.cookie = `email=${email}; expires=${dateToday.toUTCString()};`;
   document.cookie = `token=${token}; expires=${dateToday.toUTCString()}; secure;`;
   document.cookie = `id=${id}; expires=${dateToday.toUTCString()};`;
@@ -8,11 +8,9 @@ export function startSession(email: string, token: string, id: string) {
 
 export function getSession() {
   return {
-    user: {
-      email: getCookie('email'),
-      token: getCookie('token'),
-      id: getCookie('id'),
-    },
+    email: getCookie('email'),
+    token: getCookie('token'),
+    id: getCookie('id'),
   };
 }
 

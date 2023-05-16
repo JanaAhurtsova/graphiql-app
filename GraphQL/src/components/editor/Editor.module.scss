@@ -1,4 +1,6 @@
 .editor {
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-height: calc(100vh - 162px);
 }
@@ -6,7 +8,7 @@
 .play {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 7px;
 }
 
 .response {
@@ -30,13 +32,12 @@
 }
 
 .request {
-  height: calc(79.5vh - 224px) !important;
-  resize: none !important;
   padding-right: 2.3rem;
+  flex: auto;
 
   &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     background-color: #dcdcdc;
     border-radius: 3px;
   }

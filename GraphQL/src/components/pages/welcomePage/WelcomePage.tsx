@@ -10,10 +10,13 @@ import styles from './WelcomePage.module.scss';
 import gsap from 'gsap';
 import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGetLocalization } from '@/hooks/reduxHooks';
+import langJSON from '../../../assets/json/localization.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WelcomePage() {
+  const { lang } = useGetLocalization();
   const heroRef = useRef(null);
   const welcomeRef = useRef(null);
   const graphqlRef = useRef(null);
@@ -67,11 +70,11 @@ export default function WelcomePage() {
           { opacity: 0, x: -100 },
           {
             opacity: 1,
-            x: 0,
+            x: -5,
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '300',
+              end: '-200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -94,11 +97,11 @@ export default function WelcomePage() {
           { opacity: 0, x: 100 },
           {
             opacity: 1,
-            x: 0,
+            x: 5,
             scrollTrigger: {
               trigger: work.current,
-              start: '-650',
-              end: '100',
+              start: '-800',
+              end: '-200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -110,19 +113,19 @@ export default function WelcomePage() {
 
   return (
     <>
-      <section className={styles.container}>
+      <section>
         <div className="wrapper">
           <div className={styles.content}>
             <header className={styles.hero_section}>
-              <img data-speed=".9" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
-              <div className="container">
+              <img data-speed="0.9" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
+              <div>
                 <div data-speed=".5" className={styles.main_header} ref={welcomeRef}>
-                  <h1 className={styles.main_title}>Welcome to GraphQL</h1>
+                  <h1 className={styles.main_title}>{langJSON[lang].welcomeText}</h1>
                 </div>
               </div>
             </header>
             <div className={styles.portfolio}>
-              <div className="container">
+              <div className={styles.container}>
                 <main className={styles.gallery}>
                   <div data-speed="0.9" className={styles.gallery__left}>
                     <img
@@ -133,13 +136,7 @@ export default function WelcomePage() {
                     />
                     <div className={(styles.text_block, styles.gallery__item)} ref={textRsRef}>
                       <h2 className={styles.text_block__h}>RS School</h2>
-                      <p className={styles.text_block__p}>
-                        RS School is free-of-charge and community-based education program conducted
-                        by The Rolling Scopes developer community since 2013. Everyone can study at
-                        RS School, regardless of age, professional employment, or place of
-                        residence. The mentors and trainers of our school are front-end and
-                        javascript developers from different companies and countries.
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].rsSchool}</p>
                     </div>
                     <img
                       className={styles.gallery__item}
@@ -149,16 +146,10 @@ export default function WelcomePage() {
                     />
                   </div>
 
-                  <div data-speed="1.1" className={styles.gallery__right}>
+                  <div data-speed="1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textGqRef}>
                       <h2 className={styles.text_block__h}>GraphQL</h2>
-                      <p className={styles.text_block__p}>
-                        GraphQL is a query language for APIs and a runtime for fulfilling those
-                        queries with your existing data. GraphQL provides a complete and
-                        understandable description of the data in your API, gives clients the power
-                        to ask for exactly what they need and nothing more, makes it easier to
-                        evolve APIs over time, and enables powerful developer tools.
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].graphQl}</p>
                     </div>
 
                     <img
@@ -169,17 +160,11 @@ export default function WelcomePage() {
                     />
                     <div className={(styles.text_block, styles.gallery__item)} ref={textReactRef}>
                       <h2 className={styles.text_block__h}>React Course</h2>
-                      <p className={styles.text_block__p}>
-                        This course is aimed to the students of the RS School which passed RS School
-                        stage #2 and for the new students which have experience with : JavaScript,
-                        TypeScript, Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull
-                        request flow),NPM, Webpack, CSS3 / HTML5 Chrome DevTools, Figma. 7 weeks are
-                        devoted to studying React and 3 more weeks to final task implementation
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].react}</p>
                     </div>
                   </div>
                 </main>
-                <h2 className={styles.team__h}>OUR DREAM TEAM</h2>
+                <h2 className={styles.team__h}>{langJSON[lang].team}</h2>
                 <div className={styles.gallery}>
                   <div data-speed="0.9" className={styles.gallery__left}>
                     <img className={styles.gallery__item} src={yana} alt="Alt" ref={yanaRef} />
@@ -187,7 +172,7 @@ export default function WelcomePage() {
                       className={(styles.text_block, styles.gallery__item)}
                       ref={textSvetlanaRef}
                     >
-                      <h2 className={styles.text_block__h}>SVETLANA</h2>
+                      <h2 className={styles.text_block__h}>{langJSON[lang].svetlana}</h2>
                       <p className={styles.text_block__p}>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam corrupti
                         ut voluptatibus praesentium quae soluta at nesciunt recusandae itaque earum.
@@ -201,9 +186,9 @@ export default function WelcomePage() {
                     />
                   </div>
 
-                  <div data-speed="1.1" className={styles.gallery__right}>
+                  <div data-speed="1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textYanaRef}>
-                      <h2 className={styles.text_block__h}>YANA</h2>
+                      <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
                       <p className={styles.text_block__p}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolores
                         suscipit quam nostrum qui ut repellat vel ducimus cum enim.
@@ -220,7 +205,7 @@ export default function WelcomePage() {
                       className={(styles.text_block, styles.gallery__item)}
                       ref={textVladimirRef}
                     >
-                      <h2 className={styles.text_block__h}>VLADIMIR</h2>
+                      <h2 className={styles.text_block__h}>{langJSON[lang].vladimir}</h2>
                       <p className={styles.text_block__p}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, iusto.
                         Dolore possimus maiores fugit provident sapiente impedit ipsum inventore
