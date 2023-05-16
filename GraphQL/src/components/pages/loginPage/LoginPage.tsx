@@ -19,7 +19,7 @@ export default function LoginPage() {
   });
   return (
     <section className={styles.login_tabs}>
-      <h3>{localizationJSON[lang].titleSignIn}</h3>
+      <h3 className={styles.h}>{localizationJSON[lang].titleSignIn}</h3>
       <Login />
     </section>
   );
