@@ -59,7 +59,7 @@ export default function AppHeader() {
         ) : (
           <>
             <NavLink to="/graph">{langJSON[lang].titleMain}</NavLink>
-            <NavLink to="/" onClick={exit}>
+            <NavLink to="/signout" onClick={exit}>
               {langJSON[lang].exit}
             </NavLink>
           </>
