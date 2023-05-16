@@ -21,7 +21,16 @@
     "buttonCancel": "Cancel",
     "unknownError": "Unknown Error",
     "error": "Error",
-    "errorMessage": "Check the correctness of the entered request for variables or headers"
+    "errorMessage": "Check the correctness of the entered request for variables or headers",
+    "errorBoundary": "Something went wrong...",
+    "welcomeText": "Welcome to GraphQL",
+    "graphQl": "GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.",
+    "rsSchool": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013. Everyone can study at RS School, regardless of age, professional employment, or place of residence. The mentors and trainers of our school are front-end and javascript developers from different companies and countries.",
+    "react": "This course is aimed to the students of the RS School which passed RS School stage #2 and for the new students which have experience with : JavaScript, TypeScript, Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull request flow),NPM, Webpack, CSS3 / HTML5 Chrome DevTools, Figma. 7 weeks are devoted to studying React and 3 more weeks to final task implementation",
+    "team": "OUR DREAM TEAM",
+    "svetlana": "SVETLANA",
+    "jana": "JANA",
+    "vladimir": "VLADIMIR"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -45,6 +54,15 @@
     "buttonCancel": "Отмена",
     "unknownError": "Неизвестная ошибка",
     "error": "Ошибка",
-    "errorMessage": "Проверьте правильность введенного запроса для переменных или заголовков"
+    "errorMessage": "Проверьте правильность введенного запроса для переменных или заголовков",
+    "errorBoundary": "Что-то пошло не так...",
+    "welcomeText": "Добро пожаловать в GraphQL",
+    "graphQl": "GraphQL — это язык запросов для API и среда выполнения для выполнения этих запросов с вашими существующими данными. GraphQL предоставляет полное и понятное описание данных в вашем API, дает клиентам возможность запрашивать именно то, что им нужно, и ничего больше, упрощает развитие API с течением времени и предоставляет мощные инструменты разработчика.",
+    "rsSchool": "RS School — бесплатная общественная образовательная программа, проводимая сообществом разработчиков The Rolling Scopes с 2013 года. Учиться в RS School может каждый, независимо от возраста, профессиональной занятости и места жительства. Наставники и тренеры нашей школы — фронтенд- и javascript-разработчики из разных компаний и стран.",
+    "react": "Этот курс предназначен для студентов школы RS, которые прошли второй этап школы RS, а также для новых студентов, имеющих опыт работы с: JavaScript, TypeScript, Git, GitHub (клонирование, добавление, фиксация, отправка, извлечение, слияние, перебазирование, поток запросов на вытягивание), NPM, Webpack, CSS3/HTML5 Chrome DevTools, Figma. 7 недель отведено на изучение React и еще 3 недели на финальную реализацию задачи",
+    "team": "НАША КОМАНДА",
+    "svetlana": "СВЕТЛАНА",
+    "jana": "ЯНА",
+    "vladimir": "ВЛАДИМИР"
   }
 }
