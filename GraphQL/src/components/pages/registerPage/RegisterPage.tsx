@@ -17,6 +17,7 @@ export default function RegisterPage() {
       navigate('/graph');
     }
   });
+
   return (
     <section className={styles.register_tabs}>
       <h3 className={styles.h}>{localizationJSON[lang].titleSignUp}</h3>

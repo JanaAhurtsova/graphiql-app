@@ -18,6 +18,8 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
     setActive(value);
   };
 
+  const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
+
   return (
     <div>
       <div className={styles.header}>
@@ -33,50 +35,20 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
           <UpOutlined rotate={open ? 180 : 0} />
         </div>
       </div>
-      <div style={{ display: open ? 'block' : 'none' }}>
+      <div style={{ display: setDisplay(open) }}>
         <Input.TextArea
-          style={{ display: active ? 'block' : 'none' }}
+          style={{ display: setDisplay(active) }}
           className={styles.option}
           onChange={(e) => setVariables(e.target.value)}
           placeholder={langJSON[lang].placeholderVariables}
         />
         <Input.TextArea
-          style={{ display: !active ? 'block' : 'none' }}
+          style={{ display: setDisplay(!active) }}
           className={styles.option}
           onChange={(e) => setHeaders(e.target.value)}
           placeholder={langJSON[lang].placeholderHeaders}
         />
       </div>
     </div>
-    // <Collapse ghost expandIconPosition="end">
-    //   <Panel
-    //     collapsible="icon"
-    //     className={styles.panel}
-    //     key={VARIABLES}
-    //     header={
-    //       <>
-    //         <Button onClick={() => setActive(true)} type={active ? 'link' : 'text'}>
-    //           {langJSON[lang].variables}
-    //         </Button>
-    //         <Button onClick={() => setActive(false)} type={!active ? 'link' : 'text'}>
-    //           {langJSON[lang].headers}
-    //         </Button>
-    //       </>
-    //     }
-    //   >
-    //     <Input.TextArea
-    //       style={{ display: active ? 'block' : 'none' }}
-    //       className={styles.option}
-    //       onChange={(e) => setVariables(e.target.value)}
-    //       placeholder={langJSON[lang].placeholderVariables}
-    //     />
-    //     <Input.TextArea
-    //       style={{ display: !active ? 'block' : 'none' }}
-    //       className={styles.option}
-    //       onChange={(e) => setHeaders(e.target.value)}
-    //       placeholder={langJSON[lang].placeholderHeaders}
-    //     />
-    //   </Panel>
-    // </Collapse>
   );
 };
