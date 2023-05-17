@@ -26,11 +26,13 @@ export const Sidebar = () => {
   const [modalSettings, setModalSettings] = useState(false);
 
   //const { data: schemaResponse } = useLazyGetSchemaQuery({});
-  const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
 
+  const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
+  /*
   useEffect(() => {
     sendRequest({});
-  });
+  }, [ schemaResponse ]);
+  */
   const getType = (type: string) => {
     return schemaResponse.data.__schema.types.find(
       (value: TSchemaTypesServer) => value.name === type
