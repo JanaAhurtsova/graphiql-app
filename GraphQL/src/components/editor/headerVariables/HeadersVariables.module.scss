@@ -23,6 +23,11 @@
   margin: .5rem 0;
 }
 
+.buttons {
+  display: flex;
+  gap: .3rem;
+}
+
 .icon {
   display: flex;
   cursor: pointer;

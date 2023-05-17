@@ -1,4 +1,4 @@
-import { Input, Segmented } from 'antd';
+import { Input, Button } from 'antd';
 import { useState } from 'react';
 import { ISetState } from './type';
 import styles from './HeadersVariables.module.scss';
@@ -23,11 +23,14 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   return (
     <div>
       <div className={styles.header}>
-        <Segmented
-          className={styles.segmented}
-          onChange={() => openTextArea(true)}
-          options={[langJSON[lang].variables, langJSON[lang].headers]}
-        />
+        <div className={styles.buttons}>
+          <Button onClick={() => openTextArea(true)} type={active ? 'default' : 'text'}>
+            {langJSON[lang].variables}
+          </Button>
+          <Button onClick={() => openTextArea(false)} type={!active ? 'default' : 'text'}>
+            {langJSON[lang].headers}
+          </Button>
+        </div>
         <UpOutlined
           className={styles.icon}
           onClick={() => setOpen(!open)}
