@@ -6,7 +6,7 @@ import {
   SettingFilled,
 } from '@ant-design/icons';
 import { Button, Drawer, Layout, Menu, Modal } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useLazyGetSchemaQuery } from 'store/api/Api';
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
@@ -28,6 +28,9 @@ export const Sidebar = () => {
   //const { data: schemaResponse } = useLazyGetSchemaQuery({});
   const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
 
+  useEffect(() => {
+    sendRequest({});
+  });
   const getType = (type: string) => {
     return schemaResponse.data.__schema.types.find(
       (value: TSchemaTypesServer) => value.name === type
