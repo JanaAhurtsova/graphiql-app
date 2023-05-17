@@ -12,6 +12,7 @@ import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import styles from './Sidebar.module.scss';
 
 const { Sider } = Layout;
 
@@ -87,6 +88,7 @@ export const Sidebar = () => {
   return (
     <>
       <Sider
+        className={styles.sidebar}
         collapsible
         collapsedWidth={50}
         collapsed={collapsed}
