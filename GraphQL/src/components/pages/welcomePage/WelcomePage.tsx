@@ -27,7 +27,6 @@ export default function WelcomePage() {
   const janaRef = useRef(null);
   const rsreactRef = useRef(null);
   const svetlanaRef = useRef(null);
-  const pageContainerRef = useRef(null);
 
   useEffect(() => {
     if (ScrollTrigger.isTouch !== 1) {
@@ -104,8 +103,8 @@ export default function WelcomePage() {
 
   return (
     <>
-      <section ref={pageContainerRef}>
-        <div className={styles.wrapper}>
+      <section className={styles.section}>
+        <div className="wrapper">
           <div className={styles.content}>
             <Parallax className={styles.space1} bgImage={space1} strength={600}>
               <header className={styles.hero_section}>

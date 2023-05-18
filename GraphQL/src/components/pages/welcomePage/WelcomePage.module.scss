@@ -27,6 +27,11 @@ h6 {
 .gallery > * {
   will-change: transform;
 }
+
+.section {
+  padding-bottom: 5vh;
+}
+
 .hero {
   width: calc(var(--index) * 15);
   position: absolute;
