@@ -5,7 +5,7 @@ import {
   SketchOutlined,
   SettingFilled,
 } from '@ant-design/icons';
-import { Button, Drawer, Layout, Menu, Modal, Slider } from 'antd';
+import { Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
 
 import { useLazyGetSchemaQuery } from 'store/api/Api';
@@ -16,6 +16,7 @@ import { Options } from 'managers/sidebar/Sidebar';
 import { useChangeFontSize, useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useHotkeys } from 'react-hotkeys-hook';
+import styles from './Sidebar.module.scss';
 
 const { Sider } = Layout;
 
@@ -151,17 +152,48 @@ export const Sidebar = () => {
         open={modalKeys}
         onOk={() => setShowModal(setModalKeys, false)}
         onCancel={() => setShowModal(setModalKeys, false)}
-        footer={[
-          <Button key="back" onClick={() => setShowModal(setModalKeys, false)}>
-            {langJSON[lang].buttonCancel}
-          </Button>,
-          <Button key="ok" type="primary" onClick={() => setShowModal(setModalKeys, false)}>
-            {langJSON[lang].buttonOk}
-          </Button>,
-        ]}
+        footer={[]}
       >
-        <p>Short key 1...</p>
-        <p>Short key 2...</p>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>{langJSON[lang].shortKeys}</th>
+              <th>{langJSON[lang].functions}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <code>Shift + D</code>
+              </td>
+              <td>{langJSON[lang].openDoc}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Shift + H</code>
+              </td>
+              <td>{langJSON[lang].openHist}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Shift + O</code>
+              </td>
+              <td>{langJSON[lang].openTab}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Shift + C</code>
+              </td>
+              <td>{langJSON[lang].closeTab}</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Shift + R</code>
+              </td>
+              <td>{langJSON[lang].sendReq}</td>
+            </tr>
+          </tbody>
+        </table>
       </Modal>
       <Modal
         title={langJSON[lang].settings}

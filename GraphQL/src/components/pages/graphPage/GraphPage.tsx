@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, Layout } from 'antd';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import TabContent from 'components/tabContent/TabContent';
 import { TargetKey } from './type';
@@ -23,6 +24,17 @@ const GraphPage: React.FC = () => {
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(3);
   const [user, loading] = useAuthState(auth);
+
+  const addTab = () => {
+    add();
+  };
+
+  const removeTab = () => {
+    remove(activeKey);
+  };
+
+  useHotkeys('shift+O', addTab);
+  useHotkeys('shift+C', removeTab);
 
   useEffect(() => {
     if (loading) {

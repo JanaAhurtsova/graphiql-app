@@ -31,7 +31,13 @@
     "svetlana": "SVETLANA",
     "jana": "JANA",
     "vladimir": "VLADIMIR",
-    "fontSize": "Change Font Size (14-24)"
+    "fontSize": "Change Font Size (14-24)",
+    "functions": "Functions",
+    "openDoc": "Open / Close Documentation",
+    "openHist": "Open / Close History",
+    "openTab": "Open New Tab",
+    "closeTab": "Close Active Tab",
+    "sendReq": "Send Request"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -65,6 +71,12 @@
     "svetlana": "СВЕТЛАНА",
     "jana": "ЯНА",
     "vladimir": "ВЛАДИМИР",
-    "fontSize": "Изменение размера шрифта (14-24)"
+    "fontSize": "Изменение размера шрифта (14-24)",
+    "functions": "Функции",
+    "openDoc": "Открыть / Закрыть Документацию",
+    "openHist": "Открыть / Закрыть Историю",
+    "openTab": "Открыть Новую Вкладку",
+    "closeTab": "Закрыть Активную Вкладку",
+    "sendReq": "Отправить Запрос"
   }
 }
