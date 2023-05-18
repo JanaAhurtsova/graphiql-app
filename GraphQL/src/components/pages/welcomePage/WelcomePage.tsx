@@ -72,7 +72,7 @@ export default function WelcomePage() {
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '100',
+              end: '0',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -92,7 +92,7 @@ export default function WelcomePage() {
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '100',
+              end: '0',
               scrub: true,
               invalidateOnRefresh: true,
             },
