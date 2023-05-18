@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { ISetState } from './type';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
-import { useAppSelector, useGetLocalization } from 'hooks/reduxHooks';
 import { UpOutlined } from '@ant-design/icons';
+import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 
 export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   const [active, setActive] = useState(true);
@@ -20,7 +20,7 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
 
   const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
 
-  const fontSize = useAppSelector((state) => state.font.fontSize);
+  const fontSize = useSetFontSize();
   const [fontStyle, setFontStyle] = useState(fontSize);
 
   useEffect(() => {

@@ -35,3 +35,7 @@ export const useChangeFontSize = () => {
 export const useGetLocalization = () => {
   return useAppSelector((state) => state.localization);
 };
+
+export const useSetFontSize = () => {
+  return useAppSelector((state) => state.font.fontSize);
+};
