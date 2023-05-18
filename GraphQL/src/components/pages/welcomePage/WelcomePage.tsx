@@ -12,6 +12,7 @@ import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from '../../../assets/json/localization.json';
+import { Parallax } from 'react-parallax';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +71,7 @@ export default function WelcomePage() {
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '500',
+              end: '200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -90,7 +91,7 @@ export default function WelcomePage() {
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
-              end: '500',
+              end: '200',
               scrub: true,
               invalidateOnRefresh: true,
             },
@@ -105,16 +106,19 @@ export default function WelcomePage() {
       <section ref={pageContainerRef}>
         <div className={styles.wrapper}>
           <div className={styles.content}>
-            <header className={styles.hero_section}>
-              <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
-              <div>
-                <div data-speed=".5" className={styles.main_header} ref={welcomeRef}>
-                  <h1 className={styles.main_title}>{langJSON[lang].welcomeText}</h1>
+            <Parallax className={styles.space1} bgImage="./1.jpg" strength={600}>
+              <header className={styles.hero_section}>
+                <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
+                <div>
+                  <div data-speed=".5" className={styles.main_header} ref={welcomeRef}>
+                    <h1 className={styles.main_title}>{langJSON[lang].welcomeText}</h1>
+                  </div>
                 </div>
-              </div>
-            </header>
-            <div className={styles.portfolio}>
-              <main className={styles.gallery}>
+              </header>
+            </Parallax>
+            <p className={styles.common}>{langJSON[lang].commonInformation}</p>
+            <main className={styles.gallery}>
+              <Parallax className={styles.space2} bgImage="./2.jpg" strength={1200}>
                 <div className={styles.gallery__item} ref={graphqlRef}>
                   <img src={graphql} alt="Alt" className={styles.img} />
                   <div className={styles.text_block}>
@@ -122,7 +126,7 @@ export default function WelcomePage() {
                     <p className={styles.text_block__p}>{langJSON[lang].graphQl}</p>
                   </div>
                 </div>
-                <div className={styles.gallery__item} ref={rsschoolRef}>
+                <div className={styles.gallery__item} id={styles.item__rs} ref={rsschoolRef}>
                   <div className={styles.text_block}>
                     <h2 className={styles.text_block__h}>RS School</h2>
                     <p className={styles.text_block__p}>{langJSON[lang].rsSchool}</p>
@@ -136,8 +140,10 @@ export default function WelcomePage() {
                     <p className={styles.text_block__p}>{langJSON[lang].react}</p>
                   </div>
                 </div>
-                <h2 className={styles.team__h}>{langJSON[lang].team}</h2>
-                <div className={styles.gallery__item} ref={yanaRef}>
+              </Parallax>
+              <h2 className={styles.common}>{langJSON[lang].team}</h2>
+              <Parallax className={styles.space3} bgImage="./3.jpg" strength={600}>
+                <div className={styles.gallery__item} id={styles.item__j} ref={yanaRef}>
                   <div className={styles.text_block}>
                     <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
                     <p className={styles.text_block__p}>
@@ -157,7 +163,7 @@ export default function WelcomePage() {
                     </p>
                   </div>
                 </div>
-                <div className={styles.gallery__item} ref={vladimirRef}>
+                <div className={styles.gallery__item} id={styles.item__v} ref={vladimirRef}>
                   <div className={styles.text_block}>
                     <h2 className={styles.text_block__h}>{langJSON[lang].vladimir}</h2>
                     <p className={styles.text_block__p}>
@@ -168,8 +174,8 @@ export default function WelcomePage() {
                   </div>
                   <img src={vladimir} alt="Alt" className={styles.img} />
                 </div>
-              </main>
-            </div>
+              </Parallax>
+            </main>
           </div>
         </div>
       </section>

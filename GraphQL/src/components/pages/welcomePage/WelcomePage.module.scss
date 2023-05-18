@@ -1,6 +1,5 @@
 :root {
   --index: calc(1vw + 1vh);
-  --color-header: #e535ab;
   --color-h: #00b96b;
   --color-text: #f5f0f0;
 }
@@ -38,9 +37,9 @@ h6 {
 .main_header {
   height: 100vh;
 }
-.content {
-  padding: 1vw 1vw;
-}
+// .content {
+//   padding: 1vw 1vw;
+// }
 .main_title {
   font-size: calc(var(--index) * 5);
   position: absolute;
@@ -48,7 +47,7 @@ h6 {
   bottom: 28vh;
   left: 5vw;
   line-height: 0.9;
-  color: var(--color-header);
+  color: var(--color-h);
 }
 .gallery {
   display: flex;
@@ -59,15 +58,16 @@ h6 {
 .gallery__item {
   display: flex;
   flex-direction: row;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   justify-content: space-evenly;
   gap: 50px;
   align-items: center;
+  opacity: 0;
 }
 
 .img {
   width: 400px;
-  height: 400px;
+  height: 420px;
   border-radius: 8px;
 }
 
@@ -95,6 +95,34 @@ h6 {
   color: var(--color-h);
   margin-bottom: 100px;
 }
+.space1 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.space2 {
+  position: relative;
+  height: 260vh;
+  width: 100%;
+}
+.space3 {
+  position: relative;
+  height: 200vh;
+  width: 100%;
+}
+.space2:nth-child(1),
+.space3:nth-child(3) {
+  padding-top: 100px;
+}
+.common {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00b96b;
+  font-size: 5rem;
+}
 
 // /* For screens smaller than 600px */
 @media (min-width: 320px) and (max-width: 599px) {
@@ -109,7 +137,7 @@ h6 {
   }
   .img {
     width: 200px;
-    height: 200px;
+    height: 210px;
   }
   .text_block__p {
     width: 200px;
@@ -133,6 +161,28 @@ h6 {
   }
   .main_title {
     left: 12vw;
+    bottom: 26vh;
+  }
+  .gallery:last-child {
+    margin-bottom: 100px;
+  }
+  .space2 {
+    height: 220vh;
+  }
+  .space3 {
+    height: 170vh;
+  }
+  .common {
+    height: 50px;
+    font-size: 3rem;
+  }
+  .gallery__item {
+    margin-bottom: 50px;
+  }
+  #item__rs,
+  #item__j,
+  #item__v {
+    flex-direction: column-reverse;
   }
 }
 
@@ -140,7 +190,7 @@ h6 {
 @media (min-width: 600px) and (max-width: 900px) {
   .img {
     width: 250px;
-    height: 250px;
+    height: 265px;
   }
   .text_block__p {
     width: 250px;
@@ -163,7 +213,20 @@ h6 {
     bottom: 43vh;
   }
   .gallery:last-child {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
+  }
+  .space2 {
+    height: 155vh;
+  }
+  .space3 {
+    height: 135vh;
+  }
+  .common {
+    height: 60px;
+    font-size: 3rem;
+  }
+  .gallery__item {
+    margin-bottom: 50px;
   }
 }
 
