@@ -5,12 +5,15 @@ import {
   SketchOutlined,
   SettingFilled,
 } from '@ant-design/icons';
-import { Button, Drawer, Layout, Menu, Modal } from 'antd';
+import { Button, Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
 
+import { useLazyGetSchemaQuery } from 'store/api/Api';
+import DocumentationGraph from '../documentationGraph/DocumentationGraph';
+import { TSchemaTypesServer } from '../documentationGraph/type';
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
-import { useGetLocalization } from '@/hooks/reduxHooks';
+import { useChangeFontSize, useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 
 const { Sider } = Layout;
@@ -22,7 +25,25 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
+  const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
+
+  const getType = (type: string) => {
+    return schemaResponse.data.__schema.types.find(
+      (value: TSchemaTypesServer) => value.name === type
+    );
+  };
+
+  const showSchema = () => {
+    const schemaData = getType(schemaResponse.data.__schema.queryType.name);
+    if (schemaData) {
+      return <DocumentationGraph schema={schemaResponse.data.__schema} />;
+    }
+    return <></>;
+  };
+
   const { lang } = useGetLocalization();
+
+  const handleSliderChange = useChangeFontSize();
 
   const setShowModal = (
     setFunc: React.Dispatch<React.SetStateAction<boolean>>,
@@ -101,7 +122,7 @@ export const Sidebar = () => {
         onClose={onClose}
         open={documentation}
       >
-        <p>Content Documentation</p>
+        <div>{schemaResponse ? showSchema() : ''}</div>
       </Drawer>
       <Drawer
         title={langJSON[lang].history}
@@ -134,16 +155,10 @@ export const Sidebar = () => {
         open={modalSettings}
         onOk={handleOkSettings}
         onCancel={handleCancelSettings}
-        footer={[
-          <Button key="back" onClick={handleCancelSettings}>
-            {langJSON[lang].buttonCancel}
-          </Button>,
-          <Button key="ok" type="primary" onClick={handleOkSettings}>
-            {langJSON[lang].buttonOk}
-          </Button>,
-        ]}
+        footer={[]}
       >
-        <p>Settings...</p>
+        <p>{langJSON[lang].fontSize}</p>
+        <Slider min={14} max={24} defaultValue={14} onChange={handleSliderChange} />
       </Modal>
     </>
   );

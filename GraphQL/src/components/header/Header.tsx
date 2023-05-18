@@ -2,25 +2,19 @@ import { NavLink } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useEffect } from 'react';
 import { Layout } from 'antd';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-import { useAuth } from 'hooks/useAuth';
-import { useGetLocalization, useRemoveUser } from 'hooks/reduxHooks';
-import { endSession } from '@/localStore/userAuthCookie';
+import { useGetLocalization } from 'hooks/reduxHooks';
 import SwitchLanguage from '../switchLanguage/SwitchLanguage';
+import { auth, logout } from '@/firebase/firebase';
 import langJSON from 'assets/json/localization.json';
 import styles from 'components/header/Header.module.scss';
 
 const { Header } = Layout;
 
 export default function AppHeader() {
-  const { isAuth } = useAuth();
-  const removeUserDispatch = useRemoveUser();
+  const [user] = useAuthState(auth);
   const { lang } = useGetLocalization();
-
-  const exit = () => {
-    removeUserDispatch();
-    endSession();
-  };
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -51,7 +45,7 @@ export default function AppHeader() {
     <Header className={styles.header}>
       <nav className={styles.nav}>
         <NavLink to="/">{langJSON[lang].titleWelcome}</NavLink>
-        {!isAuth ? (
+        {!user ? (
           <>
             <NavLink to="/signin">{langJSON[lang].titleSignIn}</NavLink>
             <NavLink to="/signup">{langJSON[lang].titleSignUp}</NavLink>
@@ -59,7 +53,7 @@ export default function AppHeader() {
         ) : (
           <>
             <NavLink to="/graph">{langJSON[lang].titleMain}</NavLink>
-            <NavLink to="/" onClick={exit}>
+            <NavLink to="/signout" onClick={logout}>
               {langJSON[lang].exit}
             </NavLink>
           </>

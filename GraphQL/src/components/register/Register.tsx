@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm, Resolver } from 'react-hook-form';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Button, Alert } from 'antd';
 
-import { useGetLocalization, useSetUser } from '../../hooks/reduxHooks';
+import { useGetLocalization } from '../../hooks/reduxHooks';
+import { registerWithEmailAndPassword } from '@/firebase/firebase';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
@@ -13,7 +13,6 @@ import formData from '../../assets/json/formData.json';
 import './Register.scss';
 
 export default function Register() {
-  const registerUserDispatch = useSetUser();
   const navigate = useNavigate();
   const [errorServer, setErrorServer] = useState('');
   const { lang } = useGetLocalization();
@@ -31,14 +30,8 @@ export default function Register() {
   });
 
   const handleRegister = handleSubmit((userForm) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, userForm.email, userForm.password)
-      .then(({ user }) => {
-        registerUserDispatch({
-          email: user.email,
-          id: user.uid,
-          token: user.refreshToken,
-        });
+    registerWithEmailAndPassword(userForm.email, userForm.password)
+      .then(() => {
         navigate('/graph');
         setErrorServer('');
       })

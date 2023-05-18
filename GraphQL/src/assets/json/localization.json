@@ -31,7 +31,8 @@
     "svetlana": "SVETLANA",
     "jana": "JANA",
     "vladimir": "VLADIMIR",
-    "commonInformation": "Common Information"
+    "commonInformation": "Common Information",
+    "fontSize": "Change Font Size (14-24)"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -65,6 +66,7 @@
     "svetlana": "СВЕТЛАНА",
     "jana": "ЯНА",
     "vladimir": "ВЛАДИМИР",
-    "commonInformation": "Общая Информация"
+    "commonInformation": "Общая Информация",
+    "fontSize": "Изменение размера шрифта (14-24)"
   }
 }

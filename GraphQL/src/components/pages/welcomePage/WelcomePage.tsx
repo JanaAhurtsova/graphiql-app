@@ -7,13 +7,12 @@ import rsreact from 'assets/img/rsreact.webp';
 import svetlana from 'assets/img/svetlana.webp';
 import space1 from 'assets/img/space1.webp';
 
-import styles from './WelcomePage.module.scss';
 import gsap from 'gsap';
 import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from '../../../assets/json/localization.json';
-import { Parallax } from 'react-parallax';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +59,36 @@ export default function WelcomePage() {
       );
 
       const itemsL = [graphqlRef, rsreactRef, svetlanaRef];
+    // if (ScrollTrigger.isTouch !== 1) {
+    gsap.fromTo(
+      heroRef.current,
+      { rotate: 0 },
+      {
+        rotate: 360,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: '-200',
+          end: '1500',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      welcomeRef.current,
+      { opacity: 1 },
+      {
+        opacity: 0.2,
+        scrollTrigger: {
+          trigger: welcomeRef.current,
+          start: 'top',
+          end: '1500',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+    const itemsL = [graphqlRef, textRsRef, rsreactRef, yanaRef, textSvetlanaRef, vladimirRef];
 
       itemsL.forEach((work) => {
         gsap.fromTo(
