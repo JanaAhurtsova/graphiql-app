@@ -1,6 +1,5 @@
 import {
   ClockCircleOutlined,
-  SyncOutlined,
   ReadOutlined,
   SketchOutlined,
   SettingFilled,
@@ -89,8 +88,6 @@ export const Sidebar = () => {
           case Options.HISTORY:
             setShowModal(setHistory, true);
             break;
-          case Options.REFRESH:
-            break;
           case Options.SHORT:
             setShowModal(setModalKeys, true);
             break;
@@ -106,7 +103,6 @@ export const Sidebar = () => {
   const items: MenuItem[] = [
     getItem(langJSON[lang].documentation, Options.DOCUMENTATION, <ReadOutlined />),
     getItem(langJSON[lang].history, Options.HISTORY, <ClockCircleOutlined />),
-    getItem(langJSON[lang].reFresh, Options.REFRESH, <SyncOutlined />),
     getItem(langJSON[lang].shortKeys, Options.SHORT, <SketchOutlined />),
     getItem(langJSON[lang].settings, Options.SETTINGS, <SettingFilled />),
   ];
