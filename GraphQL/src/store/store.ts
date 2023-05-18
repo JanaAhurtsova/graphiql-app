@@ -3,11 +3,13 @@ import { configureStore, PreloadedState, combineReducers } from '@reduxjs/toolki
 import { RickApi } from './api/Api';
 import localizationReducer from './slices/localizationSlice';
 import graphDocumentationReducer from './slices/graphDocumentationSlice';
+import fontReducer from './slices/fontSlice';
 
 const rootReducer = combineReducers({
   [RickApi.reducerPath]: RickApi.reducer,
   localization: localizationReducer,
   graphDocumentation: graphDocumentationReducer,
+  font: fontReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
