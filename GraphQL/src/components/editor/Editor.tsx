@@ -1,12 +1,13 @@
 import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Modal, Button } from 'antd';
-import styles from './Editor.module.scss';
+import { useEffect, useState } from 'react';
 import { HeadersVariables } from './headerVariables/HeadersVariables';
-import { useLazyGetResponseQuery } from 'store/api/Api';
-import { useState } from 'react';
 import { Loader } from 'components/loader/Loader';
+import { useLazyGetResponseQuery } from 'store/api/Api';
 import { useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import { useAppSelector } from '@/hooks/reduxHooks';
+import styles from './Editor.module.scss';
 
 export const Editor = () => {
   const { lang } = useGetLocalization();
@@ -15,6 +16,13 @@ export const Editor = () => {
   const [headers, setHeaders] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
+  const fontSize = useAppSelector((state) => state.font.fontSize);
+
+  const [fontStyle, setFontStyle] = useState(fontSize);
+
+  useEffect(() => {
+    setFontStyle(fontSize);
+  }, [fontSize]);
 
   const showResult = () => {
     try {
@@ -44,6 +52,7 @@ export const Editor = () => {
     <Row className={styles.row}>
       <Col className={styles.editor} xs={24} sm={24} md={12}>
         <Input.TextArea
+          style={{ fontSize: `${fontStyle}px` }}
           className={styles.request}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={langJSON[lang].placeholderQuery}
@@ -57,7 +66,13 @@ export const Editor = () => {
           type="primary"
         />
       </Col>
-      <Col className={styles.response} xs={24} sm={24} md={12}>
+      <Col
+        className={styles.response}
+        xs={24}
+        sm={24}
+        md={12}
+        style={{ fontSize: `${fontStyle}px` }}
+      >
         {isFetching && <Loader />}
         {error && <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>}
         {response && !error && (

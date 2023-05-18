@@ -33,7 +33,8 @@
     "vladimir": "VLADIMIR",
     "errorTitle": "Nothing to see here",
     "errorDescription": "Page you are trying to open does not exist. You may have mistyped the address, or the page has been moved to another URL. If you think this is an error contact support.",
-    "errorButton": "Take me back to Welcome page"
+    "errorButton": "Take me back to Welcome page",
+    "fontSize": "Change Font Size (14-24)"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -69,6 +70,7 @@
     "vladimir": "ВЛАДИМИР",
     "errorTitle": "Здесь ничего нет",
     "errorDescription": "Страница, которую Вы пытаетесть открыть, не существует. Возможно, Вы ошиблись адресом, или страница имеет другой URL. Если вы считаете, что это ошибка, обратитесь в службу поддержки.",
-    "errorButton": "Вернуться на страницу О нас"
+    "errorButton": "Вернуться на страницу О нас",
+    "fontSize": "Изменение размера шрифта (14-24)"
   }
 }

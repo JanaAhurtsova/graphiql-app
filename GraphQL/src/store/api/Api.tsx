@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getIntrospectionQuery } from 'graphql';
+
 import { GRAPH_API, Api } from 'managers/API/Api';
 import { IQuery } from './type';
 
@@ -18,7 +20,20 @@ export const RickApi = createApi({
         body: JSON.stringify({ query: query, variables: variables }),
       }),
     }),
+    getSchema: build.query({
+      query: ({}) => ({
+        url: '',
+        method: Api.POST,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: getIntrospectionQuery(),
+        }),
+      }),
+    }),
   }),
 });
 
-export const { useLazyGetResponseQuery } = RickApi;
+export const { useLazyGetResponseQuery, useLazyGetSchemaQuery } = RickApi;

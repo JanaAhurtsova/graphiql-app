@@ -1,9 +1,9 @@
 import { Input, Button } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ISetState } from './type';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
-import { useGetLocalization } from 'hooks/reduxHooks';
+import { useAppSelector, useGetLocalization } from 'hooks/reduxHooks';
 import { UpOutlined } from '@ant-design/icons';
 
 export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
@@ -19,6 +19,13 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   };
 
   const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
+
+  const fontSize = useAppSelector((state) => state.font.fontSize);
+  const [fontStyle, setFontStyle] = useState(fontSize);
+
+  useEffect(() => {
+    setFontStyle(fontSize);
+  }, [fontSize]);
 
   return (
     <div>
@@ -39,13 +46,13 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
       </div>
       <div style={{ display: setDisplay(open) }}>
         <Input.TextArea
-          style={{ display: setDisplay(active) }}
+          style={{ display: setDisplay(active), fontSize: `${fontStyle}px` }}
           className={styles.option}
           onChange={(e) => setVariables(e.target.value)}
           placeholder={langJSON[lang].placeholderVariables}
         />
         <Input.TextArea
-          style={{ display: setDisplay(!active) }}
+          style={{ display: setDisplay(!active), fontSize: `${fontStyle}px` }}
           className={styles.option}
           onChange={(e) => setHeaders(e.target.value)}
           placeholder={langJSON[lang].placeholderHeaders}

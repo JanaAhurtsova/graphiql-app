@@ -1,7 +1,8 @@
 import { RouterProvider } from 'react-router-dom';
-import './App.scss';
-import { router } from '../../router/Router';
 import { ConfigProvider } from 'antd';
+
+import { router } from '../../router/Router';
+import './App.scss';
 
 function App() {
   return (
