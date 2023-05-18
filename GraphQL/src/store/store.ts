@@ -1,12 +1,11 @@
 import { configureStore, PreloadedState, combineReducers } from '@reduxjs/toolkit';
-import userReducer from './slices/userSlice';
+
 import { RickApi } from './api/Api';
 import localizationReducer from './slices/localizationSlice';
 import fontReducer from './slices/fontSlice'; // добавили import
 
 const rootReducer = combineReducers({
   [RickApi.reducerPath]: RickApi.reducer,
-  user: userReducer,
   localization: localizationReducer,
   font: fontReducer,
 });

@@ -8,7 +8,7 @@ import {
 import { Button, Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
 
-import { useGetSchemaQuery } from 'store/api/Api';
+import { useLazyGetSchemaQuery } from 'store/api/Api';
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
 import { TSchemaTypesServer } from '../documentationGraph/type';
 import { MenuItem } from './type';
@@ -25,8 +25,7 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
-
-  const { data: schemaResponse } = useGetSchemaQuery({});
+  const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
 
   const getType = (type: string) => {
     return schemaResponse.data.__schema.types.find(

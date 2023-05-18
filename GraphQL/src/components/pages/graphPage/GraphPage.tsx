@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, Layout } from 'antd';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import TabContent from 'components/tabContent/TabContent';
-import { useAuth } from 'hooks/useAuth';
 import { TargetKey } from './type';
+import { ELocalization } from '@/store/type';
+import { auth } from '@/firebase/firebase';
 import { KEY1, KEY2 } from 'managers/graphPage/enum';
 import { Sidebar } from 'components/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
-import { ELocalization } from '@/store/type';
 
 const initialItems = [
   { label: `${langJSON.en.tab} 1`, children: <TabContent />, key: KEY1, closable: false },
@@ -17,17 +18,20 @@ const initialItems = [
 ];
 
 const GraphPage: React.FC = () => {
-  const { isAuth } = useAuth();
   const navigate = useNavigate();
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(3);
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-    if (!isAuth) {
-      navigate('/404');
+    if (loading) {
+      return;
     }
-  }, [isAuth, navigate]);
+    if (!user) {
+      return navigate('/404');
+    }
+  }, [user, loading, navigate]);
 
   const { lang } = useGetLocalization();
   const oldLang = ELocalization.en === lang ? ELocalization.ru : ELocalization.en;
@@ -84,17 +88,21 @@ const GraphPage: React.FC = () => {
   };
 
   return (
-    <Layout className="container">
-      <Sidebar />
-      <Tabs
-        type="editable-card"
-        onChange={onChange}
-        activeKey={activeKey}
-        onEdit={onEdit}
-        items={items}
-        style={{ flex: 'auto' }}
-      />
-    </Layout>
+    <>
+      {user && (
+        <Layout className="container">
+          <Sidebar />
+          <Tabs
+            type="editable-card"
+            onChange={onChange}
+            activeKey={activeKey}
+            onEdit={onEdit}
+            items={items}
+            style={{ flex: 'auto' }}
+          />
+        </Layout>
+      )}
+    </>
   );
 };
 

@@ -6,12 +6,13 @@ import yana from 'assets/img/yana.jpg';
 import rsreact from 'assets/img/rsreact.jpg';
 import svetlana from 'assets/img/svetlana.jpg';
 
-import styles from './WelcomePage.module.scss';
 import gsap from 'gsap';
 import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from '../../../assets/json/localization.json';
+import styles from './WelcomePage.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
