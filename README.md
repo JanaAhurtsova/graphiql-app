@@ -1,21 +1,11 @@
-# GraphiQl-App
+# GraphiQL-App
 GraphiQL is a playground/IDE for graphQL requests.
 ### Running and start
-* Clone this repo:
-
-        $ git clone https://github.com/JanaAhurtsova/graphiql-app.git
-* Go to downloaded folder:
-
-      $ cd graphiql-app
-* Checkout to develop branch:
-
-       $ git checkout develop
-* Install dependencies:
-
-        $ npm install
-* Start app:
-
-        $ npm start
+* Clone this repo: `$ git clone https://github.com/JanaAhurtsova/graphiql-app.git`
+* Go to downloaded folder: `$ cd graphiql-app`
+* Checkout to develop branch: `$ git checkout develop`
+* Install dependencies: `$ npm install`
+* Start app: `$ npm start`
 ### Deploy
 ## Application Structure
 1. Welcome page
