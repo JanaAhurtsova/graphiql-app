@@ -25,7 +25,6 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
-  //const { data: schemaResponse } = useLazyGetSchemaQuery({});
   const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
 
   const getType = (type: string) => {

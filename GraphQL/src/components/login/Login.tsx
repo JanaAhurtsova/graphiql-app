@@ -35,8 +35,7 @@ export default function Login() {
         navigate('/graph');
         setErrorServer('');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setErrorServer(formData[lang].serverErrorLogin);
       });
   });
