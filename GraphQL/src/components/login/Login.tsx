@@ -4,12 +4,12 @@ import { useForm, Resolver } from 'react-hook-form';
 import { Button, Alert } from 'antd';
 
 import { logInWithEmailAndPassword } from '@/firebase/firebase';
-import { useGetLocalization } from '../../hooks/reduxHooks';
+import { useGetLocalization } from 'hooks/reduxHooks';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
 import resolverLogin from './ResolverLogin';
-import formData from '../../assets/json/formData.json';
+import formData from 'assets/json/formData.json';
 import './Login.scss';
 
 export default function Login() {
