@@ -10,10 +10,8 @@ import { useState } from 'react';
 
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
-import { useGetLocalization } from '@/hooks/reduxHooks';
+import { useChangeFontSize, useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
-import { useAppDispatch } from '@/hooks/reduxHooks';
-import { setFontSize } from '@/store/slices/fontSlice';
 
 const { Sider } = Layout;
 
@@ -24,11 +22,8 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
   const { lang } = useGetLocalization();
-  const dispatch = useAppDispatch();
 
-  const handleSliderChange = (value: number) => {
-    dispatch(setFontSize(value));
-  };
+  const handleSliderChange = useChangeFontSize();
 
   const setShowModal = (
     setFunc: React.Dispatch<React.SetStateAction<boolean>>,

@@ -7,8 +7,9 @@ import { ELocalization, TUserSlice } from '@/store/type';
 import { changeLocalization } from '@/store/slices/localizationSlice';
 import { endSession, startSession } from '@/localStore/userAuthCookie';
 import { setLocalization } from '@/localStore/localStorage';
+import { setFontSize } from '@/store/slices/fontSlice';
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useSetUser = () => {
@@ -38,6 +39,16 @@ export const useChangeLocalization = () => {
     (lang: ELocalization) => {
       setLocalization(lang);
       dispatch(changeLocalization(lang));
+    },
+    [dispatch]
+  );
+};
+
+export const useChangeFontSize = () => {
+  const dispatch = useAppDispatch();
+  return useCallback(
+    (value: number) => {
+      dispatch(setFontSize(value));
     },
     [dispatch]
   );
