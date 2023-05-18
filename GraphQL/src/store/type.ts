@@ -1,4 +1,4 @@
-import { TDocumentation } from '@/components/documentationGraph/type';
+import { TSchemaServer } from '@/components/documentationGraph/type';
 
 export type TLanguageSlice = {
   lang: ELocalization;
@@ -10,5 +10,5 @@ export enum ELocalization {
 }
 
 export type TGraphDocumentationSlice = {
-  doc: null | TDocumentation;
+  doc: null | TSchemaServer;
 };

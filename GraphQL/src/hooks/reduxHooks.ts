@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '@/store/store';
 import { ELocalization } from '@/store/type';
 import { changeLocalization } from '@/store/slices/localizationSlice';
 import { setLocalization } from '@/localStore/localStorage';
-import { TDocumentation } from '@/components/documentationGraph/type';
+import { TSchemaServer } from '@/components/documentationGraph/type';
 import { setGraphDocumentation } from '@/store/slices/graphDocumentationSlice';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -26,12 +26,12 @@ export const useChangeLocalization = () => {
 export const useGetLocalization = () => {
   return useAppSelector((state) => state.localization);
 };
-/*
+
 export const useSetDocumentationGraph = () => {
   const dispatch = useAppDispatch();
 
   return useCallback(
-    (doc: TDocumentation) => {
+    (doc: TSchemaServer) => {
       dispatch(setGraphDocumentation(doc));
     },
     [dispatch]
@@ -41,4 +41,3 @@ export const useSetDocumentationGraph = () => {
 export const useGetDocumentationGraph = () => {
   return useAppSelector((state) => state.graphDocumentation);
 };
-*/

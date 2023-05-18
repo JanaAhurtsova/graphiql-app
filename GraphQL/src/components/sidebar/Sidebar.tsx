@@ -6,14 +6,13 @@ import {
   SettingFilled,
 } from '@ant-design/icons';
 import { Button, Drawer, Layout, Menu, Modal } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { useLazyGetSchemaQuery } from 'store/api/Api';
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
 import { TSchemaTypesServer } from '../documentationGraph/type';
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
-import { useGetLocalization } from '@/hooks/reduxHooks';
+import { useGetDocumentationGraph, useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 
 const { Sider } = Layout;
@@ -25,24 +24,20 @@ export const Sidebar = () => {
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
 
-  //const { data: schemaResponse } = useLazyGetSchemaQuery({});
+  const { doc: schemaResponse } = useGetDocumentationGraph();
 
-  const [sendRequest, { data: schemaResponse }] = useLazyGetSchemaQuery({});
-  /*
-  useEffect(() => {
-    sendRequest({});
-  }, [ schemaResponse ]);
-  */
   const getType = (type: string) => {
-    return schemaResponse.data.__schema.types.find(
-      (value: TSchemaTypesServer) => value.name === type
-    );
+    if (schemaResponse !== null) {
+      return schemaResponse?.types.find((value: TSchemaTypesServer) => value.name === type);
+    }
   };
 
   const showSchema = () => {
-    const schemaData = getType(schemaResponse.data.__schema.queryType.name);
-    if (schemaData) {
-      return <DocumentationGraph schema={schemaResponse.data.__schema} />;
+    if (schemaResponse !== null) {
+      const schemaData = getType(schemaResponse?.queryType?.name);
+      if (schemaData) {
+        return <DocumentationGraph schema={schemaResponse} />;
+      }
     }
     return <></>;
   };
@@ -98,6 +93,7 @@ export const Sidebar = () => {
             break;
         }
       },
+      disabled: key === Options.DOCUMENTATION && !schemaResponse.types.length ? true : false,
     } as MenuItem;
   }
 

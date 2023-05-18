@@ -1,5 +1,17 @@
 export type TSchemaServer = {
+  directives?: [];
+  mutationType?: null;
+  queryType: {
+    name: string;
+  };
+  subscriptionType?: null;
   types: TSchemaTypesServer[];
+  /*
+  queryType: {
+    name: string;
+  };
+  types: TSchemaTypesServer[];
+  */
 };
 
 export type TSchemaTypesServer = {

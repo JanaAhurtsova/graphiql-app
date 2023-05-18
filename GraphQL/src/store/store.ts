@@ -7,7 +7,7 @@ import graphDocumentationReducer from './slices/graphDocumentationSlice';
 const rootReducer = combineReducers({
   [RickApi.reducerPath]: RickApi.reducer,
   localization: localizationReducer,
-  //graphDocumentation: graphDocumentationReducer,
+  graphDocumentation: graphDocumentationReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

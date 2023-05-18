@@ -16,12 +16,20 @@ export const Editor = () => {
   const [headers, setHeaders] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
-  //const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
-  //const setDocumentation = useSetDocumentationGraph();
-  //useEffect(() => {
-  //  console.log('!!!!!!!!!');
-  //setDocumentation({ doc: documentation });
-  //}, [documentation, setDocumentation]);
+  const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
+  const setDocumentation = useSetDocumentationGraph();
+
+  useEffect(() => {
+    if (response && !documentation && !error && !isFetching) {
+      getDocumentation({});
+    }
+  }, [documentation, error, isFetching, getDocumentation, response]);
+
+  useEffect(() => {
+    if (documentation) {
+      setDocumentation(documentation);
+    }
+  }, [documentation, setDocumentation]);
 
   const showResult = () => {
     try {
@@ -42,7 +50,6 @@ export const Editor = () => {
       } else {
         sendRequest({ query: query, variables: {} });
       }
-      //getDocumentation({});
     } catch (e) {
       setIsOpen(true);
     }
