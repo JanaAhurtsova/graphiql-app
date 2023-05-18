@@ -124,7 +124,7 @@ h6 {
 // /* For screens smaller than 600px */
 @media (min-width: 320px) and (max-width: 599px) {
   .hero {
-    left: 32vw;
+    left: 30vw;
     top: 16vh;
     width: calc(var(--index) * 12);
   }
@@ -156,9 +156,9 @@ h6 {
     margin-bottom: 150px;
   }
   .main_title {
-    left: 23vw;
-    bottom: 26vh;
-    font-size: calc(var(--index) * 4);
+    left: 30vw;
+    bottom: 32vh;
+    font-size: calc(var(--index) * 3);
   }
   .gallery:last-child {
     margin-bottom: 100px;
@@ -227,6 +227,13 @@ h6 {
   }
 }
 
-// /* For screens larger than 900px */
-// @media (min-width: 900px) {
-// }
+@media (min-width: 400px) and (max-width: 599px) {
+  .hero {
+    left: 36vw;
+    top: 20vh;
+  }
+  .main_title {
+    left: 36vw;
+    bottom: 32vh;
+  }
+}
