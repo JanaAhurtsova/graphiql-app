@@ -8,6 +8,9 @@ import {
 import { Button, Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
 
+import { useGetSchemaQuery } from 'store/api/Api';
+import DocumentationGraph from '../documentationGraph/DocumentationGraph';
+import { TSchemaTypesServer } from '../documentationGraph/type';
 import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import { useChangeFontSize, useGetLocalization } from '@/hooks/reduxHooks';
@@ -21,6 +24,24 @@ export const Sidebar = () => {
   const [history, setHistory] = useState(false);
   const [modalKeys, setModalKeys] = useState(false);
   const [modalSettings, setModalSettings] = useState(false);
+
+
+  const { data: schemaResponse } = useGetSchemaQuery({});
+
+  const getType = (type: string) => {
+    return schemaResponse.data.__schema.types.find(
+      (value: TSchemaTypesServer) => value.name === type
+    );
+  };
+
+  const showSchema = () => {
+    const schemaData = getType(schemaResponse.data.__schema.queryType.name);
+    if (schemaData) {
+      return <DocumentationGraph schema={schemaResponse.data.__schema} />;
+    }
+    return <></>;
+  };
+
   const { lang } = useGetLocalization();
 
   const handleSliderChange = useChangeFontSize();
@@ -102,7 +123,7 @@ export const Sidebar = () => {
         onClose={onClose}
         open={documentation}
       >
-        <p>Content Documentation</p>
+        <div>{schemaResponse ? showSchema() : ''}</div>
       </Drawer>
       <Drawer
         title={langJSON[lang].history}

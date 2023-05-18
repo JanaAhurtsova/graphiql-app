@@ -1,0 +1,15 @@
+.blue_text { 
+  color: blue;
+}
+.red_text { 
+  color :red;
+}
+.brown_text { 
+  color: rgb(243, 140, 5);
+}
+.link_documentation {
+  cursor: pointer;
+  &:hover, &:active {
+    text-decoration: underline;
+  }
+}
