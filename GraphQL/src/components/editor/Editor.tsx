@@ -6,7 +6,7 @@ import { Loader } from 'components/loader/Loader';
 import { useLazyGetResponseQuery } from 'store/api/Api';
 import { useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
 
 export const Editor = () => {
@@ -16,7 +16,7 @@ export const Editor = () => {
   const [headers, setHeaders] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
-  const fontSize = useAppSelector((state) => state.font.fontSize);
+  const fontSize = useSetFontSize();
 
   const [fontStyle, setFontStyle] = useState(fontSize);
 

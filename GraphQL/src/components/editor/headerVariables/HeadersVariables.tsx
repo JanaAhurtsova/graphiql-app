@@ -4,7 +4,7 @@ import { VARIABLES, HEADERS } from 'managers/headerVariables/Names';
 import { ISetState } from './type';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
-import { useAppSelector, useGetLocalization } from 'hooks/reduxHooks';
+import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 
 export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   const [activeKey, setActiveKey] = useState(VARIABLES);
@@ -14,7 +14,7 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
     setActiveKey(newActiveKey);
   };
 
-  const fontSize = useAppSelector((state) => state.font.fontSize);
+  const fontSize = useSetFontSize();
   const [fontStyle, setFontStyle] = useState(fontSize);
 
   useEffect(() => {
