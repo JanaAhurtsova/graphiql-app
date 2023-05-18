@@ -1,12 +1,13 @@
 import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Modal, Button } from 'antd';
-import styles from './Editor.module.scss';
-import { HeadersVariables } from './headerVariables/HeadersVariables';
-import { useLazyGetResponseQuery } from 'store/api/Api';
 import { useState } from 'react';
+
+import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
+import { useLazyGetResponseQuery } from 'store/api/Api';
 import { useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import styles from './Editor.module.scss';
 
 export const Editor = () => {
   const { lang } = useGetLocalization();
