@@ -1,13 +1,13 @@
 import hero from 'assets/svg/hero.svg';
-import graphql from 'assets/img/graphql.jpg';
-import rsschool from 'assets/img/rsschool.jpg';
-import vladimir from 'assets/img/vladimir.jpg';
-import yana from 'assets/img/yana.jpg';
-import rsreact from 'assets/img/rsreact.jpg';
-import svetlana from 'assets/img/svetlana.jpg';
-import space1 from 'assets/img/1.jpg';
-import space2 from 'assets/img/2.jpg';
-import space3 from 'assets/img/3.jpg';
+import graphql from 'assets/img/graphql.webp';
+import rsschool from 'assets/img/rsschool.webp';
+import vladimir from 'assets/img/vladimir.webp';
+import yana from 'assets/img/yana.webp';
+import rsreact from 'assets/img/rsreact.webp';
+import svetlana from 'assets/img/svetlana.webp';
+import space1 from 'assets/img/1.webp';
+import space2 from 'assets/img/2.webp';
+import space3 from 'assets/img/3.webp';
 
 import styles from './WelcomePage.module.scss';
 import gsap from 'gsap';
@@ -109,7 +109,7 @@ export default function WelcomePage() {
       <section ref={pageContainerRef}>
         <div className={styles.wrapper}>
           <div className={styles.content}>
-            <Parallax className={styles.space1} bgImage={space1} strength={600}>
+            <Parallax className={styles.space1} bgImage={space1} strength={800}>
               <header className={styles.hero_section}>
                 <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
                 <div>
@@ -121,7 +121,7 @@ export default function WelcomePage() {
             </Parallax>
             <p className={styles.common}>{langJSON[lang].commonInformation}</p>
             <main className={styles.gallery}>
-              <Parallax className={styles.space2} bgImage={space2} strength={1200}>
+              <Parallax className={styles.space2} bgImage={space2} strength={800}>
                 <div className={styles.gallery__item} ref={graphqlRef}>
                   <img src={graphql} alt="Alt" className={styles.img} />
                   <div className={styles.text_block}>
@@ -145,7 +145,7 @@ export default function WelcomePage() {
                 </div>
               </Parallax>
               <h2 className={styles.common}>{langJSON[lang].team}</h2>
-              <Parallax className={styles.space3} bgImage={space3} strength={600}>
+              <Parallax className={styles.space3} bgImage={space3} strength={800}>
                 <div className={styles.gallery__item} id={styles.item__j} ref={yanaRef}>
                   <div className={styles.text_block}>
                     <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
