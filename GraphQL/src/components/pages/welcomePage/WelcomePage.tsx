@@ -174,10 +174,7 @@ export default function WelcomePage() {
                       ref={textSvetlanaRef}
                     >
                       <h2 className={styles.text_block__h}>{langJSON[lang].svetlana}</h2>
-                      <p className={styles.text_block__p}>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam corrupti
-                        ut voluptatibus praesentium quae soluta at nesciunt recusandae itaque earum.
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].aboutSvetlana}</p>
                     </div>
                     <img
                       className={styles.gallery__item}
@@ -190,10 +187,7 @@ export default function WelcomePage() {
                   <div data-speed="1" className={styles.gallery__right}>
                     <div className={(styles.text_block, styles.gallery__item)} ref={textYanaRef}>
                       <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
-                      <p className={styles.text_block__p}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolores
-                        suscipit quam nostrum qui ut repellat vel ducimus cum enim.
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].aboutJana}</p>
                     </div>
 
                     <img
@@ -207,11 +201,7 @@ export default function WelcomePage() {
                       ref={textVladimirRef}
                     >
                       <h2 className={styles.text_block__h}>{langJSON[lang].vladimir}</h2>
-                      <p className={styles.text_block__p}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, iusto.
-                        Dolore possimus maiores fugit provident sapiente impedit ipsum inventore
-                        quaerat.
-                      </p>
+                      <p className={styles.text_block__p}>{langJSON[lang].aboutVladimir}</p>
                     </div>
                   </div>
                 </div>

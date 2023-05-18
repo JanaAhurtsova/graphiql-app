@@ -31,7 +31,10 @@
     "svetlana": "SVETLANA",
     "jana": "JANA",
     "vladimir": "VLADIMIR",
-    "fontSize": "Change Font Size (14-24)"
+    "fontSize": "Change Font Size (14-24)",
+    "aboutJana": "about Jana",
+    "aboutVladimir": "about Vladimir",
+    "aboutSvetlana": "about Svetlana"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -65,6 +68,9 @@
     "svetlana": "СВЕТЛАНА",
     "jana": "ЯНА",
     "vladimir": "ВЛАДИМИР",
-    "fontSize": "Изменение размера шрифта (14-24)"
+    "fontSize": "Изменение размера шрифта (14-24)",
+    "aboutJana": "обо мне",
+    "aboutVladimir": "обо мне",
+    "aboutSvetlana": "обо мне"
   }
 }
