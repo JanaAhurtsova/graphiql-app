@@ -8,6 +8,7 @@ import { useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 export const Editor = () => {
   const { lang } = useGetLocalization();
@@ -47,6 +48,9 @@ export const Editor = () => {
       setIsOpen(true);
     }
   };
+
+  // Определяем горячие клавиши
+  useHotkeys('shift+r', showResult);
 
   return (
     <Row className={styles.row}>

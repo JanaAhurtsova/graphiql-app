@@ -15,6 +15,7 @@ import { MenuItem } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import { useChangeFontSize, useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const { Sider } = Layout;
 
@@ -64,6 +65,18 @@ export const Sidebar = () => {
     setDocumentation(false);
     setHistory(false);
   };
+
+  const openDocumentationDrawer = () => {
+    setDocumentation(!documentation);
+  };
+
+  const openHistoryDrawer = () => {
+    setHistory(!history);
+  };
+
+  // Определяем горячие клавиши
+  useHotkeys('shift+d', openDocumentationDrawer);
+  useHotkeys('shift+h', openHistoryDrawer);
 
   function getItem(
     label: React.ReactNode,
