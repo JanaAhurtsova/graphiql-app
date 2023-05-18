@@ -30,7 +30,8 @@
     "team": "OUR DREAM TEAM",
     "svetlana": "SVETLANA",
     "jana": "JANA",
-    "vladimir": "VLADIMIR"
+    "vladimir": "VLADIMIR",
+    "fontSize": "Change Font Size (14-24)"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -63,6 +64,7 @@
     "team": "НАША КОМАНДА",
     "svetlana": "СВЕТЛАНА",
     "jana": "ЯНА",
-    "vladimir": "ВЛАДИМИР"
+    "vladimir": "ВЛАДИМИР",
+    "fontSize": "Изменение размера шрифта (14-24)"
   }
 }
