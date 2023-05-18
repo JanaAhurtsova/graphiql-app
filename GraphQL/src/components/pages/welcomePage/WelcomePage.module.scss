@@ -185,6 +185,10 @@ h6 {
 
 // /* For screens between 600px and 900px */
 @media (min-width: 600px) and (max-width: 900px) {
+  .hero {
+    left: 30vw;
+    top: 16vh;
+  }
   .img {
     width: 250px;
     height: 265px;
@@ -207,7 +211,8 @@ h6 {
     margin-bottom: 40px;
   }
   .main_title {
-    bottom: 43vh;
+    bottom: 22vh;
+    left: 22vw;
   }
   .gallery:last-child {
     margin-bottom: 100px;
