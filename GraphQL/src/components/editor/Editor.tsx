@@ -1,6 +1,7 @@
 import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Modal, Button } from 'antd';
 import { useEffect, useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
@@ -63,6 +64,9 @@ export const Editor = () => {
       setIsOpen(true);
     }
   };
+
+  // Определяем горячие клавиши
+  useHotkeys('shift+r', showResult);
 
   return (
     <Row className={styles.row}>

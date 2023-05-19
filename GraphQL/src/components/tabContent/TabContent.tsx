@@ -1,8 +1,9 @@
 import { Layout } from 'antd';
 import React from 'react';
-import styles from './TabContent.module.scss';
+
 import { Editor } from 'components/editor/Editor';
 const { Content } = Layout;
+import styles from './TabContent.module.scss';
 
 const TabContent: React.FC = () => {
   return (
