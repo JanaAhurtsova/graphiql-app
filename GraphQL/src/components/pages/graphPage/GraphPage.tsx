@@ -31,7 +31,9 @@ const GraphPage: React.FC = () => {
   };
 
   const removeTab = () => {
-    remove(activeKey);
+    if (activeKey !== initialItems[0].key) {
+      remove(activeKey);
+    }
   };
 
   useHotkeys('shift+O', addTab);

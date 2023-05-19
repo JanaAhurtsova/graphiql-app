@@ -1,12 +1,12 @@
 import {
   ClockCircleOutlined,
-  SyncOutlined,
   ReadOutlined,
   SketchOutlined,
   SettingFilled,
 } from '@ant-design/icons';
 import { Drawer, Layout, Menu, Modal, Slider } from 'antd';
 import { useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
 import { TSchemaTypesServer } from '../documentationGraph/type';
@@ -18,7 +18,7 @@ import {
   useChangeFontSize,
 } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
-import { useHotkeys } from 'react-hotkeys-hook';
+import styles from './Sidebar.module.scss';
 
 const { Sider } = Layout;
 
@@ -72,7 +72,9 @@ export const Sidebar = () => {
   };
 
   const openDocumentationDrawer = () => {
-    setDocumentation(!documentation);
+    if (schemaResponse.types.length) {
+      setDocumentation(!documentation);
+    }
   };
 
   const openHistoryDrawer = () => {
@@ -102,8 +104,6 @@ export const Sidebar = () => {
           case Options.HISTORY:
             setShowModal(setHistory, true);
             break;
-          case Options.REFRESH:
-            break;
           case Options.SHORT:
             setShowModal(setModalKeys, true);
             break;
@@ -119,7 +119,6 @@ export const Sidebar = () => {
   const items: MenuItem[] = [
     getItem(langJSON[lang].documentation, Options.DOCUMENTATION, <ReadOutlined />),
     getItem(langJSON[lang].history, Options.HISTORY, <ClockCircleOutlined />),
-    getItem(langJSON[lang].reFresh, Options.REFRESH, <SyncOutlined />),
     getItem(langJSON[lang].shortKeys, Options.SHORT, <SketchOutlined />),
     getItem(langJSON[lang].settings, Options.SETTINGS, <SettingFilled />),
   ];

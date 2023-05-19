@@ -138,10 +138,7 @@ export default function WelcomePage() {
         <div className={styles.gallery__item} id={styles.item__j} ref={janaRef}>
           <div className={styles.text_block}>
             <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
-            <p className={styles.text_block__p}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolores suscipit
-              quam nostrum qui ut repellat vel ducimus cum enim.
-            </p>
+            <p className={styles.text_block__p}>{langJSON[lang].aboutJana}</p>
           </div>
           <img src={jana} alt="Alt" className={styles.img} />
         </div>
@@ -149,19 +146,13 @@ export default function WelcomePage() {
           <img src={svetlana} alt="Alt" className={styles.img} />
           <div className={styles.text_block}>
             <h2 className={styles.text_block__h}>{langJSON[lang].svetlana}</h2>
-            <p className={styles.text_block__p}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam corrupti ut
-              voluptatibus praesentium quae soluta at nesciunt recusandae itaque earum.
-            </p>
+            <p className={styles.text_block__p}>{langJSON[lang].aboutSvetlana}</p>
           </div>
         </div>
         <div className={styles.gallery__item} id={styles.item__v} ref={vladimirRef}>
           <div className={styles.text_block}>
             <h2 className={styles.text_block__h}>{langJSON[lang].vladimir}</h2>
-            <p className={styles.text_block__p}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, iusto. Dolore
-              possimus maiores fugit provident sapiente impedit ipsum inventore quaerat.
-            </p>
+            <p className={styles.text_block__p}>{langJSON[lang].aboutVladimir}</p>
           </div>
           <img src={vladimir} alt="Alt" className={styles.img} />
         </div>

@@ -1,6 +1,7 @@
 import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Modal, Button } from 'antd';
 import { useEffect, useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
@@ -9,7 +10,6 @@ import { useSetDocumentationGraph, useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
-import { useHotkeys } from 'react-hotkeys-hook';
 
 export const Editor = () => {
   const { lang } = useGetLocalization();
