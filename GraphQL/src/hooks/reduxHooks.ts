@@ -52,3 +52,7 @@ export const useSetDocumentationGraph = () => {
 export const useGetDocumentationGraph = () => {
   return useAppSelector((state) => state.graphDocumentation);
 };
+
+export const useSetFontSize = () => {
+  return useAppSelector((state) => state.font.fontSize);
+};

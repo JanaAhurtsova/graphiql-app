@@ -7,7 +7,7 @@ import { Loader } from 'components/loader/Loader';
 import { useLazyGetResponseQuery, useLazyGetSchemaQuery } from 'store/api/Api';
 import { useSetDocumentationGraph, useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
-import { useAppSelector } from '@/hooks/reduxHooks';
+import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
 
 export const Editor = () => {
@@ -31,7 +31,8 @@ export const Editor = () => {
       setDocumentation(documentation);
     }
   }, [documentation, setDocumentation]);
-  const fontSize = useAppSelector((state) => state.font.fontSize);
+
+  const fontSize = useSetFontSize();
 
   const [fontStyle, setFontStyle] = useState(fontSize);
 

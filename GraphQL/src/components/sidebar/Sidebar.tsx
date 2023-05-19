@@ -18,6 +18,7 @@ import {
   useChangeFontSize,
 } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import styles from './Sidebar.module.scss';
 
 const { Sider } = Layout;
 
@@ -114,6 +115,7 @@ export const Sidebar = () => {
   return (
     <>
       <Sider
+        className={styles.sidebar}
         collapsible
         collapsedWidth={50}
         collapsed={collapsed}
@@ -124,18 +126,20 @@ export const Sidebar = () => {
       <Drawer
         title={langJSON[lang].documentation}
         placement="right"
-        closable={false}
+        closable={true}
         onClose={onClose}
         open={documentation}
+        className={styles.drawer}
       >
         <div>{schemaResponse ? showSchema() : ''}</div>
       </Drawer>
       <Drawer
         title={langJSON[lang].history}
         placement="right"
-        closable={false}
+        closable={true}
         onClose={onClose}
         open={history}
+        className={styles.drawer}
       >
         <p>Content History</p>
       </Drawer>
