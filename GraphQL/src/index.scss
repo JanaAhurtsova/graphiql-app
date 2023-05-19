@@ -19,7 +19,7 @@ a {
   font-weight: 500;
   color: rgba(255, 255, 255, 0.805);
   text-decoration: inherit;
-  transition: .5s;
+  transition: 0.5s;
 }
 a:hover {
   color: #ffffff;
@@ -52,13 +52,19 @@ button {
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.3s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-active);
+  color: var(--color-active);
 }
 
 .active {
   color: var(--color-active);
   cursor: auto;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
 }

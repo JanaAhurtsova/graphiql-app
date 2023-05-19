@@ -1,18 +1,19 @@
 .register_tabs {
   width: 500px;
-  height: 300px;
   border: 0.1px solid #00b96b;
   border-radius: 8px;
-  padding-top: 5vh;
+  padding: 7vh 2vw;
   margin: auto;
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 10px 0 rgba(0, 185, 107, 0.7), inset 0 0 5px 0 rgba(0, 185, 107, 0.7);
   animation: glow 2.5s infinite alternate;
+
   @media (max-width: 550px) {
     width: 300px;
   }
 }
+
 .h {
   color: #00b96b;
 }
