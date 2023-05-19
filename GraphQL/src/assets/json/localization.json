@@ -2,9 +2,9 @@
   "en": {
     "titleWelcome": "Welcome",
     "titleMain": "Graph",
-    "titleSignUp": "Sign On",
+    "titleSignUp": "Sign Up",
     "titleSignIn": "Sign In",
-    "exit": "Exit",
+    "exit": "Sign out",
     "documentation": "Documentation",
     "history": "History",
     "reFresh": "re-fresh",
@@ -32,6 +32,9 @@
     "jana": "JANA",
     "vladimir": "VLADIMIR",
     "commonInformation": "Common Information",
+    "errorTitle": "Nothing to see here",
+    "errorDescription": "Page you are trying to open does not exist. You may have mistyped the address, or the page has been moved to another URL. If you think this is an error contact support.",
+    "errorButton": "Take me back to Welcome page",
     "fontSize": "Change Font Size (14-24)"
   },
   "ru": {
@@ -67,6 +70,9 @@
     "jana": "ЯНА",
     "vladimir": "ВЛАДИМИР",
     "commonInformation": "Общая Информация",
+    "errorTitle": "Здесь ничего нет",
+    "errorDescription": "Страница, которую Вы пытаетесть открыть, не существует. Возможно, Вы ошиблись адресом, или страница имеет другой URL. Если вы считаете, что это ошибка, обратитесь в службу поддержки.",
+    "errorButton": "Вернуться на страницу О нас",
     "fontSize": "Изменение размера шрифта (14-24)"
   }
 }

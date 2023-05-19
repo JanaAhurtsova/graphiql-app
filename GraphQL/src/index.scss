@@ -52,10 +52,11 @@ button {
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.3s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-active);
+  color: var(--color-active);
 }
 
 .active {

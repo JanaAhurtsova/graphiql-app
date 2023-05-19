@@ -11,6 +11,7 @@ import { KEY1, KEY2 } from 'managers/graphPage/enum';
 import { Sidebar } from 'components/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
+import styles from './GraphPage.module.scss';
 
 const initialItems = [
   { label: `${langJSON.en.tab} 1`, children: <TabContent />, key: KEY1, closable: false },
@@ -98,7 +99,7 @@ const GraphPage: React.FC = () => {
             activeKey={activeKey}
             onEdit={onEdit}
             items={items}
-            style={{ flex: 'auto' }}
+            className={styles.tabs}
           />
         </Layout>
       )}
