@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import Register from '../../register/Register';
 import { useGetLocalization } from '@/hooks/reduxHooks';
+import { Loader } from '@/components/loader/Loader';
 import localizationJSON from '@/assets/json/localization.json';
 import styles from './registerPage.module.scss';
 
@@ -23,9 +24,17 @@ export default function RegisterPage() {
   });
 
   return (
-    <section className={styles.register_tabs}>
-      <h3 className={styles.h}>{localizationJSON[lang].titleSignUp}</h3>
-      <Register />
-    </section>
+    <>
+      {loading || user ? (
+        <section className={styles.section_loader}>
+          <Loader />
+        </section>
+      ) : (
+        <section className={styles.register_tabs}>
+          <h3 className={styles.h}>{localizationJSON[lang].titleSignUp}</h3>
+          <Register />
+        </section>
+      )}
+    </>
   );
 }

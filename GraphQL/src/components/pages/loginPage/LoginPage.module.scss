@@ -25,3 +25,7 @@
     box-shadow: 0 0 50px 20px rgba(0, 185, 107, 0.1), inset 0 0 10px 0 rgba(0, 185, 107, 0.7);
   }
 }
+
+.section_loader {
+  height: calc(100vh - 100px);
+}
