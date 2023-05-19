@@ -37,7 +37,8 @@
     "openHist": "Open / Close History",
     "openTab": "Open New Tab",
     "closeTab": "Close Active Tab",
-    "sendReq": "Send Request"
+    "sendReq": "Send Request",
+    "note": "Note: To use hotkeys, exit the input field"
   },
   "ru": {
     "titleWelcome": "О нас",
@@ -77,6 +78,7 @@
     "openHist": "Открыть / Закрыть Историю",
     "openTab": "Открыть Новую Вкладку",
     "closeTab": "Закрыть Активную Вкладку",
-    "sendReq": "Отправить Запрос"
+    "sendReq": "Отправить Запрос",
+    "note": "Примечание: Чтобы воспользоваться горячики клавишами, выйдите из поля input"
   }
 }

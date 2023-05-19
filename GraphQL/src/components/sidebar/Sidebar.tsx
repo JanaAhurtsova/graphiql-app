@@ -194,6 +194,7 @@ export const Sidebar = () => {
             </tr>
           </tbody>
         </table>
+        <p className={styles.note}>{langJSON[lang].note}</p>
       </Modal>
       <Modal
         title={langJSON[lang].settings}
