@@ -94,7 +94,6 @@ export const Editor = () => {
         md={12}
         style={{ fontSize: `${fontStyle}px` }}
       >
-        <Loader />
         {isFetching && <Loader />}
         {error && <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>}
         {response && !error && (
