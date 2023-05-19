@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Login from '../../login/Login';
 import { auth } from '@/firebase/firebase';
 import { useGetLocalization } from '@/hooks/reduxHooks';
+import { Loader } from '@/components/loader/Loader';
 import localizationJSON from 'assets/json/localization.json';
 import styles from './LoginPage.module.scss';
 
@@ -23,9 +24,17 @@ export default function LoginPage() {
   });
 
   return (
-    <section className={styles.login_tabs}>
-      <h3 className={styles.h}>{localizationJSON[lang].titleSignIn}</h3>
-      <Login />
-    </section>
+    <>
+      {loading || user ? (
+        <section className={styles.section_loader}>
+          <Loader />
+        </section>
+      ) : (
+        <section className={styles.login_tabs}>
+          <h3 className={styles.h}>{localizationJSON[lang].titleSignIn}</h3>
+          <Login />
+        </section>
+      )}
+    </>
   );
 }
