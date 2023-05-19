@@ -1,3 +1,14 @@
+
+.table {
+  width: 100%;
+  & th,
+  td {
+    border: 2px solid #00b96b;
+  }
+  & td {
+    padding-left: 20px;
+  }
+
 .sidebar {
   position: absolute !important;
   top: 0;
