@@ -11,7 +11,6 @@ export default function DocumentationGraph({ schema }: { schema: TSchemaServer }
   const [queryType, setQueryType] = useState(['Query']);
   const indexQuery = queryType.length - 1;
   const querySchema = schemaParser[queryType[indexQuery]]?.args;
-
   const setQuery = (queryNext: string) => {
     setQueryType([...queryType, queryNext]);
   };

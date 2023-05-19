@@ -1,10 +1,11 @@
 import { CaretRightFilled } from '@ant-design/icons';
 import { Col, Input, Row, Modal, Button } from 'antd';
 import { useEffect, useState } from 'react';
+
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
-import { useLazyGetResponseQuery } from 'store/api/Api';
-import { useGetLocalization } from 'hooks/reduxHooks';
+import { useLazyGetResponseQuery, useLazyGetSchemaQuery } from 'store/api/Api';
+import { useSetDocumentationGraph, useGetLocalization } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
@@ -17,6 +18,21 @@ export const Editor = () => {
   const [headers, setHeaders] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
+  const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
+  const setDocumentation = useSetDocumentationGraph();
+
+  useEffect(() => {
+    if (response && !documentation && !error && !isFetching) {
+      getDocumentation({});
+    }
+  }, [documentation, error, isFetching, getDocumentation, response]);
+
+  useEffect(() => {
+    if (documentation) {
+      setDocumentation(documentation);
+    }
+  }, [documentation, setDocumentation]);
+
   const fontSize = useSetFontSize();
 
   const [fontStyle, setFontStyle] = useState(fontSize);

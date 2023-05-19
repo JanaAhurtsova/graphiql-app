@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getIntrospectionQuery } from 'graphql';
 
 import { GRAPH_API, Api } from 'managers/API/Api';
-import { IQuery } from './type';
+import { IQuery, IResponseSchema } from './type';
 
 export const RickApi = createApi({
   reducerPath: Api.RICK_API,
@@ -32,6 +32,9 @@ export const RickApi = createApi({
           query: getIntrospectionQuery(),
         }),
       }),
+      transformResponse(response: IResponseSchema) {
+        return response.data.__schema;
+      },
     }),
   }),
 });

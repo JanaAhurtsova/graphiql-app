@@ -5,6 +5,8 @@ import { AppDispatch, RootState } from '@/store/store';
 import { ELocalization } from '@/store/type';
 import { changeLocalization } from '@/store/slices/localizationSlice';
 import { setLocalization } from '@/localStore/localStorage';
+import { TSchemaServer } from '@/components/documentationGraph/type';
+import { setGraphDocumentation } from '@/store/slices/graphDocumentationSlice';
 import { setFontSize } from '@/store/slices/fontSlice';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -34,6 +36,21 @@ export const useChangeFontSize = () => {
 
 export const useGetLocalization = () => {
   return useAppSelector((state) => state.localization);
+};
+
+export const useSetDocumentationGraph = () => {
+  const dispatch = useAppDispatch();
+
+  return useCallback(
+    (doc: TSchemaServer) => {
+      dispatch(setGraphDocumentation(doc));
+    },
+    [dispatch]
+  );
+};
+
+export const useGetDocumentationGraph = () => {
+  return useAppSelector((state) => state.graphDocumentation);
 };
 
 export const useSetFontSize = () => {

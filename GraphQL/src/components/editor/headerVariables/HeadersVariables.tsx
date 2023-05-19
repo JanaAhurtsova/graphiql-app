@@ -1,18 +1,24 @@
-import { Input, Tabs } from 'antd';
+import { Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
-import { VARIABLES, HEADERS } from 'managers/headerVariables/Names';
 import { ISetState } from './type';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
+import { UpOutlined } from '@ant-design/icons';
 import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 
 export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
-  const [activeKey, setActiveKey] = useState(VARIABLES);
+  const [active, setActive] = useState(true);
+  const [open, setOpen] = useState(false);
   const { lang } = useGetLocalization();
 
-  const onChange = (newActiveKey: string) => {
-    setActiveKey(newActiveKey);
+  const openTextArea = (value: boolean) => {
+    if (!open) {
+      setOpen(true);
+    }
+    setActive(value);
   };
+
+  const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
 
   const fontSize = useSetFontSize();
   const [fontStyle, setFontStyle] = useState(fontSize);
@@ -22,36 +28,36 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   }, [fontSize]);
 
   return (
-    <Tabs
-      defaultActiveKey={VARIABLES}
-      activeKey={activeKey}
-      items={[
-        {
-          label: langJSON[lang].variables,
-          children: (
-            <Input.TextArea
-              style={{ fontSize: `${fontStyle}px` }}
-              className={styles.option}
-              onChange={(e) => setVariables(e.target.value)}
-              placeholder={langJSON[lang].placeholderVariables}
-            />
-          ),
-          key: VARIABLES,
-        },
-        {
-          label: langJSON[lang].headers,
-          children: (
-            <Input.TextArea
-              style={{ fontSize: `${fontStyle}px` }}
-              className={styles.option}
-              onChange={(e) => setHeaders(e.target.value)}
-              placeholder={langJSON[lang].placeholderHeaders}
-            />
-          ),
-          key: HEADERS,
-        },
-      ]}
-      onChange={onChange}
-    />
+    <div>
+      <div className={styles.header}>
+        <div className={styles.buttons}>
+          <Button onClick={() => openTextArea(true)} type={active ? 'default' : 'text'}>
+            {langJSON[lang].variables}
+          </Button>
+          <Button onClick={() => openTextArea(false)} type={!active ? 'default' : 'text'}>
+            {langJSON[lang].headers}
+          </Button>
+        </div>
+        <UpOutlined
+          className={styles.icon}
+          onClick={() => setOpen(!open)}
+          rotate={open ? 180 : 0}
+        />
+      </div>
+      <div style={{ display: setDisplay(open) }}>
+        <Input.TextArea
+          style={{ display: setDisplay(active), fontSize: `${fontStyle}px` }}
+          className={styles.option}
+          onChange={(e) => setVariables(e.target.value)}
+          placeholder={langJSON[lang].placeholderVariables}
+        />
+        <Input.TextArea
+          style={{ display: setDisplay(!active), fontSize: `${fontStyle}px` }}
+          className={styles.option}
+          onChange={(e) => setHeaders(e.target.value)}
+          placeholder={langJSON[lang].placeholderHeaders}
+        />
+      </div>
+    </div>
   );
 };
