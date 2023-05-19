@@ -11,6 +11,15 @@ import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import styles from './Editor.module.scss';
 
+const request = `
+  query {
+    characters(filter: { name: "rick" }) {
+      results {
+        name
+      }
+    }
+  }`;
+
 export const Editor = () => {
   const { lang } = useGetLocalization();
   const [query, setQuery] = useState('');
@@ -99,7 +108,10 @@ export const Editor = () => {
           <pre className={styles.result}>{JSON.stringify(response, null, `\t`)}</pre>
         )}
         {!isFetching && !response && !error && (
-          <div className={styles.response}>{langJSON[lang].placeholderResponse}</div>
+          <pre className={styles.result}>
+            {langJSON[lang].placeholderResponse}
+            {request}
+          </pre>
         )}
       </Col>
       <Modal
