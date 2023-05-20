@@ -1,5 +1,5 @@
 # GraphiQL-App
-GraphiQL is a playground/IDE for graphQL requests.
+GraphiQL is a playground/IDE for graphQL requests. This app uses Rick and Morty API
 ### Running and start
 * Clone this repo: `$ git clone https://github.com/JanaAhurtsova/graphiql-app.git`
 * Go to downloaded folder: `$ cd graphiql-app`
