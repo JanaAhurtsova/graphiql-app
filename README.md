@@ -35,5 +35,9 @@ GraphiQL is a playground/IDE for graphQL requests.
 * Editor
 * Variables section
 * Headers section
-* Documentation section are visible only when app will receive a successfull response with the schema definition from the api
+* Sidebar :
+     * Documentation section are visible only when app will receive a successfull response with the schema definition from the api
+     * Saving history
+     * Hot keys
+     * Settings (changing font size)
 * Response section
