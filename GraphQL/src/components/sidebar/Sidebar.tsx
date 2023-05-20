@@ -51,21 +51,6 @@ export const Sidebar = () => {
 
   const handleSliderChange = useChangeFontSize();
 
-  const setShowModal = (
-    setFunc: React.Dispatch<React.SetStateAction<boolean>>,
-    isShow: boolean
-  ) => {
-    setFunc(isShow);
-  };
-
-  const handleOkSettings = () => {
-    setModalSettings(false);
-  };
-
-  const handleCancelSettings = () => {
-    setModalSettings(false);
-  };
-
   const onClose = () => {
     setDocumentation(false);
     setHistory(false);
@@ -99,16 +84,16 @@ export const Sidebar = () => {
       onClick: () => {
         switch (key) {
           case Options.DOCUMENTATION:
-            setShowModal(setDocumentation, true);
+            setDocumentation(true);
             break;
           case Options.HISTORY:
-            setShowModal(setHistory, true);
+            setHistory(true);
             break;
           case Options.SHORT:
-            setShowModal(setModalKeys, true);
+            setModalKeys(true);
             break;
           case Options.SETTINGS:
-            setShowModal(setModalSettings, true);
+            setModalSettings(true);
             break;
         }
       },
@@ -157,8 +142,7 @@ export const Sidebar = () => {
       <Modal
         title={langJSON[lang].shortKeys}
         open={modalKeys}
-        onOk={() => setShowModal(setModalKeys, false)}
-        onCancel={() => setShowModal(setModalKeys, false)}
+        onCancel={() => setModalKeys(false)}
         footer={[]}
       >
         <table className={styles.table}>
@@ -206,8 +190,7 @@ export const Sidebar = () => {
       <Modal
         title={langJSON[lang].settings}
         open={modalSettings}
-        onOk={handleOkSettings}
-        onCancel={handleCancelSettings}
+        onCancel={() => setModalSettings(false)}
         footer={[]}
       >
         <p>{langJSON[lang].fontSize}</p>
