@@ -50,12 +50,14 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
           className={styles.option}
           onChange={(e) => setVariables(e.target.value)}
           placeholder={langJSON[lang].placeholderVariables}
+          name="variables"
         />
         <Input.TextArea
           style={{ display: setDisplay(!active), fontSize: `${fontStyle}px` }}
           className={styles.option}
           onChange={(e) => setHeaders(e.target.value)}
           placeholder={langJSON[lang].placeholderHeaders}
+          name="headers"
         />
       </div>
     </div>
