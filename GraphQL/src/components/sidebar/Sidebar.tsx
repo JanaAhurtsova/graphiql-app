@@ -138,7 +138,7 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
         open={history}
         className={styles.drawer}
       >
-        <HistoryGraph callback={callback} />
+        <HistoryGraph callback={callback} isOpen={history} />
       </Drawer>
       <Modal
         title={langJSON[lang].shortKeys}

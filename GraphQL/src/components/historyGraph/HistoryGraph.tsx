@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useGetHistory } from 'hooks/reduxHooks';
 import { IItemHistory } from '@/store/type';
 import { HistoryItemGraph } from '../historyItemGraph/HistoryItemGraph';
 import { THistoryGraphProps } from './type';
 
-export default function HistoryGraph({ callback }: THistoryGraphProps): JSX.Element {
+export default function HistoryGraph({ callback, isOpen }: THistoryGraphProps): JSX.Element {
   const { list: historyList } = useGetHistory();
   const [activeHistory, setActiveHistory] = useState<IItemHistory | null>(null);
 
@@ -13,6 +13,12 @@ export default function HistoryGraph({ callback }: THistoryGraphProps): JSX.Elem
     setActiveHistory(itemHistory);
     callback(itemHistory);
   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setActiveHistory(null);
+    }
+  }, [isOpen]);
 
   return (
     <>
