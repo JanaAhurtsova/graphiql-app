@@ -5,6 +5,7 @@ import { ReturnedArgs } from './returnedArgs/ReturnedArgs';
 import { ReturnedValue } from './returnedValue/ReturnedValue';
 import { TSchemaServer } from './type';
 import styles from './DocumentationSchema.module.scss';
+import { UpOutlined } from '@ant-design/icons';
 
 export default function DocumentationGraph({ schema }: { schema: TSchemaServer }): JSX.Element {
   const [schemaParser] = useState(parserSchema(schema));
@@ -24,12 +25,10 @@ export default function DocumentationGraph({ schema }: { schema: TSchemaServer }
   let schemaLink = (
     <>
       {queryType.length > 1 ? (
-        <p>
-          <span>&lt;</span>
-          <span className={styles.link_documentation} onClick={setPrevQuery}>
-            {`${queryType[queryType.length - 2]}`}
-          </span>
-        </p>
+        <span className={styles.back_documentation}>
+          <UpOutlined onClick={setPrevQuery} rotate={-90} />
+          <span onClick={setPrevQuery}>{`${queryType[queryType.length - 2]}`}</span>
+        </span>
       ) : (
         ''
       )}

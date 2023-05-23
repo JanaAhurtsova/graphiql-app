@@ -4,7 +4,7 @@ import styles from '../DocumentationSchema.module.scss';
 
 export function ReturnedArgs({ args, setQueryType }: TReturnedArgsProps): JSX.Element {
   let argsStr = <></>;
-  if (!args) {
+  if (!args || !args.length) {
     return argsStr;
   }
   for (let i = 0; i < args.length; i++) {
