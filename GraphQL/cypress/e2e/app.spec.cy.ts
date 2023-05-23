@@ -9,7 +9,7 @@ describe('check app', () => {
     cy.visit('/');
 
     cy.contains('Welcome to GraphiQL');
-    cy.wait(2000);
+
     cy.get('nav a')
       .last()
       .then(($link) => {
@@ -48,8 +48,6 @@ describe('check app', () => {
     cy.visit('/');
 
     cy.contains('Welcome to GraphiQL');
-
-    cy.wait(2000);
 
     cy.get('nav a')
       .last()
