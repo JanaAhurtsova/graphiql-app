@@ -17,10 +17,10 @@ import {
   useGetLocalization,
   useChangeFontSize,
 } from '@/hooks/reduxHooks';
+import HistoryGraph from '../historyGraph/HistoryGraph';
+import HotKeys from '../hotKeys/HotKeys';
 import langJSON from 'assets/json/localization.json';
 import styles from './Sidebar.module.scss';
-import HistoryGraph from '../historyGraph/HistoryGraph';
-
 const { Sider } = Layout;
 
 export const Sidebar = ({ callback }: TSidebarProps) => {
@@ -146,47 +146,7 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
         onCancel={() => setModalKeys(false)}
         footer={[]}
       >
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>{langJSON[lang].shortKeys}</th>
-              <th>{langJSON[lang].functions}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <code>Shift + D</code>
-              </td>
-              <td>{langJSON[lang].openDoc}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + H</code>
-              </td>
-              <td>{langJSON[lang].openHist}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + O</code>
-              </td>
-              <td>{langJSON[lang].openTab}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + C</code>
-              </td>
-              <td>{langJSON[lang].closeTab}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + R</code>
-              </td>
-              <td>{langJSON[lang].sendReq}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className={styles.note}>{langJSON[lang].note}</p>
+        <HotKeys />
       </Modal>
       <Modal
         title={langJSON[lang].settings}
