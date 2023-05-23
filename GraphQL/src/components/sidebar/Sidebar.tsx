@@ -5,11 +5,10 @@ import {
   SettingFilled,
 } from '@ant-design/icons';
 import { Drawer, Layout, Menu, Modal, Slider } from 'antd';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
-import { TSchemaTypesServer } from '../documentationGraph/type';
 import { MenuItem, TSidebarProps } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import {
@@ -17,6 +16,7 @@ import {
   useGetLocalization,
   useChangeFontSize,
 } from '@/hooks/reduxHooks';
+import { Loader } from '../loader/Loader';
 import HistoryGraph from '../historyGraph/HistoryGraph';
 import HotKeys from '../hotKeys/HotKeys';
 import langJSON from 'assets/json/localization.json';
@@ -31,23 +31,6 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
   const [modalSettings, setModalSettings] = useState(false);
 
   const { doc: schemaResponse } = useGetDocumentationGraph();
-
-  const getType = (type: string) => {
-    if (schemaResponse !== null) {
-      return schemaResponse?.types.find((value: TSchemaTypesServer) => value.name === type);
-    }
-  };
-
-  const showSchema = () => {
-    if (schemaResponse !== null) {
-      const schemaData = getType(schemaResponse?.queryType?.name);
-      if (schemaData) {
-        return <DocumentationGraph schema={schemaResponse} />;
-      }
-    }
-    return <></>;
-  };
-
   const { lang } = useGetLocalization();
 
   const handleSliderChange = useChangeFontSize();
@@ -74,6 +57,7 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
   function getItem(
     label: React.ReactNode,
     key: React.Key,
+    disabled: boolean,
     icon?: React.ReactNode,
     children?: MenuItem[]
   ): MenuItem {
@@ -98,15 +82,20 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
             break;
         }
       },
-      disabled: key === Options.DOCUMENTATION && !schemaResponse.types.length ? true : false,
+      disabled: disabled,
     } as MenuItem;
   }
 
   const items: MenuItem[] = [
-    getItem(langJSON[lang].documentation, Options.DOCUMENTATION, <ReadOutlined />),
-    getItem(langJSON[lang].history, Options.HISTORY, <ClockCircleOutlined />),
-    getItem(langJSON[lang].shortKeys, Options.SHORT, <SketchOutlined />),
-    getItem(langJSON[lang].settings, Options.SETTINGS, <SettingFilled />),
+    getItem(
+      langJSON[lang].documentation,
+      Options.DOCUMENTATION,
+      !schemaResponse.types.length ? true : false,
+      <ReadOutlined />
+    ),
+    getItem(langJSON[lang].history, Options.HISTORY, false, <ClockCircleOutlined />),
+    getItem(langJSON[lang].shortKeys, Options.SHORT, false, <SketchOutlined />),
+    getItem(langJSON[lang].settings, Options.SETTINGS, false, <SettingFilled />),
   ];
 
   return (
@@ -128,7 +117,9 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
         open={documentation}
         className={styles.drawer}
       >
-        <div>{schemaResponse ? showSchema() : ''}</div>
+        <Suspense fallback={<Loader />}>
+          <DocumentationGraph schema={schemaResponse} />
+        </Suspense>
       </Drawer>
       <Drawer
         title={langJSON[lang].history}

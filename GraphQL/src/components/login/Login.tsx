@@ -10,7 +10,7 @@ import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
 import resolverLogin from './ResolverLogin';
 import formData from 'assets/json/formData.json';
-import './Login.scss';
+import styles from './Login.module.scss';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -41,9 +41,9 @@ export default function Login() {
   });
 
   return (
-    <form onSubmit={handleLogin} className="form-login">
+    <form onSubmit={handleLogin} className={styles.form_login}>
       {errorServer ? (
-        <Alert message={errorServer} type="error" className="error-login"></Alert>
+        <Alert message={errorServer} type="error" className={styles.error_login}></Alert>
       ) : (
         <br />
       )}
@@ -52,7 +52,7 @@ export default function Login() {
       <Button onClick={handleLogin} onSubmit={handleLogin} type="default">
         {formData[lang].buttonLogin}
       </Button>
-      <button className="btn-hide"></button>
+      <button className={styles.btn_hide}></button>
     </form>
   );
 }

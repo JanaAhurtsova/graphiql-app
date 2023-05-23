@@ -2,7 +2,7 @@ import { useChangeLocalization, useGetLocalization } from '@/hooks/reduxHooks';
 import { ELocalization } from '@/store/type';
 import { Switch } from 'antd';
 
-import './SwitcherLanguage.scss';
+import styles from './SwitcherLanguage.module.scss';
 
 export default function SwitchLanguage() {
   const changeLanguageDispatch = useChangeLocalization();
@@ -19,7 +19,7 @@ export default function SwitchLanguage() {
         unCheckedChildren={ELocalization.en}
         onChange={onChange}
         defaultChecked={lang === ELocalization.ru ? true : false}
-        className="switcher"
+        className={styles.switcher}
       />
     </>
   );

@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { TPropsForm, TErrorResolver } from '../type';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import formData from '../../../assets/json/formData.json';
-import './PasswordInput.scss';
+import styles from './PasswordInput.module.scss';
 
 export function PasswordInput({ control, name, error }: TPropsForm) {
   const { lang } = useGetLocalization();
@@ -20,7 +20,7 @@ export function PasswordInput({ control, name, error }: TPropsForm) {
             onChange={(e) => {
               field.onChange(e);
             }}
-            className="password-input"
+            className={styles.password_input}
             placeholder={formData[lang][name].placeholder}
           />
         )}
