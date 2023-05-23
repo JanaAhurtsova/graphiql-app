@@ -2,12 +2,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 
 import { AppDispatch, RootState } from '@/store/store';
-import { ELocalization } from '@/store/type';
+import { ELocalization, IItemHistory } from '@/store/type';
 import { changeLocalization } from '@/store/slices/localizationSlice';
 import { setLocalization } from '@/localStore/localStorage';
 import { TSchemaServer } from '@/components/documentationGraph/type';
 import { setGraphDocumentation } from '@/store/slices/graphDocumentationSlice';
 import { setFontSize } from '@/store/slices/fontSlice';
+import { addItemHistory } from '@/store/slices/historySlice';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -55,4 +56,19 @@ export const useGetDocumentationGraph = () => {
 
 export const useSetFontSize = () => {
   return useAppSelector((state) => state.font.fontSize);
+};
+
+export const useAddHistory = () => {
+  const dispatch = useAppDispatch();
+
+  return useCallback(
+    (history: IItemHistory) => {
+      dispatch(addItemHistory(history));
+    },
+    [dispatch]
+  );
+};
+
+export const useGetHistory = () => {
+  return useAppSelector((state) => state.history);
 };

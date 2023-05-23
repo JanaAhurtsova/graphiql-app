@@ -10,7 +10,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
 import { TSchemaTypesServer } from '../documentationGraph/type';
-import { MenuItem } from './type';
+import { MenuItem, TSidebarProps } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import {
   useGetDocumentationGraph,
@@ -19,10 +19,11 @@ import {
 } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import styles from './Sidebar.module.scss';
+import HistoryGraph from '../historyGraph/HistoryGraph';
 
 const { Sider } = Layout;
 
-export const Sidebar = () => {
+export const Sidebar = ({ callback }: TSidebarProps) => {
   const [collapsed, setCollapsed] = useState(true);
   const [documentation, setDocumentation] = useState(false);
   const [history, setHistory] = useState(false);
@@ -137,7 +138,7 @@ export const Sidebar = () => {
         open={history}
         className={styles.drawer}
       >
-        <p>Content History</p>
+        <HistoryGraph callback={callback} />
       </Drawer>
       <Modal
         title={langJSON[lang].shortKeys}

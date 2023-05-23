@@ -6,7 +6,12 @@ import langJSON from 'assets/json/localization.json';
 import { UpOutlined } from '@ant-design/icons';
 import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 
-export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
+export const HeadersVariables = ({
+  setVariables,
+  setHeaders,
+  variablesValue,
+  headersValue,
+}: ISetState) => {
   const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
   const { lang } = useGetLocalization();
@@ -50,12 +55,14 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
           className={styles.option}
           onChange={(e) => setVariables(e.target.value)}
           placeholder={langJSON[lang].placeholderVariables}
+          value={variablesValue}
         />
         <Input.TextArea
           style={{ display: setDisplay(!active), fontSize: `${fontStyle}px` }}
           className={styles.option}
           onChange={(e) => setHeaders(e.target.value)}
           placeholder={langJSON[lang].placeholderHeaders}
+          value={headersValue}
         />
       </div>
     </div>

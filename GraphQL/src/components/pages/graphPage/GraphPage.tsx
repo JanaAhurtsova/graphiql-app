@@ -6,7 +6,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 import TabContent from 'components/tabContent/TabContent';
 import { TargetKey } from './type';
-import { ELocalization } from '@/store/type';
+import { ELocalization, IItemHistory } from '@/store/type';
 import { auth } from '@/firebase/firebase';
 import { KEY1, KEY2 } from 'managers/graphPage/enum';
 import { Sidebar } from 'components/sidebar/Sidebar';
@@ -58,13 +58,13 @@ const GraphPage: React.FC = () => {
     setActiveKey(newActiveKey);
   };
 
-  const add = () => {
+  const add = (history?: IItemHistory) => {
     const newIndex = newTabIndex.current++;
     const newActiveKey = `newTab${newIndex}`;
     const newPanes = [...items];
     newPanes.push({
       label: `${langJSON[lang].tab} ${newIndex}`,
-      children: <TabContent />,
+      children: <TabContent history={history} />,
       key: newActiveKey,
     });
     setItems(newPanes);
@@ -106,7 +106,7 @@ const GraphPage: React.FC = () => {
     <>
       {user && (
         <Layout className="container">
-          <Sidebar />
+          <Sidebar callback={(item) => add(item)} />
           <Tabs
             type="editable-card"
             onChange={onChange}

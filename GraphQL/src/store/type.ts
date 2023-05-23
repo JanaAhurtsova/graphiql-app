@@ -12,3 +12,13 @@ export enum ELocalization {
 export type TGraphDocumentationSlice = {
   doc: null | TSchemaServer;
 };
+
+export type IItemHistory = {
+  headers: string;
+  variables: string;
+  query: string;
+};
+
+export type IItemHistoryState = {
+  list: IItemHistory[];
+};
