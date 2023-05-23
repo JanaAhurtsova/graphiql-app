@@ -16,6 +16,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
+    "types": ["cypress"],
+    "outDir": "dist",
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
       "pages/*": ["src/pages/*"],

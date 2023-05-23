@@ -3,8 +3,8 @@ import coverage from '@cypress/code-coverage/task';
 
 export default defineConfig({
   e2e: {
-    supportFile: false,
     baseUrl: 'http://localhost:5173',
+    defaultCommandTimeout: 20000,
     setupNodeEvents(on, config) {
       coverage(on, config);
 

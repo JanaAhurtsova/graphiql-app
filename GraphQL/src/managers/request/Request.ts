@@ -24,3 +24,12 @@ export const TestVariables = `
   }
 }
 `;
+
+export const InvalidVariables = `
+{
+  "page": 2,
+  "filter" {
+    "name": "rick"
+  }
+}
+`;
