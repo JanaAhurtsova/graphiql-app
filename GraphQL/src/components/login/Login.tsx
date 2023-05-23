@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, Resolver } from 'react-hook-form';
 import { Button, Alert } from 'antd';
 
@@ -18,6 +18,10 @@ export default function Login() {
   const [errorServer, setErrorServer] = useState('');
 
   const resolver: Resolver<TFormLogin> = resolverLogin();
+
+  useEffect(() => {
+    errorServer && setErrorServer(formData[lang].serverErrorRegister);
+  }, [lang, errorServer]);
 
   const {
     control,

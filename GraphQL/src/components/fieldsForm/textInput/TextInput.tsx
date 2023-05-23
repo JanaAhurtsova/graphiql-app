@@ -8,9 +8,13 @@ import styles from './TextInput.module.scss';
 
 export function TextInput({ control, name, error }: TPropsForm) {
   const { lang } = useGetLocalization();
-  const errorMessage = error?.message && (error?.message as unknown as TErrorResolver)[lang];
+  const errorMessage = error?.message as TErrorResolver;
+
   return (
-    <Form.Item validateStatus={error ? 'error' : 'success'} help={errorMessage}>
+    <Form.Item
+      validateStatus={error ? 'error' : 'success'}
+      help={formData[lang][name][errorMessage]}
+    >
       <Controller
         control={control}
         name={name}

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm, Resolver } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Alert } from 'antd';
 
 import { useGetLocalization } from '../../hooks/reduxHooks';
@@ -18,6 +18,10 @@ export default function Register() {
   const { lang } = useGetLocalization();
 
   const resolver: Resolver<TFormRegistration> = resolverRegistration();
+
+  useEffect(() => {
+    errorServer && setErrorServer(formData[lang].serverErrorRegister);
+  }, [lang, errorServer]);
 
   const {
     control,
