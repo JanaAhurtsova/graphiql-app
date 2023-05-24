@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Name } from 'managers/slice/enum';
 
 const initialState = {
   fontSize: 14,
 };
 
 export const fontSlice = createSlice({
-  name: 'font',
+  name: Name.FONT,
   initialState,
   reducers: {
     setFontSize: (state, action) => {

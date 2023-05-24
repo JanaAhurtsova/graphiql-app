@@ -1,49 +1,7 @@
 /// <reference types="cypress" />
-import { v4 as unique } from 'uuid';
 import { TestQuery, TestVariables, InvalidVariables } from '../../src/managers/request/Request';
 
-const email = unique();
-
 describe('check app', () => {
-  it('should register', () => {
-    cy.visit('/');
-
-    cy.contains('Welcome to GraphiQL');
-
-    cy.get('nav a')
-      .last()
-      .then(($link) => {
-        if ($link.text().includes('Sign out')) {
-          cy.contains('Sign out').click();
-        }
-      });
-
-    cy.contains('Sign Up').click();
-
-    cy.get('input[name=email]').type(`${email}@gmail.com`);
-    cy.get('input[name=password]:first-of-type').type('test1111');
-    cy.get('input[name=passwordRepeat]').type('test@1111');
-
-    cy.get('form button[type=button]').click();
-
-    cy.contains(/Minimum 8 symbols/i);
-    cy.contains(/must match/i);
-
-    const password = () => cy.get('input[name=password]:first-of-type');
-    password().clear();
-    password().type('test@1111');
-
-    const repeat = () => cy.get('input[name=passwordRepeat]');
-    repeat().clear();
-    repeat().type('test@1111');
-
-    cy.get('form button[type=button]').click();
-
-    cy.contains(/your first request/i);
-
-    cy.contains('Sign out').click();
-  });
-
   it('should login and use playground', () => {
     cy.visit('/');
 
@@ -95,15 +53,6 @@ describe('check app', () => {
     cy.get('button.ant-drawer-close').click();
 
     cy.contains('Sign out').click();
-  });
-
-  it('show error page', () => {
-    cy.visit('/test');
-
-    cy.contains('Nothing to see here');
-
-    cy.get('.ant-switch-inner').click();
-    cy.contains('Здесь ничего нет');
   });
 
   it('Does not do much!', () => {

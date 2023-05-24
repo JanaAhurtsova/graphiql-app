@@ -1,5 +1,6 @@
 import { TReturnedValueProps } from '../type';
 import styles from '../DocumentationSchema.module.scss';
+import { EXCLAMATION_POINT, LIST, NON_NULL } from 'managers/documentation/documentation';
 
 export function ReturnedValue({ type, setQueryType }: TReturnedValueProps): JSX.Element {
   let typeReturned: string = type?.name;
@@ -7,9 +8,9 @@ export function ReturnedValue({ type, setQueryType }: TReturnedValueProps): JSX.
     .split(',')
     .reverse()
     .map((value) => {
-      if (value === 'NON_NULL') {
-        typeReturned += '!';
-      } else if (value === 'LIST') {
+      if (value === NON_NULL) {
+        typeReturned += EXCLAMATION_POINT;
+      } else if (value === LIST) {
         typeReturned = `[${typeReturned}]`;
       }
     });

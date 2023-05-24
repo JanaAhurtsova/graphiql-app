@@ -2,7 +2,8 @@ import { Resolver } from 'react-hook-form';
 
 import { TFormRegistration } from '../fieldsForm/type';
 import { ELocalization } from '@/store/type';
-import formData from '../../assets/json/formData.json';
+import formData from 'assets/json/formData.json';
+import { Type } from 'managers/resolver/enum';
 
 export default function resolverRegistration(): Resolver<TFormRegistration> {
   return async (values) => {
@@ -11,7 +12,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
       errors: {
         email: !values.email
           ? {
-              type: 'required',
+              type: Type.REQUIRED,
               message: {
                 [ELocalization.en]: formData[ELocalization.en].email.required,
                 [ELocalization.ru]: formData[ELocalization.ru].email.required,
@@ -19,7 +20,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
             }
           : !RegExp(formData.pattern.email).test(values.email)
           ? {
-              type: 'pattern',
+              type: Type.PATTERN,
               message: {
                 [ELocalization.en]: formData[ELocalization.en].email.required,
                 [ELocalization.ru]: formData[ELocalization.ru].email.required,
@@ -28,7 +29,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
           : null,
         password: !values.password
           ? {
-              type: 'required',
+              type: Type.REQUIRED,
               message: {
                 [ELocalization.en]: formData[ELocalization.en].password.required,
                 [ELocalization.ru]: formData[ELocalization.ru].password.required,
@@ -36,7 +37,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
             }
           : !RegExp(formData.pattern.password).test(values.password)
           ? {
-              type: 'pattern',
+              type: Type.PATTERN,
               message: {
                 [ELocalization.en]: formData[ELocalization.en].password.required,
                 [ELocalization.ru]: formData[ELocalization.ru].password.required,
@@ -46,7 +47,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
         passwordRepeat:
           !values.passwordRepeat || values.password !== values.passwordRepeat
             ? {
-                type: 'required',
+                type: Type.REQUIRED,
                 message: {
                   [ELocalization.en]: formData[ELocalization.en].passwordRepeat.required,
                   [ELocalization.ru]: formData[ELocalization.ru].passwordRepeat.required,

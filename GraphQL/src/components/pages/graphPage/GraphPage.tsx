@@ -8,7 +8,7 @@ import TabContent from 'components/tabContent/TabContent';
 import { TargetKey } from './type';
 import { ELocalization } from '@/store/type';
 import { auth } from '@/firebase/firebase';
-import { KEY1, KEY2 } from 'managers/graphPage/enum';
+import { ADD, KEY1, KEY2 } from 'managers/graphPage/enum';
 import { Sidebar } from 'components/sidebar/Sidebar';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
@@ -95,7 +95,7 @@ const GraphPage: React.FC = () => {
     targetKey: React.MouseEvent | React.KeyboardEvent | string,
     action: 'add' | 'remove'
   ) => {
-    if (action === 'add') {
+    if (action === ADD) {
       add();
     } else {
       remove(targetKey);

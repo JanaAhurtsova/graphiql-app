@@ -5,6 +5,7 @@ import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
 import { UpOutlined } from '@ant-design/icons';
 import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
+import { setDisplay, setType } from 'managers/headersVariables/HeadersVariables';
 
 export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
   const [active, setActive] = useState(true);
@@ -18,8 +19,6 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
     setActive(value);
   };
 
-  const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
-
   const fontSize = useSetFontSize();
   const [fontStyle, setFontStyle] = useState(fontSize);
 
@@ -31,10 +30,10 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
     <div>
       <div className={styles.header}>
         <div className={styles.buttons}>
-          <Button onClick={() => openTextArea(true)} type={active ? 'default' : 'text'}>
+          <Button onClick={() => openTextArea(true)} type={setType(active)}>
             {langJSON[lang].variables}
           </Button>
-          <Button onClick={() => openTextArea(false)} type={!active ? 'default' : 'text'}>
+          <Button onClick={() => openTextArea(false)} type={setType(!active)}>
             {langJSON[lang].headers}
           </Button>
         </div>

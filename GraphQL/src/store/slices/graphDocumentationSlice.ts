@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TGraphDocumentationSlice } from '../type';
-import { TSchemaServer } from '@/components/documentationGraph/type';
+import { TSchemaServer } from 'components/documentationGraph/type';
+import { Name } from 'managers/slice/enum';
 
 const initialState = {
   doc: {
@@ -12,7 +13,7 @@ const initialState = {
 };
 
 const graphDocumentationSlice = createSlice({
-  name: 'graphDocumentation',
+  name: Name.DOCUMENTATION,
   initialState,
   reducers: {
     setGraphDocumentation(state: TGraphDocumentationSlice, action: PayloadAction<TSchemaServer>) {
