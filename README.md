@@ -6,6 +6,8 @@ GraphiQL is a playground/IDE for graphQL requests. This app uses Rick and Morty 
 * Checkout to develop branch: `$ git checkout develop`
 * Install dependencies: `$ npm install`
 * Start app: `$ npm start`
+* Unit tests with coverage: `$ npm run coverage`
+* E2E tests: `$ npm run test:cy`
 ### Deploy
 ## Application Structure
 1. Welcome page
