@@ -106,32 +106,51 @@ export default function WelcomePage() {
       <Parallax className={styles.space1} bgImage={space1} strength={600}>
         <header className={styles.hero_section}>
           <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
-          <h1 data-speed=".5" ref={welcomeRef} className={styles.main_title}>
+          <h1
+            data-speed=".5"
+            ref={welcomeRef}
+            className={styles.main_title}
+            data-testid="main_title"
+          >
             {langJSON[lang].welcomeText}
           </h1>
         </header>
       </Parallax>
       <main className={styles.gallery}>
-        <h2 className={styles.common}>{langJSON[lang].commonInformation}</h2>
+        <h2 className={styles.common} data-testid="common">
+          {langJSON[lang].commonInformation}
+        </h2>
         <div className={styles.gallery__item} ref={graphqlRef}>
           <img src={graphql} alt="Alt" className={styles.img} />
           <div className={styles.text_block}>
-            <h2 className={styles.text_block__h}>GraphQL</h2>
-            <p className={styles.text_block__p}>{langJSON[lang].graphQl}</p>
+            <h2 className={styles.text_block__h} data-testid="graph">
+              GraphQL
+            </h2>
+            <p className={styles.text_block__p} data-testid="graph-desc">
+              {langJSON[lang].graphQl}
+            </p>
           </div>
         </div>
         <div className={styles.gallery__item} id={styles.item__rs} ref={rsschoolRef}>
           <div className={styles.text_block}>
-            <h2 className={styles.text_block__h}>RS School</h2>
-            <p className={styles.text_block__p}>{langJSON[lang].rsSchool}</p>
+            <h2 className={styles.text_block__h} data-testid="rs">
+              RS School
+            </h2>
+            <p className={styles.text_block__p} data-testid="rs-desc">
+              {langJSON[lang].rsSchool}
+            </p>
           </div>
           <img src={rsschool} alt="Alt" className={styles.img} />
         </div>
         <div className={styles.gallery__item} ref={rsreactRef}>
           <img src={rsreact} alt="Alt" className={styles.img} />
           <div className={styles.text_block}>
-            <h2 className={styles.text_block__h}>React Course</h2>
-            <p className={styles.text_block__p}>{langJSON[lang].react}</p>
+            <h2 className={styles.text_block__h} data-testid="react">
+              React Course
+            </h2>
+            <p className={styles.text_block__p} data-testid="react-desc">
+              {langJSON[lang].react}
+            </p>
           </div>
         </div>
         <h2 className={styles.common}>{langJSON[lang].team}</h2>
@@ -140,10 +159,10 @@ export default function WelcomePage() {
             <h2 className={styles.text_block__h}>{langJSON[lang].jana}</h2>
             <p className={styles.text_block__p}>{langJSON[lang].aboutJana}</p>
           </div>
-          <img src={jana} alt="Alt" className={styles.img} />
+          <img src={jana} alt="Jana" className={styles.img} />
         </div>
         <div className={styles.gallery__item} ref={svetlanaRef}>
-          <img src={svetlana} alt="Alt" className={styles.img} />
+          <img src={svetlana} alt="Svetlana" className={styles.img} />
           <div className={styles.text_block}>
             <h2 className={styles.text_block__h}>{langJSON[lang].svetlana}</h2>
             <p className={styles.text_block__p}>{langJSON[lang].aboutSvetlana}</p>
@@ -154,7 +173,7 @@ export default function WelcomePage() {
             <h2 className={styles.text_block__h}>{langJSON[lang].vladimir}</h2>
             <p className={styles.text_block__p}>{langJSON[lang].aboutVladimir}</p>
           </div>
-          <img src={vladimir} alt="Alt" className={styles.img} />
+          <img src={vladimir} alt="Vladimir" className={styles.img} />
         </div>
       </main>
     </section>
