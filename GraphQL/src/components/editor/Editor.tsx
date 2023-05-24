@@ -14,20 +14,20 @@ import {
 } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
-import styles from './Editor.module.scss';
 import { Request } from 'managers/request/Request';
-import { IItemHistory } from '@/store/type';
+import { TEditorProps } from './type';
+import { XS, MD, SM } from '@/managers/editor/Editor';
 import { setHistory } from '@/localStore/localStorage';
-
-type TEditorProps = {
-  history?: IItemHistory;
-};
+import styles from './Editor.module.scss';
 
 export const Editor = ({ history }: TEditorProps) => {
+  const queryValue = history ? history.query : '';
+  const variablesValue = history ? history.variables : '';
+  const headersValue = history ? history.headers : '';
   const { lang } = useGetLocalization();
-  const [query, setQuery] = useState(history ? history.query : '');
-  const [variables, setVariables] = useState(history ? history.variables : '');
-  const [headers, setHeaders] = useState(history ? history.headers : '');
+  const [query, setQuery] = useState(queryValue);
+  const [variables, setVariables] = useState(variablesValue);
+  const [headers, setHeaders] = useState(headersValue);
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
   const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
@@ -92,7 +92,7 @@ export const Editor = ({ history }: TEditorProps) => {
 
   return (
     <Row className={styles.row}>
-      <Col className={styles.editor} xs={24} sm={24} md={12}>
+      <Col className={styles.editor} xs={XS} sm={SM} md={MD}>
         <Input.TextArea
           style={{ fontSize: `${fontStyle}px` }}
           className={styles.request}

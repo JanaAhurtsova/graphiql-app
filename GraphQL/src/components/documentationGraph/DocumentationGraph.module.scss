@@ -7,9 +7,11 @@
 .brown_text { 
   color: rgb(243, 140, 5);
 }
-.link_documentation, .back_documentation {
+.link_documentation,
+.back_documentation {
   cursor: pointer;
-  &:hover, &:active {
+  &:hover,
+  &:active {
     text-decoration: underline;
   }
 }

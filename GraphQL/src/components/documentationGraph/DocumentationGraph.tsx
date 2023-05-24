@@ -4,7 +4,7 @@ import { parserSchema } from './parserSchema';
 import { ReturnedArgs } from './returnedArgs/ReturnedArgs';
 import { ReturnedValue } from './returnedValue/ReturnedValue';
 import { TSchemaServer } from './type';
-import styles from './DocumentationSchema.module.scss';
+import styles from './DocumentationGraph.module.scss';
 import { UpOutlined } from '@ant-design/icons';
 
 export default function DocumentationGraph({ schema }: { schema: TSchemaServer }): JSX.Element {
