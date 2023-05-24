@@ -26,9 +26,9 @@
       "managers/*": ["src/managers/*"],
       "public/*": ["public/*"],
       "hooks/*": ["src/hooks/*"],
-      "store/*": ["src/store/*"],
+      "store/*": ["src/store/*"]
     }
   },
-  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json"],
+  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json", "src", "@testing-library/jest-dom"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
