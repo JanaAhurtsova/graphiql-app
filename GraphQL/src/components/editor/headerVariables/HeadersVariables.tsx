@@ -1,12 +1,18 @@
 import { Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
+import { UpOutlined } from '@ant-design/icons';
+
 import { ISetState } from './type';
+import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
-import { UpOutlined } from '@ant-design/icons';
-import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 
-export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
+export const HeadersVariables = ({
+  setVariables,
+  setHeaders,
+  variablesValue,
+  headersValue,
+}: ISetState) => {
   const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
   const { lang } = useGetLocalization();
@@ -50,6 +56,7 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
           className={styles.option}
           onChange={(e) => setVariables(e.target.value)}
           placeholder={langJSON[lang].placeholderVariables}
+          value={variablesValue}
           name="variables"
         />
         <Input.TextArea
@@ -57,6 +64,7 @@ export const HeadersVariables = ({ setVariables, setHeaders }: ISetState) => {
           className={styles.option}
           onChange={(e) => setHeaders(e.target.value)}
           placeholder={langJSON[lang].placeholderHeaders}
+          value={headersValue}
           name="headers"
         />
       </div>

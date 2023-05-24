@@ -5,24 +5,25 @@ import {
   SettingFilled,
 } from '@ant-design/icons';
 import { Drawer, Layout, Menu, Modal, Slider } from 'antd';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
-import { TSchemaTypesServer } from '../documentationGraph/type';
-import { MenuItem } from './type';
+import { MenuItem, TSidebarProps } from './type';
 import { Options } from 'managers/sidebar/Sidebar';
 import {
   useGetDocumentationGraph,
   useGetLocalization,
   useChangeFontSize,
 } from '@/hooks/reduxHooks';
+import { Loader } from '../loader/Loader';
+import HistoryGraph from '../historyGraph/HistoryGraph';
+import HotKeys from '../hotKeys/HotKeys';
 import langJSON from 'assets/json/localization.json';
 import styles from './Sidebar.module.scss';
-
 const { Sider } = Layout;
 
-export const Sidebar = () => {
+export const Sidebar = ({ callback }: TSidebarProps) => {
   const [collapsed, setCollapsed] = useState(true);
   const [documentation, setDocumentation] = useState(false);
   const [history, setHistory] = useState(false);
@@ -30,23 +31,6 @@ export const Sidebar = () => {
   const [modalSettings, setModalSettings] = useState(false);
 
   const { doc: schemaResponse } = useGetDocumentationGraph();
-
-  const getType = (type: string) => {
-    if (schemaResponse !== null) {
-      return schemaResponse?.types.find((value: TSchemaTypesServer) => value.name === type);
-    }
-  };
-
-  const showSchema = () => {
-    if (schemaResponse !== null) {
-      const schemaData = getType(schemaResponse?.queryType?.name);
-      if (schemaData) {
-        return <DocumentationGraph schema={schemaResponse} />;
-      }
-    }
-    return <></>;
-  };
-
   const { lang } = useGetLocalization();
 
   const handleSliderChange = useChangeFontSize();
@@ -73,6 +57,7 @@ export const Sidebar = () => {
   function getItem(
     label: React.ReactNode,
     key: React.Key,
+    disabled: boolean,
     icon?: React.ReactNode,
     children?: MenuItem[]
   ): MenuItem {
@@ -97,15 +82,20 @@ export const Sidebar = () => {
             break;
         }
       },
-      disabled: key === Options.DOCUMENTATION && !schemaResponse.types.length ? true : false,
+      disabled: disabled,
     } as MenuItem;
   }
 
   const items: MenuItem[] = [
-    getItem(langJSON[lang].documentation, Options.DOCUMENTATION, <ReadOutlined />),
-    getItem(langJSON[lang].history, Options.HISTORY, <ClockCircleOutlined />),
-    getItem(langJSON[lang].shortKeys, Options.SHORT, <SketchOutlined />),
-    getItem(langJSON[lang].settings, Options.SETTINGS, <SettingFilled />),
+    getItem(
+      langJSON[lang].documentation,
+      Options.DOCUMENTATION,
+      !schemaResponse.types.length ? true : false,
+      <ReadOutlined />
+    ),
+    getItem(langJSON[lang].history, Options.HISTORY, false, <ClockCircleOutlined />),
+    getItem(langJSON[lang].shortKeys, Options.SHORT, false, <SketchOutlined />),
+    getItem(langJSON[lang].settings, Options.SETTINGS, false, <SettingFilled />),
   ];
 
   return (
@@ -127,7 +117,9 @@ export const Sidebar = () => {
         open={documentation}
         className={styles.drawer}
       >
-        <div>{schemaResponse ? showSchema() : ''}</div>
+        <Suspense fallback={<Loader />}>
+          <DocumentationGraph schema={schemaResponse} />
+        </Suspense>
       </Drawer>
       <Drawer
         title={langJSON[lang].history}
@@ -137,7 +129,7 @@ export const Sidebar = () => {
         open={history}
         className={styles.drawer}
       >
-        <p>Content History</p>
+        <HistoryGraph callback={callback} isOpen={history} />
       </Drawer>
       <Modal
         title={langJSON[lang].shortKeys}
@@ -145,47 +137,7 @@ export const Sidebar = () => {
         onCancel={() => setModalKeys(false)}
         footer={[]}
       >
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>{langJSON[lang].shortKeys}</th>
-              <th>{langJSON[lang].functions}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <code>Shift + D</code>
-              </td>
-              <td>{langJSON[lang].openDoc}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + H</code>
-              </td>
-              <td>{langJSON[lang].openHist}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + O</code>
-              </td>
-              <td>{langJSON[lang].openTab}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + C</code>
-              </td>
-              <td>{langJSON[lang].closeTab}</td>
-            </tr>
-            <tr>
-              <td>
-                <code>Shift + R</code>
-              </td>
-              <td>{langJSON[lang].sendReq}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className={styles.note}>{langJSON[lang].note}</p>
+        <HotKeys />
       </Modal>
       <Modal
         title={langJSON[lang].settings}

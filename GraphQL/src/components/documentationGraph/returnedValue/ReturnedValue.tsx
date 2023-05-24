@@ -1,5 +1,5 @@
 import { TReturnedValueProps } from '../type';
-import styles from '../DocumentationSchema.module.scss';
+import styles from '../DocumentationGraph.module.scss';
 
 export function ReturnedValue({ type, setQueryType }: TReturnedValueProps): JSX.Element {
   let typeReturned: string = type?.name;

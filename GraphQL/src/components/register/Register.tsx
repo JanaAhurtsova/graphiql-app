@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm, Resolver } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Alert } from 'antd';
 
 import { useGetLocalization } from '../../hooks/reduxHooks';
@@ -10,7 +10,7 @@ import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import resolverRegistration from './ResolverRegistration';
 import formData from '../../assets/json/formData.json';
-import './Register.scss';
+import styles from './Register.module.scss';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -18,6 +18,10 @@ export default function Register() {
   const { lang } = useGetLocalization();
 
   const resolver: Resolver<TFormRegistration> = resolverRegistration();
+
+  useEffect(() => {
+    errorServer && setErrorServer(formData[lang].serverErrorRegister);
+  }, [lang, errorServer]);
 
   const {
     control,
@@ -41,9 +45,9 @@ export default function Register() {
   });
 
   return (
-    <form onSubmit={handleRegister} className="form-register">
+    <form onSubmit={handleRegister} className={styles.form_register}>
       {errorServer ? (
-        <Alert message={errorServer} type="error" className="error-register"></Alert>
+        <Alert message={errorServer} type="error" className={styles.error_register}></Alert>
       ) : (
         <br />
       )}
@@ -53,7 +57,7 @@ export default function Register() {
       <Button onClick={handleRegister} onSubmit={handleRegister} type="default">
         {formData[lang].buttonRegister}
       </Button>
-      <button className="btn-hide"></button>
+      <button className={styles.btn_hide}></button>
     </form>
   );
 }

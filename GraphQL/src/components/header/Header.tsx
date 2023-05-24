@@ -13,7 +13,7 @@ import styles from 'components/header/Header.module.scss';
 const { Header } = Layout;
 
 export default function AppHeader() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const { lang } = useGetLocalization();
 
   const handleScroll = () => {
@@ -45,19 +45,20 @@ export default function AppHeader() {
     <Header className={styles.header}>
       <nav className={styles.nav}>
         <NavLink to="/">{langJSON[lang].titleWelcome}</NavLink>
-        {!user ? (
-          <>
-            <NavLink to="/signin">{langJSON[lang].titleSignIn}</NavLink>
-            <NavLink to="/signup">{langJSON[lang].titleSignUp}</NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink to="/graph">{langJSON[lang].titleMain}</NavLink>
-            <NavLink to="/signout" onClick={logout}>
-              {langJSON[lang].exit}
-            </NavLink>
-          </>
-        )}
+        {!loading &&
+          (!user ? (
+            <>
+              <NavLink to="/signin">{langJSON[lang].titleSignIn}</NavLink>
+              <NavLink to="/signup">{langJSON[lang].titleSignUp}</NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/graph">{langJSON[lang].titleMain}</NavLink>
+              <NavLink to="/signout" onClick={logout}>
+                {langJSON[lang].exit}
+              </NavLink>
+            </>
+          ))}
       </nav>
       <SwitchLanguage />
     </Header>
