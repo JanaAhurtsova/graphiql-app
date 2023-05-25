@@ -16,7 +16,7 @@ import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import { Request } from 'managers/request/Request';
 import { TEditorProps } from './type';
-import { XS, MD, SM } from '@/managers/editor/Editor';
+import { XS, MD } from 'managers/editor/Editor';
 import { setHistory } from '@/localStore/localStorage';
 import styles from './Editor.module.scss';
 
@@ -92,7 +92,7 @@ export const Editor = ({ history }: TEditorProps) => {
 
   return (
     <Row className={styles.row}>
-      <Col className={styles.editor} xs={XS} sm={SM} md={MD}>
+      <Col className={styles.editor} xs={XS} md={MD}>
         <Input.TextArea
           style={{ fontSize: `${fontStyle}px` }}
           className={styles.request}
@@ -114,13 +114,7 @@ export const Editor = ({ history }: TEditorProps) => {
           type="primary"
         />
       </Col>
-      <Col
-        className={styles.response}
-        xs={24}
-        sm={24}
-        md={12}
-        style={{ fontSize: `${fontStyle}px` }}
-      >
+      <Col className={styles.response} xs={XS} md={MD} style={{ fontSize: `${fontStyle}px` }}>
         {isFetching && <Loader />}
         {error && <pre className={styles.result}>{JSON.stringify(error, null, '\t')}</pre>}
         {response && !error && (

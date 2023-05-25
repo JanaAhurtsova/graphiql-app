@@ -1,5 +1,5 @@
 import { TReturnedValueProps } from '../type';
-import styles from '../DocumentationSchema.module.scss';
+import styles from '../DocumentationGraph.module.scss';
 import { EXCLAMATION_POINT, LIST, NON_NULL } from 'managers/documentation/documentation';
 
 export function ReturnedValue({ type, setQueryType }: TReturnedValueProps): JSX.Element {
