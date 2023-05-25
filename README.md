@@ -4,6 +4,7 @@ GraphiQL is a playground/IDE for graphQL requests. This app uses Rick and Morty 
 * Clone this repo: `$ git clone https://github.com/JanaAhurtsova/graphiql-app.git`
 * Go to downloaded folder: `$ cd graphiql-app`
 * Checkout to develop branch: `$ git checkout develop`
+* Go to the GraphQL folder: `$ cd GraphQL`
 * Install dependencies: `$ npm install`
 * Start app: `$ npm start`
 * Unit tests with coverage: `$ npm run coverage`
