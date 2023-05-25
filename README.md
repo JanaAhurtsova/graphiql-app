@@ -10,6 +10,7 @@ GraphiQL is a playground/IDE for graphQL requests. This app uses Rick and Morty 
 * Unit tests with coverage: `$ npm run coverage`
 * E2E tests: `$ npm run test:cy`
 ### Deploy
+[GraphiQL-App](graphiql-dreamteam.netlify.app)
 ## Application Structure
 1. Welcome page
 2. User auth
