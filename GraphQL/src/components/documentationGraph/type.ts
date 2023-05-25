@@ -6,12 +6,6 @@ export type TSchemaServer = {
   };
   subscriptionType?: null;
   types: TSchemaTypesServer[];
-  /*
-  queryType: {
-    name: string;
-  };
-  types: TSchemaTypesServer[];
-  */
 };
 
 export type TSchemaTypesServer = {
