@@ -19,14 +19,16 @@ describe('check app', () => {
 
     cy.get('form button span').should('have.text', 'Sign In');
 
+    const password = () => cy.get('input[name=password]');
+
     cy.get('input[name=email]').type('byjanka@tut.by');
-    cy.get('input[name=password]').type('1111111');
+    password().type('1111111');
 
     cy.get('form button[type=button]').click();
 
     cy.contains(/error/i);
 
-    cy.get('input[name=password]').type('1');
+    password().type('1');
 
     cy.get('form button[type=button]').click();
 

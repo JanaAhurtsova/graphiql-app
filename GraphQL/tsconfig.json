@@ -29,6 +29,6 @@
       "store/*": ["src/store/*"]
     }
   },
-  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json", "src", "@testing-library/jest-dom"],
+  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json", "@testing-library/jest-dom"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
