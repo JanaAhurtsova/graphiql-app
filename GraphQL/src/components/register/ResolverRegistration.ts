@@ -1,7 +1,8 @@
 import { Resolver } from 'react-hook-form';
 
 import { TFormRegistration } from '../fieldsForm/type';
-import formData from '../../assets/json/formData.json';
+import formData from 'assets/json/formData.json';
+import { Type } from 'managers/resolver/enum';
 
 export default function resolverRegistration(): Resolver<TFormRegistration> {
   return async (values) => {
@@ -10,30 +11,30 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
       errors: {
         email: !values.email
           ? {
-              type: 'required',
+              type: Type.REQUIRED,
               message: 'required',
             }
           : !RegExp(formData.pattern.email).test(values.email)
           ? {
-              type: 'pattern',
+              type: Type.PATTERN,
               message: 'required',
             }
           : null,
         password: !values.password
           ? {
-              type: 'required',
+              type: Type.REQUIRED,
               message: 'required',
             }
           : !RegExp(formData.pattern.password).test(values.password)
           ? {
-              type: 'pattern',
+              type: Type.PATTERN,
               message: 'required',
             }
           : null,
         passwordRepeat:
           !values.passwordRepeat || values.password !== values.passwordRepeat
             ? {
-                type: 'required',
+                type: Type.REQUIRED,
                 message: 'required',
               }
             : null,

@@ -6,6 +6,7 @@ import { ISetState } from './type';
 import { useSetFontSize, useGetLocalization } from 'hooks/reduxHooks';
 import styles from './HeadersVariables.module.scss';
 import langJSON from 'assets/json/localization.json';
+import { setDisplay, setType } from 'managers/headersVariables/HeadersVariables';
 
 export const HeadersVariables = ({
   setVariables,
@@ -24,8 +25,6 @@ export const HeadersVariables = ({
     setActive(value);
   };
 
-  const setDisplay = (flag: boolean) => (flag ? 'block' : 'none');
-
   const fontSize = useSetFontSize();
   const [fontStyle, setFontStyle] = useState(fontSize);
 
@@ -37,10 +36,10 @@ export const HeadersVariables = ({
     <div>
       <div className={styles.header}>
         <div className={styles.buttons}>
-          <Button onClick={() => openTextArea(true)} type={active ? 'default' : 'text'}>
+          <Button onClick={() => openTextArea(true)} type={setType(active)}>
             {langJSON[lang].variables}
           </Button>
-          <Button onClick={() => openTextArea(false)} type={!active ? 'default' : 'text'}>
+          <Button onClick={() => openTextArea(false)} type={setType(!active)}>
             {langJSON[lang].headers}
           </Button>
         </div>

@@ -6,3 +6,4 @@ export enum LABELS {
 
 export const KEY1 = '1';
 export const KEY2 = '2';
+export const ADD = 'add';

@@ -4,27 +4,6 @@
   --color-text: #f5f0f0;
 }
 
-@font-face {
-  font-family: 'raleway-c';
-  src: url('../../../assets/fonts/raleway-regular.woff2');
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: 'outfit-c';
-  src: url('../../../assets/fonts/outfit-regular.woff2');
-  font-display: fallback;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'outfit-c';
-}
-
 .welcome,
 .hero,
 .main_header,
@@ -84,14 +63,14 @@ h6 {
 }
 
 .text_block__h {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 2.4rem;
   color: var(--color-h);
   margin: 20px 0;
 }
 
 .text_block__p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--color-text);
   line-height: 1.75;
   text-align: justify;
@@ -103,7 +82,7 @@ h6 {
 
 .common {
   color: #00b96b;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 50px 0;
 }
 
@@ -121,7 +100,7 @@ h6 {
   }
 
   .common {
-    font-size: 2.3rem;
+    font-size: 2.8rem;
     margin: 40px 0;
   }
 }

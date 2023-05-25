@@ -1,9 +1,10 @@
 import { Input, Form } from 'antd';
 import { Controller } from 'react-hook-form';
 
-import { TErrorResolver, TPropsForm } from '../type';
-import { useGetLocalization } from '@/hooks/reduxHooks';
-import formData from '../../../assets/json/formData.json';
+import { TPropsForm, TErrorResolver } from '../type';
+import { useGetLocalization } from 'hooks/reduxHooks';
+import formData from 'assets/json/formData.json';
+import { isError } from 'managers/form/Error';
 import styles from './PasswordInput.module.scss';
 
 export function PasswordInput({ control, name, error }: TPropsForm) {
@@ -11,10 +12,7 @@ export function PasswordInput({ control, name, error }: TPropsForm) {
   const errorMessage = error?.message as TErrorResolver;
 
   return (
-    <Form.Item
-      validateStatus={error ? 'error' : 'success'}
-      help={formData[lang][name][errorMessage]}
-    >
+    <Form.Item validateStatus={isError(error)} help={formData[lang][name][errorMessage]}>
       <Controller
         control={control}
         name={name}
