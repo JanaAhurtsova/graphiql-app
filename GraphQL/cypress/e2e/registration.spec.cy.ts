@@ -9,6 +9,8 @@ describe('check registration', () => {
 
     cy.contains('Welcome to GraphiQL');
 
+    cy.get('nav a').should('have.length', 3);
+
     cy.get('nav a')
       .last()
       .then(($link) => {
