@@ -13,13 +13,12 @@ import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGetLocalization } from '@/hooks/reduxHooks';
 import langJSON from '../../../assets/json/localization.json';
-import { Parallax } from 'react-parallax';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WelcomePage() {
   const { lang } = useGetLocalization();
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLImageElement | null>(null);
   const welcomeRef = useRef(null);
   const graphqlRef = useRef(null);
   const rsschoolRef = useRef(null);
@@ -101,9 +100,32 @@ export default function WelcomePage() {
     }
   }, []);
 
+  const parallaxContainerRef = useRef<HTMLDivElement | null>(null);
+  const backgroundImageRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
+      if (backgroundImageRef.current) {
+        backgroundImageRef.current.style.transform = `translateY(${scrollPosition * 0.8}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section className={styles.welcome}>
-      <Parallax className={styles.space1} bgImage={space1} strength={600}>
+      <div className={styles.parallaxContainer} ref={parallaxContainerRef}>
+        <div
+          className={styles.backgroundImage}
+          style={{ backgroundImage: `url(${space1})` }}
+          ref={backgroundImageRef}
+        ></div>
         <header className={styles.hero_section}>
           <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
           <h1
@@ -115,7 +137,8 @@ export default function WelcomePage() {
             {langJSON[lang].welcomeText}
           </h1>
         </header>
-      </Parallax>
+      </div>
+
       <main className={styles.gallery}>
         <h2 className={styles.common} data-testid="common">
           {langJSON[lang].commonInformation}
