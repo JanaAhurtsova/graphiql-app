@@ -20,7 +20,7 @@ export default function Login() {
   const resolver: Resolver<TFormLogin> = resolverLogin();
 
   useEffect(() => {
-    errorServer && setErrorServer(formData[lang].serverErrorRegister);
+    errorServer && setErrorServer(formData[lang].serverErrorLogin);
   }, [lang, errorServer]);
 
   const {

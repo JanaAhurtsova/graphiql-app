@@ -25,7 +25,7 @@ export default function resolverRegistration(): Resolver<TFormRegistration> {
               type: Type.REQUIRED,
               message: 'required',
             }
-          : !RegExp(formData.pattern.password).test(values.password)
+          : !RegExp(formData.pattern.password, 'i').test(values.password)
           ? {
               type: Type.PATTERN,
               message: 'required',
