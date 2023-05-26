@@ -24,7 +24,7 @@ describe('check app', () => {
 
     cy.get('form button[type=button]').click();
 
-    cy.contains(/registration error/i);
+    cy.contains(/not correct/i);
 
     cy.get('input[name=password]').type('!');
 

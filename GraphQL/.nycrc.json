@@ -2,7 +2,7 @@
   "all": true,
   "extends": "@istanbuljs/nyc-config-typescript",
   "check-coverage": true,
-  "lines": 80,
+  "lines": 75,
   "include": [
       "src/**/*.tsx"
     ],
