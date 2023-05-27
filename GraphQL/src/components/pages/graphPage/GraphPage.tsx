@@ -45,7 +45,7 @@ const GraphPage: React.FC = () => {
       return;
     }
     if (!user) {
-      return navigate('/404');
+      return navigate('/');
     }
   }, [user, loading, navigate]);
 
