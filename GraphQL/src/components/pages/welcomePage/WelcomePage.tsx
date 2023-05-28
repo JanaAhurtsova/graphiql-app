@@ -28,7 +28,7 @@ export default function WelcomePage() {
   const svetlanaRef = useRef(null);
 
   useEffect(() => {
-    if (ScrollTrigger.isTouch !== 2) {
+    if (ScrollTrigger.isTouch !== 1) {
       gsap.fromTo(
         heroRef.current,
         { rotate: 0 },
@@ -66,7 +66,7 @@ export default function WelcomePage() {
           { opacity: 0, x: -100 },
           {
             opacity: 1,
-            x: 0,
+            x: -5,
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
@@ -86,7 +86,7 @@ export default function WelcomePage() {
           { opacity: 0, x: 100 },
           {
             opacity: 1,
-            x: 0,
+            x: 5,
             scrollTrigger: {
               trigger: work.current,
               start: '-800',
