@@ -5,7 +5,6 @@ import vladimir from 'assets/img/vladimir.webp';
 import jana from 'assets/img/jana.webp';
 import rsreact from 'assets/img/rsreact.webp';
 import svetlana from 'assets/img/svetlana.webp';
-import space1 from 'assets/img/space1.webp';
 
 import styles from './WelcomePage.module.scss';
 import gsap from 'gsap';
@@ -100,7 +99,6 @@ export default function WelcomePage() {
     }
   }, []);
 
-  const parallaxContainerRef = useRef<HTMLDivElement | null>(null);
   const backgroundImageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -120,12 +118,8 @@ export default function WelcomePage() {
 
   return (
     <section className={styles.welcome}>
-      <div className={styles.parallaxContainer} ref={parallaxContainerRef}>
-        <div
-          className={styles.backgroundImage}
-          style={{ backgroundImage: `url(${space1})` }}
-          ref={backgroundImageRef}
-        ></div>
+      <div className={styles.parallaxContainer}>
+        <div className={styles.backgroundImage} ref={backgroundImageRef}></div>
         <header className={styles.hero_section}>
           <img data-speed="0.1" className={styles.hero} src={hero} alt="Alt" ref={heroRef} />
           <h1

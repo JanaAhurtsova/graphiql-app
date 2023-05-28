@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { IItemHistory, IItemHistoryState } from '../type';
-import { MAX_NUM_HISTORY } from '@/managers/slice/enum';
+import { MAX_NUM_HISTORY } from '@/managers/slice/Slice';
 
 const initialState: IItemHistoryState = {
   list: [],

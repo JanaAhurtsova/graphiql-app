@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TGraphDocumentationSlice } from '../type';
 import { TSchemaServer } from 'components/documentationGraph/type';
-import { Name } from 'managers/slice/enum';
+import { Name } from '@/managers/slice/Slice';
 
 const initialState = {
   doc: {
