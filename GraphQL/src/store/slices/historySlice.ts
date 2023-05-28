@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { IItemHistory, IItemHistoryState } from '../type';
+import { MAX_NUM_HISTORY } from '@/managers/slice/enum';
 
 const initialState: IItemHistoryState = {
   list: [],
@@ -23,7 +24,7 @@ const historySlice = createSlice({
       } else {
         state.list.unshift(action.payload);
       }
-      if (state.list.length > 50) {
+      if (state.list.length > MAX_NUM_HISTORY) {
         state.list.pop();
       }
     },

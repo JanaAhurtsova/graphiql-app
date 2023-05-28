@@ -3,3 +3,5 @@ export enum Name {
   FONT = 'font',
   DOCUMENTATION = 'graphDocumentation',
 }
+
+export const MAX_NUM_HISTORY = 50;

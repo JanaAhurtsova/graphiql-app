@@ -13,14 +13,12 @@ export default function SwitchLanguage() {
   };
 
   return (
-    <>
-      <Switch
-        checkedChildren={ELocalization.ru}
-        unCheckedChildren={ELocalization.en}
-        onChange={onChange}
-        defaultChecked={lang === ELocalization.ru ? true : false}
-        className={styles.switcher}
-      />
-    </>
+    <Switch
+      checkedChildren={ELocalization.ru}
+      unCheckedChildren={ELocalization.en}
+      onChange={onChange}
+      defaultChecked={lang === ELocalization.ru ? true : false}
+      className={styles.switcher}
+    />
   );
 }

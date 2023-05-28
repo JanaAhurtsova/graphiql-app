@@ -3,13 +3,15 @@ import RssLogo from 'assets/svg/rs_school_js.svg';
 import GitHubLogo from 'assets/svg/github.svg';
 import styles from './Footer.module.scss';
 
+const currentYear = new Date().getFullYear();
+
 export const AppFooter: FC = () => {
   return (
     <footer className={styles.footer}>
       <a href="https://rs.school/react/">
         <img className={(styles.icon, styles.rs)} src={RssLogo} alt="RSS Logo" />
       </a>
-      <h3 className={styles.h}>©2023</h3>
+      <h3 className={styles.h}>©{currentYear}</h3>
       <div className={styles.github}>
         <a href="https://github.com/JanaAhurtsova">
           <img title="Jana" className={styles.icon} src={GitHubLogo} alt="GitHub Logo" />
