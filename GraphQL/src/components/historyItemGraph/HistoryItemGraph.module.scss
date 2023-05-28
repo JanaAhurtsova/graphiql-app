@@ -6,21 +6,26 @@ $colorGreen: #00b96b;
   overflow: hidden;
   margin: 0rem;
 }
+
 .no_active {
   border: 1px solid white;
   cursor: pointer;
   border-radius: 5px;
   transition: .5s border linear;
 }
+
 .no_active:hover {
   border: 1px solid $colorGreen;
 }
+
 .active {
   color: white;
   background-color: $colorGreen;
   border-radius: 5px;
 }
-.no_active, .active {
+
+.no_active,
+.active {
   margin: 0.5em 0;
   padding: .3em;
 }
