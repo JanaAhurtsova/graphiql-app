@@ -16,7 +16,7 @@ export type TFormLogin = {
 export type TPropsForm = {
   control: Control<TFormRegistration | TFormLogin>;
   name: TNameFieldsForm;
-  error: FieldError | undefined;
+  error?: FieldError;
 };
 
 export type TErrorResolver = 'required' | 'placeholder';

@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react';
 import * as path from 'path';
 import istanbul from 'vite-plugin-istanbul';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -33,8 +32,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
-    // you might want to disable it, if you don't have tests that rely on CSS
-    // since parsing CSS is slow
     css: true,
   },
 });
