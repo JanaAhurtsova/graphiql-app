@@ -4,7 +4,7 @@ import styles from '../DocumentationGraph.module.scss';
 
 export function ReturnedArgs({ args, setQueryType }: TReturnedArgsProps): JSX.Element {
   let argsStr = <></>;
-  if (!args || !args.length) {
+  if (!args?.length) {
     return argsStr;
   }
   for (let i = 0; i < args.length; i++) {
