@@ -28,12 +28,12 @@ const GraphPage: React.FC = () => {
   const [user, loading] = useAuthState(auth);
 
   const addTab = () => {
-    add();
+    addNewTab();
   };
 
   const removeTab = () => {
     if (activeKey !== initialItems[0].key) {
-      remove(activeKey);
+      closeTab(activeKey);
     }
   };
 
@@ -59,7 +59,7 @@ const GraphPage: React.FC = () => {
     setActiveKey(newActiveKey);
   };
 
-  const add = (history?: IItemHistory) => {
+  const addNewTab = (history?: IItemHistory) => {
     const newIndex = newTabIndex.current++;
     const newActiveKey = `newTab${newIndex}`;
     const newPanes = [...items];
@@ -72,7 +72,7 @@ const GraphPage: React.FC = () => {
     setActiveKey(newActiveKey);
   };
 
-  const remove = (targetKey: TargetKey) => {
+  const closeTab = (targetKey: TargetKey) => {
     let newActiveKey = activeKey;
     let lastIndex = -1;
     items.forEach((item, i) => {
@@ -97,9 +97,9 @@ const GraphPage: React.FC = () => {
     action: 'add' | 'remove'
   ) => {
     if (action === ADD) {
-      add();
+      addNewTab();
     } else {
-      remove(targetKey);
+      closeTab(targetKey);
     }
   };
 
@@ -107,7 +107,7 @@ const GraphPage: React.FC = () => {
     <>
       {user ? (
         <Layout className="container">
-          <Sidebar callback={(item) => add(item)} />
+          <Sidebar callback={addNewTab} />
           <Tabs
             type="editable-card"
             onChange={onChange}

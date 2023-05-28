@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "lint-fix": "npx eslint --ext js,jsx,ts,tsx . --fix",
     "preview": "vite preview",
-    "cy:open": "cypress open --e2e --browser chrome",
     "cy:run": "cypress run --e2e",
     "test:cy": "npx start-server-and-test start http-get://localhost:5173 cy:run && npx nyc report && npx nyc report --reporter=text-summary",
     "test": "vitest",

@@ -5,7 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
-import { useLazyGetResponseQuery, useLazyGetSchemaQuery } from 'store/api/Api';
+import { useLazyGetResponseQuery } from 'store/api/Api';
 import {
   useSetDocumentationGraph,
   useGetLocalization,
@@ -30,12 +30,11 @@ export const Editor = ({ history }: TEditorProps) => {
   const [headers, setHeaders] = useState(headersValue);
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
-  const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
-
-  const setDocumentation = useSetDocumentationGraph();
+  const { getDocumentation, documentation } = useSetDocumentationGraph();
 
   const addHistory = useAddHistory();
   const historyList = useGetHistory();
+  const fontStyle = useSetFontSize();
 
   useEffect(() => {
     if (response && !documentation && !error && !isFetching) {
@@ -44,22 +43,8 @@ export const Editor = ({ history }: TEditorProps) => {
   }, [documentation, error, isFetching, getDocumentation, response]);
 
   useEffect(() => {
-    if (documentation) {
-      setDocumentation(documentation);
-    }
-  }, [documentation, setDocumentation]);
-
-  useEffect(() => {
     setHistory(historyList);
   }, [historyList]);
-
-  const fontSize = useSetFontSize();
-
-  const [fontStyle, setFontStyle] = useState(fontSize);
-
-  useEffect(() => {
-    setFontStyle(fontSize);
-  }, [fontSize]);
 
   const showResult = () => {
     try {

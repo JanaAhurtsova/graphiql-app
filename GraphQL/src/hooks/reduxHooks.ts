@@ -1,14 +1,14 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { AppDispatch, RootState } from '@/store/store';
 import { ELocalization, IItemHistory } from '@/store/type';
 import { changeLocalization } from '@/store/slices/localizationSlice';
 import { setLocalization } from '@/localStore/localStorage';
-import { TSchemaServer } from '@/components/documentationGraph/type';
 import { setGraphDocumentation } from '@/store/slices/graphDocumentationSlice';
 import { setFontSize } from '@/store/slices/fontSlice';
 import { addItemHistory } from '@/store/slices/historySlice';
+import { useLazyGetSchemaQuery } from '../store/api/Api';
 
 const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -40,14 +40,16 @@ export const useGetLocalization = () => {
 };
 
 export const useSetDocumentationGraph = () => {
+  const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
   const dispatch = useAppDispatch();
 
-  return useCallback(
-    (doc: TSchemaServer) => {
-      dispatch(setGraphDocumentation(doc));
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    if (documentation) {
+      dispatch(setGraphDocumentation(documentation));
+    }
+  }, [dispatch, documentation]);
+
+  return { getDocumentation, documentation };
 };
 
 export const useGetDocumentationGraph = () => {
@@ -55,7 +57,14 @@ export const useGetDocumentationGraph = () => {
 };
 
 export const useSetFontSize = () => {
-  return useAppSelector((state) => state.font.fontSize);
+  const fontSize = useAppSelector((state) => state.font.fontSize);
+  const [fontStyle, setFontStyle] = useState(fontSize);
+
+  useEffect(() => {
+    setFontStyle(fontSize);
+  }, [fontSize]);
+
+  return fontStyle;
 };
 
 export const useAddHistory = () => {
