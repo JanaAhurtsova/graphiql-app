@@ -8,7 +8,6 @@ GraphiQL is a playground/IDE for graphQL requests. This app uses Rick and Morty 
 * Install dependencies: `$ npm install`
 * Start app: `$ npm start`
 * Unit tests with coverage: `$ npm run coverage`
-* E2E tests: `$ npm run test:cy`
 ### Deploy
 [GraphiQL-App](https://graphiql-dreamteam.netlify.app/)
 ## Application Structure
