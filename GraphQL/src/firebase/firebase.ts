@@ -7,14 +7,16 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
+const env = import.meta.env;
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyCLX3EStxNXmswFJDBrIMJveCNt2WBZlI0',
-  authDomain: 'graphql-dt.firebaseapp.com',
-  projectId: 'graphql-dt',
-  storageBucket: 'graphql-dt.appspot.com',
-  messagingSenderId: '998180238582',
-  appId: '1:998180238582:web:fab9d84c3026062ee9e8d7',
-  measurementId: 'G-5X4Y4QGZP5',
+  apiKey: env.VITE_FIREBASE_API_KEY,
+  authDomain: env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: env.VITE_FIREBASE_API_ID,
+  measurementId: env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
