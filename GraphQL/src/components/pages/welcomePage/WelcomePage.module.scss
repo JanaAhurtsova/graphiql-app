@@ -19,7 +19,7 @@
   background-image: url('../../../assets/img/space1.webp');
   background-size: cover;
   background-position: center;
-  transform: translateY(0%);
+  background-attachment: fixed;
   z-index: -1;
 }
 

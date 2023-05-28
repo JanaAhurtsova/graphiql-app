@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Name } from 'managers/slice/enum';
+import { Name } from '@/managers/slice/Slice';
 
 const initialState = {
   fontSize: 14,
