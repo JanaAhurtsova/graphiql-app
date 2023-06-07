@@ -3,13 +3,13 @@ import { useForm, Resolver } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { Button, Alert } from 'antd';
 
-import { useGetLocalization } from '../../hooks/reduxHooks';
+import { useGetLocalization } from 'hooks/reduxHooks';
 import { registerWithEmailAndPassword } from '@/firebase/firebase';
 import { TFormRegistration } from '../fieldsForm/type';
 import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import resolverRegistration from './ResolverRegistration';
-import formData from '../../assets/json/formData.json';
+import formData from 'assets/json/localization.json';
 import styles from './Register.module.scss';
 
 export default function Register() {

@@ -9,7 +9,7 @@ import { TextInput } from '../fieldsForm/textInput/TextInput';
 import { PasswordInput } from '../fieldsForm/passwordInput/PasswordInput';
 import { TFormLogin } from '../fieldsForm/type';
 import resolverLogin from './ResolverLogin';
-import formData from 'assets/json/formData.json';
+import formData from 'assets/json/localization.json';
 import styles from './Login.module.scss';
 
 export default function Login() {

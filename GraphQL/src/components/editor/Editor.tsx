@@ -6,12 +6,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { HeadersVariables } from './headerVariables/HeadersVariables';
 import { Loader } from 'components/loader/Loader';
 import { useLazyGetResponseQuery } from 'store/api/Api';
-import {
-  useSetDocumentationGraph,
-  useGetLocalization,
-  useAddHistory,
-  useGetHistory,
-} from 'hooks/reduxHooks';
+import { useGetLocalization, useAddHistory, useGetHistory } from 'hooks/reduxHooks';
 import langJSON from 'assets/json/localization.json';
 import { useSetFontSize } from '@/hooks/reduxHooks';
 import { Request } from 'managers/request/Request';
@@ -30,17 +25,10 @@ export const Editor = ({ history }: TEditorProps) => {
   const [headers, setHeaders] = useState(headersValue);
   const [isOpen, setIsOpen] = useState(false);
   const [sendRequest, { data: response, error, isFetching }] = useLazyGetResponseQuery();
-  const { getDocumentation, documentation } = useSetDocumentationGraph();
 
   const addHistory = useAddHistory();
   const historyList = useGetHistory();
   const fontStyle = useSetFontSize();
-
-  useEffect(() => {
-    if (response && !documentation && !error && !isFetching) {
-      getDocumentation({});
-    }
-  }, [documentation, error, isFetching, getDocumentation, response]);
 
   useEffect(() => {
     setHistory(historyList);
