@@ -1,5 +1,21 @@
 {
   "en": {
+    "email": {
+      "placeholder": "Enter e-mail",
+      "required": "Enter correct e-mail"
+    },
+    "password": {
+      "placeholder": "Enter password",
+      "required": "Minimum 8 symbols, at least one letter, one digit, one special character"
+    },
+    "passwordRepeat": {
+      "placeholder": "Repeat password",
+      "required": "Passwords must match"
+    },
+    "buttonRegister": "Sign Up",
+    "buttonLogin": "Sign In",
+    "serverErrorRegister": "Registration error",
+    "serverErrorLogin": "Email or password is not correct",
     "titleWelcome": "Welcome",
     "titleMain": "Graph",
     "titleSignUp": "Sign Up",
@@ -46,6 +62,22 @@
     "fontSize": "Change Font Size (14-24)"
   },
   "ru": {
+    "email": {
+      "placeholder": "Введите E-mail",
+      "required": "Введите корректный e-mail"
+    },
+    "password": {
+      "placeholder": "Введите пароль",
+      "required": "Минимум 8 символов, одна буква, одна цифра, один специальный символ"
+    },
+    "passwordRepeat": {
+      "placeholder": "Повторите пароль",
+      "required": "Пароли должны совпадать"
+    },
+    "buttonRegister": "Зарегистрироваться",
+    "buttonLogin": "Войти",
+    "serverErrorRegister": "Ошибка регистрации",
+    "serverErrorLogin": "Почта или пароль введены не верно",
     "titleWelcome": "О нас",
     "titleMain": "Граф",
     "titleSignUp": "Регистрация",

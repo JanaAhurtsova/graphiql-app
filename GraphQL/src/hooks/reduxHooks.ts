@@ -40,16 +40,16 @@ export const useGetLocalization = () => {
 };
 
 export const useSetDocumentationGraph = () => {
-  const [getDocumentation, { data: documentation }] = useLazyGetSchemaQuery();
+  const [getDocumentation, { data: docs }] = useLazyGetSchemaQuery();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (documentation) {
-      dispatch(setGraphDocumentation(documentation));
+    if (docs) {
+      dispatch(setGraphDocumentation(docs));
     }
-  }, [dispatch, documentation]);
+  }, [dispatch, docs]);
 
-  return { getDocumentation, documentation };
+  return { getDocumentation, docs };
 };
 
 export const useGetDocumentationGraph = () => {

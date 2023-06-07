@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 
 import { TPropsForm, TErrorResolver } from '../type';
 import { useGetLocalization } from 'hooks/reduxHooks';
-import formData from 'assets/json/formData.json';
+import formData from 'assets/json/localization.json';
 import { isError } from 'managers/form/Error';
 import styles from './PasswordInput.module.scss';
 

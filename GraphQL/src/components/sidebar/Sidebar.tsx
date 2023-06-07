@@ -5,7 +5,7 @@ import {
   SettingFilled,
 } from '@ant-design/icons';
 import { Drawer, Layout, Menu, Modal, Slider } from 'antd';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import DocumentationGraph from '../documentationGraph/DocumentationGraph';
@@ -15,6 +15,7 @@ import {
   useGetDocumentationGraph,
   useGetLocalization,
   useChangeFontSize,
+  useSetDocumentationGraph,
 } from '@/hooks/reduxHooks';
 import { Loader } from '../loader/Loader';
 import HistoryGraph from '../historyGraph/HistoryGraph';
@@ -31,9 +32,17 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
   const [modalSettings, setModalSettings] = useState(false);
 
   const { doc: schemaResponse } = useGetDocumentationGraph();
+  const { getDocumentation, docs } = useSetDocumentationGraph();
+
   const { lang } = useGetLocalization();
 
   const handleSliderChange = useChangeFontSize();
+
+  useEffect(() => {
+    if (!docs) {
+      getDocumentation({});
+    }
+  }, [docs, getDocumentation]);
 
   const onClose = () => {
     setDocumentation(false);
@@ -87,12 +96,7 @@ export const Sidebar = ({ callback }: TSidebarProps) => {
   }
 
   const items: MenuItem[] = [
-    getItem(
-      langJSON[lang].documentation,
-      Options.DOCUMENTATION,
-      !schemaResponse.types.length ? true : false,
-      <ReadOutlined />
-    ),
+    getItem(langJSON[lang].documentation, Options.DOCUMENTATION, false, <ReadOutlined />),
     getItem(langJSON[lang].history, Options.HISTORY, false, <ClockCircleOutlined />),
     getItem(langJSON[lang].shortKeys, Options.SHORT, false, <SketchOutlined />),
     getItem(langJSON[lang].settings, Options.SETTINGS, false, <SettingFilled />),

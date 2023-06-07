@@ -1,7 +1,7 @@
 import { Resolver } from 'react-hook-form';
 
 import { TFormLogin } from '../fieldsForm/type';
-import formData from '../../assets/json/formData.json';
+import { Pattern } from 'managers/pattern/Pattern';
 
 export default function resolverLogin(): Resolver<TFormLogin> {
   return async (values) => {
@@ -13,7 +13,7 @@ export default function resolverLogin(): Resolver<TFormLogin> {
               type: 'required',
               message: 'required',
             }
-          : !RegExp(formData.pattern.email).test(values.email)
+          : !RegExp(Pattern.email).test(values.email)
           ? {
               type: 'pattern',
               message: 'required',
