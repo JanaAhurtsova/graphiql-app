@@ -1,0 +1,9 @@
+.form_register {
+  &>.btn_hide {
+    display: none;
+  }
+  &>.error_register {
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+}

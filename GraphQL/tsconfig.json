@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "esnext", "dom.iterable"],
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "types": ["cypress"],
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["./src/*", "./dist/*", ""],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "managers/*": ["src/managers/*"],
+      "public/*": ["public/*"],
+      "hooks/*": ["src/hooks/*"],
+      "store/*": ["src/store/*"]
+    }
+  },
+  "include": ["src/**/*", "vite.config.ts", ".eslintrc.json", "@testing-library/jest-dom"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
